@@ -1,3 +1,9 @@
+#!/bin/bash
+# 
+# @file
+# 
+# This file will get called if lobster_debug == 1 at the time the function
+# lobster_show_debug() is called.
 
 color 'yellow'
 message "DEBUG INFO" "This will only be called if you set lobster_debug=1 in config.lobster"
