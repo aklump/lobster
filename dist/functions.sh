@@ -90,9 +90,9 @@ function lobster_message() {
 
 theme_source=''
 function lobster_theme() {
-  if [ -f "$root/themes/$lobster_theme/tpl/$1.txt" ]; then
-    theme_source="$root/themes/$lobster_theme/tpl/$1.txt"
-    output=$(cat "$root/themes/$lobster_theme/tpl/$1.txt")
+  if [ -f "$root/themes/$lobster_theme/tpl/$1.twig" ]; then
+    theme_source="$root/themes/$lobster_theme/tpl/$1.twig"
+    output=$(cat "$root/themes/$lobster_theme/tpl/$1.twig")
     if [ "$output" ]; then 
       echo "`tty -s && tput setaf $lobster_theme_color`$output`tty -s && tput op`"
     fi

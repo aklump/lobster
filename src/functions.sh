@@ -222,6 +222,7 @@ function lobster_json() {
   json=$json\"root\"\:\"$lobster_root\",
   json=$json\"theme\"\:\"$lobster_theme\",
   json=$json\"debug\"\:$lobster_debug
+  json=$json\"php\"\:$lobster_php
   json=$json\},
 
   #
