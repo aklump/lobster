@@ -1,0 +1,5 @@
+name = "Lobster"
+description = "A shell scripting framework for developers comfortable in the web."
+homepage = http://www.intheloftstudios.com/packages/shell/lobster
+version = 0.0.1
+author = Aaron Klump <sourcecode@intheloftstudios.com>
