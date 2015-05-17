@@ -6,7 +6,7 @@
 # lobster_show_debug() is called.
 
 lobster_color 'yellow'
-lobster_message "DEBUG INFO" "This will only be called if you set lobster_debug=1 in config.lobster"
+lobster_message "DEBUG INFO" "This will only be called if you set lobster_debug=1 in the config file"
 
 lobster_color 'green'
 lobster_message "\$lobster_app_name:" "$lobster_app_name" " "

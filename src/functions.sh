@@ -13,7 +13,7 @@ function lobster_error() {
   lobster_color 'red'
   lobster_message "$1"
   lobster_color "$stash"
-  lobster_end
+  lobster_exit
 }
 
 #
@@ -26,7 +26,7 @@ function lobster_warning() {
   lobster_color 'yellow'
   lobster_message "$1"
   lobster_color "$stash"
-  lobster_end
+  lobster_exit
 }
 
 #
@@ -39,7 +39,7 @@ function lobster_success() {
   lobster_color 'green'
   lobster_message "$1"
   lobster_color "$stash"
-  lobster_end
+  lobster_exit
 }
 
 #
@@ -88,20 +88,30 @@ function lobster_message() {
   done
 }
 
-theme_source=''
+lobster_theme_source=''
 function lobster_theme() {
-  if [ -f "$root/themes/$lobster_theme/tpl/$1.txt" ]; then
-    theme_source="$root/themes/$lobster_theme/tpl/$1.txt"
-    output=$(cat "$root/themes/$lobster_theme/tpl/$1.txt")
-    if [ "$output" ]; then 
-      echo "`tty -s && tput setaf $lobster_theme_color`$output`tty -s && tput op`"
-    fi
+  source=$1
+  if [ ! -f "$source" ]; then
+    for ext in "${lobster_tpl_extensions[@]}"; do
+      if [ -f "$root/themes/$lobster_theme/tpl/$1.$ext" ]; then
+        source="$root/themes/$lobster_theme/tpl/$1.$ext"
+      fi
+    done
+  fi
+
+  if [ ! "$source" ]; then
+    return
+  fi
+  lobster_theme_source="$source"
+  output=$(cat "$source")
+  if [ "$output" ]; then 
+    echo "`tty -s && tput setaf $lobster_theme_color`$output`tty -s && tput op`"
   fi
 }
 
 #
 # Prints the footer and exits the script
-function lobster_end() {
+function lobster_exit() {
   lobster_theme 'footer'
   lobster_include 'shutdown'  
   exit;
@@ -220,9 +230,25 @@ function lobster_json() {
   #
   json=$json{\"lobster\":{
   json=$json\"root\"\:\"$lobster_root\",
+  json=$json\"default_route\"\:\"$lobster_default_route\",
   json=$json\"theme\"\:\"$lobster_theme\",
-  json=$json\"debug\"\:$lobster_debug
-  json=$json\"php\"\:$lobster_php
+  json=$json\"debug\"\:$lobster_debug,
+  json=$json\"php\"\:\"$lobster_php\",
+
+  json=$json\"route_extensions\"\:\[
+  snippet=''
+  for flag in "${lobster_route_extensions[@]}"; do
+    snippet=$snippet\"$flag\",
+  done
+  json=$json${snippet%,}\],  
+
+  json=$json\"tpl_extensions\"\:\[
+  snippet=''
+  for flag in "${lobster_tpl_extensions[@]}"; do
+    snippet=$snippet\"$flag\",
+  done
+  json=$json${snippet%,}\]
+      
   json=$json\},
 
   #
@@ -234,8 +260,16 @@ function lobster_json() {
   json=$json\"title\"\:\"$lobster_app_title\",
   json=$json\"root\"\:\"$root\",
   json=$json\"op\"\:\"$lobster_op\",
-
   json=$json\"route\"\:\"$lobster_route\",
+  json=$json\"tpl\"\:\"$lobster_theme_source\",
+
+  #Add in the suggestions
+  json=$json\"suggestions\"\:\[
+  snippet=''
+  for flag in "${lobster_suggestions[@]}"; do
+    snippet=$snippet\"$flag\",
+  done
+  json=$json${snippet%,}\],
 
   # The args
   json=$json\"args\"\:\[
@@ -267,4 +301,3 @@ function lobster_json() {
   json=$json\}\}
   echo $json
 }
-

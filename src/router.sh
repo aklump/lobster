@@ -3,32 +3,81 @@
 # @file
 # Handles common routing based on the $op
 
-# If the op is pointing to a file in routes/$op.sh...
-lobster_route=''
-if [ -f "$root/routes/$lobster_op.sh" ]; then
-  lobster_route="$root/routes/$lobster_op.sh"
-  # This will be consumable by php scripts, et al.
-  export LOBSTER_JSON=$(lobster_json)    
-  source "$lobster_route"
+# Setup the filenames we'll search for
 
-# If the op is pointing to a file in routes/$lobster_op.php...
-elif [ -f "$root/routes/$lobster_op.php" ]; then
-  lobster_route="$root/routes/$lobster_op.php"
-  # This will be consumable by php scripts, et al.
-  export LOBSTER_JSON=$(lobster_json)    
-  $lobster_php "$lobster_route"
-fi
+base=''
 
-if [ ! "$lobster_route" ]; then
-  output=$(lobster_theme $lobster_op)
-  if [ "$output" ]; then
-    lobster_route=$theme_source
-    # This will be consumable by php scripts, et al.
-    export LOBSTER_JSON=$(lobster_json)      
-    echo "$output";
+declare -a list=();
+for item in "${lobster_args[@]}"; do
+  if [ "$base" ]; then
+    base=$base.$item;
   else
-    # This will be consumable by php scripts, et al.
-    export LOBSTER_JSON=$(lobster_json)      
-    lobster_error "Unknown operation: $lobster_op"
+    base=$item;
   fi
+  list=("${list[@]}" "$base")
+done
+
+# Reverse the order for specific to general order.
+declare -a lobster_suggestions=();
+for (( i = ${#list[@]} - 1; i >= 0 ; i-- )); do
+  lobster_suggestions=("${lobster_suggestions[@]}" ${list[$i]})
+done
+
+# The default route.
+if [ ${#lobster_suggestions[@]} -lt 1 ]; then
+  lobster_suggestions[0]=$lobster_default_route
 fi
+
+# Will hold the discovered route
+lobster_route=''
+
+# From the routes folder
+for suggestion in "${lobster_suggestions[@]}"; do
+  for ext in "${lobster_route_extensions[@]}"; do
+    filename=$suggestion.$ext
+    if [ -f "$root/routes/$filename" ]; then
+      lobster_route="$root/routes/$filename"
+
+      # This will be consumable by php scripts, et al.
+      export LOBSTER_JSON=$(lobster_json)          
+      case $ext in
+        'sh' )
+          source "$lobster_route"
+          lobster_exit
+          ;;
+
+        'php' )
+          $lobster_php "$lobster_route"
+          lobster_exit
+          ;;
+      esac
+    fi
+  done
+
+  # From the theme folder
+  for ext in "${lobster_tpl_extensions[@]}"; do
+    filename=$suggestion.$ext
+    if [ -f "$root/themes/$lobster_theme/tpl/$filename" ]; then
+      lobster_route="$root/themes/$lobster_theme/tpl/$filename"
+
+      # This will be consumable by php scripts, et al.
+      export LOBSTER_JSON=$(lobster_json)
+      output=$(lobster_theme $lobster_route)
+
+      case $ext in
+        'twig' )
+          # @todo process the twig file
+          ;;
+      esac
+
+      echo "$output"
+      lobster_exit
+    fi
+  done
+
+done
+
+# Fallback when the op is unknown
+export LOBSTER_JSON=$(lobster_json)      
+lobster_error "Unknown operation: $lobster_op"
+lobster_exit

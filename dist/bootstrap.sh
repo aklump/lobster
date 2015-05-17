@@ -10,9 +10,9 @@ while [ -h "$source" ]; do # resolve $source until the file is no longer a symli
 done
 lobster_root="$( cd -P "$( dirname "$source" )" && pwd )"
 
-source "$lobster_root/config.lobster"
-if [ -f "$root/config.lobster" ]; then
-  source "$root/config.lobster"
+source "$lobster_root/.lobsterconfig"
+if [ -f "$root/.lobsterconfig" ]; then
+  source "$root/.lobsterconfig"
 fi
 
 # Load all our functions.
@@ -23,11 +23,7 @@ lobster_php=$(which php)
 # Set up the default text colors.
 lobster_theme_color=7
 lobster_color $lobster_theme_color_name
-
 lobster_op=$1
-if [ ${#@} -eq 0 ]; then
-  lobster_op='help'
-fi
 
 # Sort out the args, flags and params.
 declare -a lobster_args=()

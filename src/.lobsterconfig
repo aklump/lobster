@@ -19,3 +19,12 @@ lobster_theme_color_name="white"
 
 # The name of the default theme.
 lobster_theme="default"
+
+# These define the extensions and the order of include for route files.
+lobster_route_extensions=("sh" "php")
+
+# These define the extensions and the order of include for route files.
+lobster_tpl_extensions=("twig" "txt")
+
+# The default route when no arguments present
+lobster_default_route="help"

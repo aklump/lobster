@@ -4,10 +4,10 @@
 # App configuration file for Lobster Shell
 
 # The machine name of your app, lowercase + underscore only.
-lobster_app_name="lobster_app"
+lobster_app_name="example_app"
 
 # Human readable name of your app
-lobster_app_title="A Lobster App"
+lobster_app_title="Lobster Example App"
 
 # Set this to 1 and calling lobster_show_debug() will return the contents
 # of the include/debug.  Set this to 0 and calling lobster_show_debug() will

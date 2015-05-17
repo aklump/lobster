@@ -1,7 +1,7 @@
 #!/bin/bash
 # 
 # @file
-# Controller file for __lobster_app_example.
+# Controller file for example_app.
 
 self="${BASH_SOURCE[0]}"
 while [ -h "$self" ]; do
@@ -13,4 +13,3 @@ root="$( cd -P "$( dirname "$self" )" && pwd )"
 source "$root/vendor/aklump/lobster/dist/bootstrap.sh"
 lobster_theme 'header';
 source "$root/vendor/aklump/lobster/dist/router.sh"
-lobster_end
