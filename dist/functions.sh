@@ -1,18 +1,44 @@
 #!/bin/bash
 # 
 # @file
-# Defines common functions.
+# Defines Lobster core functions.
 
 #
 # Produces an error output
 #
 # @param string $arg
 #
-function error() {
+function lobster_error() {
   local stash=$lobster_theme_color_name
-  color 'red'
-  message "$1"
-  color "$stash"
+  lobster_color 'red'
+  lobster_message "$1"
+  lobster_color "$stash"
+  end
+}
+
+#
+# Produces an error output
+#
+# @param string $arg
+#
+function lobster_warning() {
+  local stash=$lobster_theme_color_name
+  lobster_color 'yellow'
+  lobster_message "$1"
+  lobster_color "$stash"
+  end
+}
+
+#
+# Produces an error output
+#
+# @param string $arg
+#
+function lobster_success() {
+  local stash=$lobster_theme_color_name
+  lobster_color 'green'
+  lobster_message "$1"
+  lobster_color "$stash"
   end
 }
 
@@ -21,7 +47,7 @@ function error() {
 #
 # @param int 0-7
 #
-function color() {
+function lobster_color() {
   lobster_theme_color_name=$1
   case $lobster_theme_color_name in
     'grey' )
@@ -56,14 +82,14 @@ function color() {
 #
 # @param string|array $arg
 #
-function message() {
+function lobster_message() {
   for line in "${@}"; do
     echo "`tty -s && tput setaf $lobster_theme_color`$line`tty -s && tput op`"  
   done
 }
 
 theme_source=''
-function theme() {
+function lobster_theme() {
   if [ -f "$root/templates/$1.txt" ]; then
     theme_source="$root/templates/$1.txt"
     output=$(cat "$root/templates/$1.txt")
@@ -75,8 +101,8 @@ function theme() {
 
 #
 # Prints the footer and exits the script
-function end() {
-  theme 'footer'
+function lobster_end() {
+  lobster_theme 'footer'
   lobster_include 'shutdown'  
   exit;
 }

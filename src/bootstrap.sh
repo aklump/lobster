@@ -1,3 +1,7 @@
+#!/bin/bash
+# 
+# @file
+# Lobster shell core bootstrapping.
 source="${BASH_SOURCE[0]}"
 while [ -h "$source" ]; do # resolve $source until the file is no longer a symlink
   dir="$( cd -P "$( dirname "$source" )" && pwd )"
@@ -11,20 +15,21 @@ if [ -f "$root/config.lobster" ]; then
   source "$root/config.lobster"
 fi
 
-# Load all our functions
+# Load all our functions.
 source "$lobster_root/functions.sh"
 
 lobster_php=$(which php)
 
-# Set up the default text colors
+# Set up the default text colors.
 lobster_theme_color=7
-color $lobster_theme_color_name
+lobster_color $lobster_theme_color_name
 
 lobster_op=$1
 if [ ${#@} -eq 0 ]; then
   lobster_op='help'
 fi
 
+# Sort out the args, flags and params.
 declare -a lobster_args=()
 declare -a lobster_flags=()
 declare -a lobster_params=()

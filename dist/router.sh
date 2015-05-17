@@ -20,7 +20,7 @@ elif [ -f "$root/routes/$lobster_op.php" ]; then
 fi
 
 if [ ! "$lobster_route" ]; then
-  output=$(theme $lobster_op)
+  output=$(lobster_theme $lobster_op)
   if [ "$output" ]; then
     lobster_route=$theme_source
     # This will be consumable by php scripts, et al.
@@ -29,6 +29,6 @@ if [ ! "$lobster_route" ]; then
   else
     # This will be consumable by php scripts, et al.
     export LOBSTER_JSON=$(lobster_json)      
-    error "Unknown operation: $lobster_op"
+    lobster_error "Unknown operation: $lobster_op"
   fi
 fi
