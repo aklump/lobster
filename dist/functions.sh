@@ -13,7 +13,7 @@ function lobster_error() {
   lobster_color 'red'
   lobster_message "$1"
   lobster_color "$stash"
-  end
+  lobster_end
 }
 
 #
@@ -26,7 +26,7 @@ function lobster_warning() {
   lobster_color 'yellow'
   lobster_message "$1"
   lobster_color "$stash"
-  end
+  lobster_end
 }
 
 #
@@ -39,7 +39,7 @@ function lobster_success() {
   lobster_color 'green'
   lobster_message "$1"
   lobster_color "$stash"
-  end
+  lobster_end
 }
 
 #
@@ -90,9 +90,9 @@ function lobster_message() {
 
 theme_source=''
 function lobster_theme() {
-  if [ -f "$root/templates/$1.txt" ]; then
-    theme_source="$root/templates/$1.txt"
-    output=$(cat "$root/templates/$1.txt")
+  if [ -f "$root/themes/$lobster_theme/tpl/$1.txt" ]; then
+    theme_source="$root/themes/$lobster_theme/tpl/$1.txt"
+    output=$(cat "$root/themes/$lobster_theme/tpl/$1.txt")
     if [ "$output" ]; then 
       echo "`tty -s && tput setaf $lobster_theme_color`$output`tty -s && tput op`"
     fi
@@ -213,13 +213,24 @@ function lobster_get_param() {
 function lobster_json() {
   local json=''
   local snippet=''
+
+  #
+  #
+  # Begin child: lobster
+  #
   json=$json{\"lobster\":{
   json=$json\"root\"\:\"$lobster_root\",
+  json=$json\"theme\"\:\"$lobster_theme\",
   json=$json\"debug\"\:$lobster_debug
   json=$json\},
 
+  #
+  #
+  # Begin child: app
+  #
   json=$json\"app\":{
   json=$json\"name\"\:\"$lobster_app_name\",
+  json=$json\"title\"\:\"$lobster_app_title\",
   json=$json\"root\"\:\"$root\",
   json=$json\"op\"\:\"$lobster_op\",
 

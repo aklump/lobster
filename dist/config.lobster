@@ -4,15 +4,15 @@
 # App configuration file for Lobster Shell
 
 # The machine name of your app, lowercase + underscore only.
-lobster_app_name="__lobster_app_example"
+lobster_app_name="lobster_app"
 
 # Human readable name of your app
-lobster_app_title="Lobster App Example"
+lobster_app_title="A Lobster App"
 
 # Set this to 1 and calling lobster_show_debug() will return the contents
 # of the include/debug.  Set this to 0 and calling lobster_show_debug() will
 # not produce any output.
-lobster_debug=1
+lobster_debug=0
 
 # Default terminal color.
 lobster_theme_color_name="white"

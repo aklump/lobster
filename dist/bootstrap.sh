@@ -10,7 +10,7 @@ while [ -h "$source" ]; do # resolve $source until the file is no longer a symli
 done
 lobster_root="$( cd -P "$( dirname "$source" )" && pwd )"
 
-source "$lobster_root/config.sh"
+source "$lobster_root/config.lobster"
 if [ -f "$root/config.lobster" ]; then
   source "$root/config.lobster"
 fi
