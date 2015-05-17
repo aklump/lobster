@@ -21,8 +21,8 @@ source "$lobster_root/functions.sh"
 lobster_php=$(which php)
 
 # Set up the default text colors.
-lobster_theme_color=7
-lobster_color $lobster_theme_color_name
+lobster_color_current=''
+lobster_color $lobster_color_default
 lobster_op=$1
 
 # Sort out the args, flags and params.

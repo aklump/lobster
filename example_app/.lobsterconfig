@@ -13,9 +13,3 @@ lobster_app_title="Lobster Example App"
 # of the include/debug.  Set this to 0 and calling lobster_show_debug() will
 # not produce any output.
 lobster_debug=0
-
-# Default terminal color.
-lobster_theme_color_name="white"
-
-# The name of the default theme.
-lobster_theme="default"

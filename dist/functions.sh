@@ -9,9 +9,9 @@
 # @param string $arg
 #
 function lobster_error() {
-  local stash=$lobster_theme_color_name
+  local stash=$lobster_color_current
   lobster_color 'red'
-  lobster_message "$1"
+  lobster_echo "$1"
   lobster_color "$stash"
   lobster_exit
 }
@@ -22,9 +22,9 @@ function lobster_error() {
 # @param string $arg
 #
 function lobster_warning() {
-  local stash=$lobster_theme_color_name
+  local stash=$lobster_color_current
   lobster_color 'yellow'
-  lobster_message "$1"
+  lobster_echo "$1"
   lobster_color "$stash"
   lobster_exit
 }
@@ -35,9 +35,9 @@ function lobster_warning() {
 # @param string $arg
 #
 function lobster_success() {
-  local stash=$lobster_theme_color_name
+  local stash=$lobster_color_current
   lobster_color 'green'
-  lobster_message "$1"
+  lobster_echo "$1"
   lobster_color "$stash"
   lobster_exit
 }
@@ -48,31 +48,31 @@ function lobster_success() {
 # @param int 0-7
 #
 function lobster_color() {
-  lobster_theme_color_name=$1
-  case $lobster_theme_color_name in
+  lobster_color_current=$1
+  case $lobster_color_current in
     'grey' )
-      lobster_theme_color=0
+      lobster_color_current=0
       ;;
     'red' )
-      lobster_theme_color=1
+      lobster_color_current=1
       ;;
     'green' )
-      lobster_theme_color=2
+      lobster_color_current=2
       ;;
     'yellow' )
-      lobster_theme_color=3
+      lobster_color_current=3
       ;;
     'blue' )
-      lobster_theme_color=4
+      lobster_color_current=4
       ;;                  
     'pink' )
-      lobster_theme_color=5
+      lobster_color_current=5
       ;;
     'cyan' )
-      lobster_theme_color=6
+      lobster_color_current=6
       ;;
     'white' )
-      lobster_theme_color=7
+      lobster_color_current=7
       ;;            
   esac
 }
@@ -82,9 +82,9 @@ function lobster_color() {
 #
 # @param string|array $arg
 #
-function lobster_message() {
+function lobster_echo() {
   for line in "${@}"; do
-    echo "`tty -s && tput setaf $lobster_theme_color`$line`tty -s && tput op`"  
+    echo "`tty -s && tput setaf $lobster_color_current`$line`tty -s && tput op`"  
   done
 }
 
@@ -102,11 +102,31 @@ function lobster_theme() {
   if [ ! "$source" ]; then
     return
   fi
+  ext="${source##*.}"
+
+  # preprocess
+  processor=$source
+  processor="${processor/tpl/pre}"
+  processor="${processor/$ext/sh}"
+  if [ -f "$processor" ]; then
+    source "$processor"
+  fi
+  
+  # Load the file content.
   lobster_theme_source="$source"
   output=$(cat "$source")
   if [ "$output" ]; then 
-    echo "`tty -s && tput setaf $lobster_theme_color`$output`tty -s && tput op`"
+    echo "`tty -s && tput setaf $lobster_color_current`$output`tty -s && tput op`"
   fi
+
+  # postprocess
+  processor=$source
+  processor="${processor/tpl/post}"
+  processor="${processor/$ext/sh}"
+  if [ -f "$processor" ]; then
+    source "$processor"
+  fi
+
 }
 
 #

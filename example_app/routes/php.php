@@ -14,5 +14,10 @@ $output[] = "This is a PHP handler";
 $output[] = "The operation is " . $json->app->op;
 $output[] = "You called with arguments: " . implode(', ', $json->app->args);
 $output[] = '';
+$output[] = "PHP scripts have access to a JSON string with lots of data in it, a global BASH";
+$output[] = "variable, \$LOBSTER_JSON, which decodes like this:";
+$output[] = '';
+$output[] = print_r($json, TRUE);
+$output[] = '';
 
 print implode(PHP_EOL, $output);

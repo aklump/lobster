@@ -11,5 +11,5 @@ while [ -h "$self" ]; do
 done
 root="$( cd -P "$( dirname "$self" )" && pwd )"
 source "$root/vendor/aklump/lobster/dist/bootstrap.sh"
-lobster_theme 'header';
+lobster_theme 'header'
 source "$root/vendor/aklump/lobster/dist/router.sh"

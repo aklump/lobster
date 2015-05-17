@@ -14,8 +14,11 @@ lobster_app_title="A Lobster App"
 # not produce any output.
 lobster_debug=0
 
+# Current terminal color
+lobster_color_current="white"
+
 # Default terminal color.
-lobster_theme_color_name="white"
+lobster_color_default="white"
 
 # The name of the default theme.
 lobster_theme="default"
