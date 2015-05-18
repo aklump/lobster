@@ -92,7 +92,7 @@ function lobster_color() {
 # @param string|array $arg
 #
 function lobster_echo() {
-  if lobster_has_param 'lobster-quiet' && [ $lobster_debug -lt 1 ]; then
+  if lobster_has_param 'lobster-quiet'; then
     return
   fi
   for line in "${@}"; do
@@ -102,7 +102,7 @@ function lobster_echo() {
 
 lobster_theme_source=''
 function lobster_theme() {
-  if lobster_has_param 'lobster-quiet' && [ $lobster_debug -lt 1 ]; then
+  if lobster_has_param 'lobster-quiet'; then
     return
   fi  
   source=$1
