@@ -12,4 +12,4 @@ lobster_app_title="Lobster Example App"
 # Set this to 1 and calling lobster_show_debug() will return the contents
 # of the include/debug.  Set this to 0 and calling lobster_show_debug() will
 # not produce any output.
-lobster_debug=0
+lobster_debug=1

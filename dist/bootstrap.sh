@@ -10,15 +10,21 @@ while [ -h "$source" ]; do # resolve $source until the file is no longer a symli
 done
 lobster_root="$( cd -P "$( dirname "$source" )" && pwd )"
 
+lobster_tmpdir="$TMPDIR"
+lobster_php=$(which php)
+lobster_bash=$(which bash)
+
 source "$lobster_root/.lobsterconfig"
 if [ -f "$root/.lobsterconfig" ]; then
   source "$root/.lobsterconfig"
 fi
 
+if [ ! -d "$lobster_tmpdir" ] && [ ! mkdir "$lobster_tmpdir "]; then
+  lobster_warning "Cannot create tmpdir at $lobster_tmpdir"
+fi
+
 # Load all our functions.
 source "$lobster_root/functions.sh"
-
-lobster_php=$(which php)
 
 # Set up the default text colors.
 lobster_color_current=''

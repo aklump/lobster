@@ -13,7 +13,6 @@ function lobster_error() {
   lobster_color 'red'
   lobster_echo "$1"
   lobster_color "$stash"
-  lobster_exit
 }
 
 #
@@ -26,7 +25,6 @@ function lobster_warning() {
   lobster_color 'yellow'
   lobster_echo "$1"
   lobster_color "$stash"
-  lobster_exit
 }
 
 #
@@ -39,7 +37,18 @@ function lobster_success() {
   lobster_color 'green'
   lobster_echo "$1"
   lobster_color "$stash"
-  lobster_exit
+}
+
+#
+# Produces an error output
+#
+# @param string $arg
+#
+function lobster_notice() {
+  local stash=$lobster_color_current
+  lobster_color "$lobster_color_notice"
+  lobster_echo "$1"
+  lobster_color "$stash"
 }
 
 #
@@ -83,6 +92,9 @@ function lobster_color() {
 # @param string|array $arg
 #
 function lobster_echo() {
+  if lobster_has_param 'lobster-quiet'; then
+    return
+  fi
   for line in "${@}"; do
     echo "`tty -s && tput setaf $lobster_color_current`$line`tty -s && tput op`"  
   done
@@ -90,6 +102,9 @@ function lobster_echo() {
 
 lobster_theme_source=''
 function lobster_theme() {
+  if lobster_has_param 'lobster-quiet'; then
+    return
+  fi  
   source=$1
   if [ ! -f "$source" ]; then
     for ext in "${lobster_tpl_extensions[@]}"; do
@@ -113,10 +128,12 @@ function lobster_theme() {
   fi
   
   # Load the file content.
-  lobster_theme_source="$source"
-  output=$(cat "$source")
-  if [ "$output" ]; then 
-    echo "`tty -s && tput setaf $lobster_color_current`$output`tty -s && tput op`"
+  if [ -f "$source" ]; then
+    lobster_theme_source="$source"
+    output=$(cat "$source")
+    if [ "$output" ]; then 
+      echo "`tty -s && tput setaf $lobster_color_current`$output`tty -s && tput op`"
+    fi
   fi
 
   # postprocess
@@ -250,9 +267,12 @@ function lobster_json() {
   #
   json=$json{\"lobster\":{
   json=$json\"root\"\:\"$lobster_root\",
+  json=$json\"tmpdir\"\:\"$lobster_tmpdir\",
+
   json=$json\"default_route\"\:\"$lobster_default_route\",
   json=$json\"theme\"\:\"$lobster_theme\",
   json=$json\"debug\"\:$lobster_debug,
+  json=$json\"bash\"\:\"$lobster_bash\",
   json=$json\"php\"\:\"$lobster_php\",
 
   json=$json\"route_extensions\"\:\[

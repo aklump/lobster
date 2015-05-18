@@ -20,6 +20,9 @@ lobster_color_current="white"
 # Default terminal color.
 lobster_color_default="white"
 
+# Define the color used for lobster_notice().
+lobster_color_notice="grey"
+
 # The name of the default theme.
 lobster_theme="default"
 
@@ -31,3 +34,9 @@ lobster_tpl_extensions=("twig" "txt")
 
 # The default route when no arguments present
 lobster_default_route="help"
+
+# You may override the auto-detected value, if needed.
+#lobster_php='/usr/local/bin/php'
+
+# You may override the auto-detected value, if needed.
+#lobster_bash='/bin/bash'
