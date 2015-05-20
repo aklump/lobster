@@ -19,10 +19,6 @@ if [ -f "$root/.lobsterconfig" ]; then
   source "$root/.lobsterconfig"
 fi
 
-if [ ! -d "$lobster_tmpdir" ] && [ ! mkdir "$lobster_tmpdir "]; then
-  lobster_warning "Cannot create tmpdir at $lobster_tmpdir"
-fi
-
 # Load all our functions.
 source "$lobster_root/functions.sh"
 
@@ -47,6 +43,23 @@ for arg in "$@"; do
   fi
 done
 
+# Turns on debug based on the option, not the config file
+if lobster_has_param "lobster-debug"; then
+  lobster_debug=$(lobster_get_param "lobster-debug");
+  if [ "$lobster_debug" == '' ]; then
+    lobster_debug=1
+  fi
+fi
+
+if [ "$lobster_debug" -eq 1 ]; then
+  lobster_notice "Lobster debug mode is enabled."
+fi
+
+if [ ! -d "$lobster_tmpdir" ] && [ ! mkdir "$lobster_tmpdir "]; then
+  lobster_warning "Cannot create tmpdir at $lobster_tmpdir"
+fi
+
 # Bootstrap the project layer
 lobster_include 'bootstrap'
 lobster_include 'functions'
+
