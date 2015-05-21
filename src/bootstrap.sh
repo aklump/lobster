@@ -19,10 +19,6 @@ if [ -f "$root/.lobsterconfig" ]; then
   source "$root/.lobsterconfig"
 fi
 
-if [ "$lobster_logs" ] && [ ! -d "$lobster_logs" ]; then
-  mkdir -p "$lobster_logs"
-fi
-
 # Load all our functions.
 source "$lobster_root/functions.sh"
 
@@ -46,6 +42,17 @@ for arg in "$@"; do
     lobster_args=("${lobster_args[@]}" "$arg")
   fi
 done
+
+# File logging.
+if [ "$lobster_logs" ]; then
+  if [ ! -d "$lobster_logs" ]; then
+    mkdir -p "$lobster_logs"
+  fi
+
+  # Create a timestamp in the log to help make it readable.
+  echo "" >> "$lobster_logs/echo.txt"
+  echo ">>>>> $(date) -- Lobster thread started" >> "$lobster_logs/echo.txt"
+fi
 
 # Turns on debug based on the option, not the config file
 if lobster_has_param "lobster-debug"; then
