@@ -10,7 +10,7 @@
 #
 function lobster_error() {
   local stash=$lobster_color_current
-  lobster_color 'red'
+  lobster_color 'error'
   lobster_echo "$1"
   lobster_color "$stash"
 }
@@ -22,7 +22,7 @@ function lobster_error() {
 #
 function lobster_warning() {
   local stash=$lobster_color_current
-  lobster_color 'yellow'
+  lobster_color 'warning'
   lobster_echo "$1"
   lobster_color "$stash"
 }
@@ -34,7 +34,7 @@ function lobster_warning() {
 #
 function lobster_success() {
   local stash=$lobster_color_current
-  lobster_color 'green'
+  lobster_color 'success'
   lobster_echo "$1"
   lobster_color "$stash"
 }
@@ -46,7 +46,7 @@ function lobster_success() {
 #
 function lobster_notice() {
   local stash=$lobster_color_current
-  lobster_color "$lobster_color_notice"
+  lobster_color 'notice'
   lobster_echo "$1"
   lobster_color "$stash"
 }
@@ -54,11 +54,18 @@ function lobster_notice() {
 #
 # Sets the output color.
 #
-# @param int 0-7
+# @param int|string  One of a color name or semantic string or a color 0-7.
 #
 function lobster_color() {
-  lobster_color_current=$1
-  case $lobster_color_current in
+
+  # First allow the passing of a number
+  if [[ "$1" -ge 0 ]] && [[ "$1" -le 7 ]]; then
+    lobster_color_current=$1
+  fi
+
+  case $1 in
+    
+    # Color names
     'grey' )
       lobster_color_current=0
       ;;
@@ -82,7 +89,25 @@ function lobster_color() {
       ;;
     'white' )
       lobster_color_current=7
+      ;;
+
+    # Semantic
+    'notice' )
+      lobster_color $lobster_color_notice
+      ;;
+    
+    'warning' )
+      lobster_color $lobster_color_warning
+      ;;
+    
+    'error' )
+      lobster_color $lobster_color_error
+      ;;
+
+    'success' )
+      lobster_color $lobster_color_success
       ;;            
+
   esac
 }
 
@@ -100,6 +125,20 @@ function lobster_echo() {
       echo "`tty -s && tput setaf $lobster_color_current`$line`tty -s && tput op`"  
     fi
   done
+}
+
+#
+# Prints one or more lines in a color, but does not change the color setting.
+# 
+# @param string|int The argument to pass to lobster_color
+# @param string|array $lines Will be passed to lobster_echo.
+#
+function lobster_color_echo() {
+  local stash=$lobster_current_color
+  lobster_color $1
+  lines=${@:2}
+  lobster_echo $lines
+  lobster_color $stash
 }
 
 lobster_theme_source=''

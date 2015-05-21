@@ -23,6 +23,16 @@ lobster_color_default="white"
 # Define the color used for lobster_notice().
 lobster_color_notice="grey"
 
+# Define the color used for lobster_notice().
+lobster_color_success="green"
+
+# Define the color used for lobster_notice().
+lobster_color_warning="yellow"
+
+# Define the color used for lobster_notice().
+lobster_color_error="red"
+
+
 # The name of the default theme.
 lobster_theme="default"
 
