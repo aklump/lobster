@@ -40,3 +40,7 @@ lobster_default_route="help"
 
 # You may override the auto-detected value, if needed.
 #lobster_bash='/bin/bash'
+
+# Path to folder where lobster may write it's logs.  If this is blank then
+# logs will not be written.
+lobster_logs=""

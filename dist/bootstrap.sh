@@ -19,6 +19,10 @@ if [ -f "$root/.lobsterconfig" ]; then
   source "$root/.lobsterconfig"
 fi
 
+if [ "$lobster_logs" ] && [ ! -d "$lobster_logs" ]; then
+  mkdir -p "$lobster_logs"
+fi
+
 # Load all our functions.
 source "$lobster_root/functions.sh"
 
