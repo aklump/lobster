@@ -92,11 +92,14 @@ function lobster_color() {
 # @param string|array $arg
 #
 function lobster_echo() {
-  if [ $lobster_debug -eq 0 ] && lobster_has_param 'lobster-quiet'; then
-    return
-  fi
   for line in "${@}"; do
-    echo "`tty -s && tput setaf $lobster_color_current`$line`tty -s && tput op`"  
+    if [ -d "$lobster_logs" ]; then
+
+      echo "$line\n" >> "$lobster_logs/echo.txt"
+    fi
+    if [ $lobster_debug -eq 1 ] || ! lobster_has_param 'lobster-quiet'; then
+      echo "`tty -s && tput setaf $lobster_color_current`$line`tty -s && tput op`"  
+    fi
   done
 }
 
