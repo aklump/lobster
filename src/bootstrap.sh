@@ -54,7 +54,7 @@ done
 #   fi
 # @endcode
 # 
-lobster_target_dir=""
+lobster_target_dir="$PWD"
 lobster_target_error=0
 if [ "${lobster_args[1]}" ]; then
   lobster_target_dir="${lobster_args[1]}"
