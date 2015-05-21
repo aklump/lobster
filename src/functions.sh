@@ -343,3 +343,14 @@ function lobster_json() {
   json=$json\}\}
   echo $json
 }
+
+#
+# Trim whitespace from a string
+#
+# @param string $string
+# 
+# result=$(lobster_trim arg)
+#
+function lobster_trim() {
+  echo -e "${1}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
+}

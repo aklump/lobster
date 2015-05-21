@@ -1,1 +1,0 @@
-# Need to copy the contents of hooks/init.sh here on compile.

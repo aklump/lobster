@@ -7,6 +7,6 @@ if [ ! -d dist ]; then
   mkdir dist
 fi
 
-cp web_package.info dist/core.info
+cp lobster.info dist/lobster.info
 
 rsync -a src/ dist/

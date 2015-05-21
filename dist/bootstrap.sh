@@ -32,16 +32,36 @@ declare -a lobster_args=()
 declare -a lobster_flags=()
 declare -a lobster_params=()
 for arg in "$@"; do
-  if [[ "$arg" =~ ^--(.*) ]]
-  then
+  if [[ "$arg" =~ ^--(.*) ]]; then
     lobster_params=("${lobster_params[@]}" "${BASH_REMATCH[1]}")
-  elif [[ "$arg" =~ ^-(.*) ]]
-  then
+  elif [[ "$arg" =~ ^-(.*) ]]; then
     lobster_flags=("${lobster_flags[@]}" "${BASH_REMATCH[1]}")
   else
     lobster_args=("${lobster_args[@]}" "$arg")
   fi
 done
+
+# By convention if you pass a second argument it will be taken as a
+# target directory and checked.  The directory test will be stored in the
+# variable lobster_target_error
+# 
+# App usage can go like this:
+# 
+# @code
+#   if [ $lobster_target_error -eq 1 ]; then
+#     lobster_error "'$lobster_target_dir' is not a directory!"
+#     lobster_exit
+#   fi
+# @endcode
+# 
+lobster_target_dir=""
+lobster_target_error=0
+if [ "${lobster_args[1]}" ]; then
+  lobster_target_dir="${lobster_args[1]}"
+  if [ ! -d "${lobster_args[1]}" ]; then
+    lobster_target_error=1
+  fi
+fi
 
 # File logging.
 if [ "$lobster_logs" ]; then
