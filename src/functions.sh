@@ -127,7 +127,7 @@ function lobster_echo() {
 
     if [ $lobster_debug -eq 1 ] || ! lobster_has_param 'lobster-quiet'; then
       if [ "$lobster_color_current" == "null" ]; then
-        echo $line
+        echo "$line"
       else
         echo "`tty -s && tput setaf $lobster_color_current`$line`tty -s && tput op`"
       fi
@@ -181,7 +181,7 @@ function lobster_theme() {
     lobster_theme_source="$source"
     output=$(cat "$source")
     if [ "$output" ]; then
-      lobster_echo $output
+      lobster_echo "$output"
     fi
   fi
 
@@ -192,7 +192,6 @@ function lobster_theme() {
   if [ -f "$processor" ]; then
     source "$processor"
   fi
-
 }
 
 #
