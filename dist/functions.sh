@@ -55,6 +55,9 @@ function lobster_notice() {
 # Sets the output color.
 #
 # @param int|string  One of a color name or semantic string or a color 0-7.
+# 
+# You can also set the color to null and lobster_echo will not print the tty
+# commands.
 #
 function lobster_color() {
 
@@ -121,8 +124,13 @@ function lobster_echo() {
     if [ -d "$lobster_logs" ]; then
       echo $line >> "$lobster_logs/echo.txt"
     fi
+
     if [ $lobster_debug -eq 1 ] || ! lobster_has_param 'lobster-quiet'; then
-      echo "`tty -s && tput setaf $lobster_color_current`$line`tty -s && tput op`"  
+      if [ "$lobster_color_current" == "null" ]; then
+        echo $line
+      else
+        echo "`tty -s && tput setaf $lobster_color_current`$line`tty -s && tput op`"
+      fi
     fi
   done
 }
@@ -172,8 +180,8 @@ function lobster_theme() {
   if [ -f "$source" ]; then
     lobster_theme_source="$source"
     output=$(cat "$source")
-    if [ "$output" ]; then 
-      echo "`tty -s && tput setaf $lobster_color_current`$output`tty -s && tput op`"
+    if [ "$output" ]; then
+      lobster_echo "$output"
     fi
   fi
 
