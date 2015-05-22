@@ -15,10 +15,10 @@ lobster_app_title="A Lobster App"
 lobster_debug=0
 
 # Current terminal color
-lobster_color_current="white"
+lobster_color_current="null"
 
 # Default terminal color.
-lobster_color_default="white"
+lobster_color_default="null"
 
 # Define the color used for lobster_notice().
 lobster_color_notice="grey"
