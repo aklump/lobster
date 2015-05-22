@@ -181,7 +181,7 @@ function lobster_theme() {
     lobster_theme_source="$source"
     output=$(cat "$source")
     if [ "$output" ]; then
-      lobster_echo "$output"
+      lobster_echo $output
     fi
   fi
 
