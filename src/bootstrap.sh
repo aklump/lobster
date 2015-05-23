@@ -8,14 +8,14 @@ while [ -h "$source" ]; do # resolve $source until the file is no longer a symli
   source="$(readlink "$source")"
   [[ $source != /* ]] && source="$dir/$source" # if $source was a relative symlink, we need to resolve it relative to the path where the symlink file was located
 done
-lobster_root="$( cd -P "$( dirname "$source" )" && pwd )"
+LOBSTER_ROOT="$( cd -P "$( dirname "$source" )" && pwd )"
 
 lobster_tmpdir="$TMPDIR"
 lobster_php=$(which php)
 lobster_bash=$(which bash)
 
 # Load all our functions.
-source "$lobster_root/functions.sh"
+source "$LOBSTER_ROOT/functions.sh"
 
 # Sort out the args, flags and params.
 declare -a lobster_args=()
@@ -36,7 +36,7 @@ lobster_load_config "$lobster_app_config"
 
 # This is the first parent directory containing the app's config file that is
 # above $PWD.
-lobster_pwd_root=$(lobster_upfind "$lobster_app_config" && echo $(dirname "$lobster_upfind_dir"))
+LOBSTER_PWD_ROOT=$(lobster_upfind "$lobster_app_config" && echo $(dirname "$lobster_upfind_dir"))
 
 # Set up the default text colors.
 lobster_color_current=''
@@ -97,3 +97,7 @@ fi
 lobster_include 'bootstrap'
 lobster_include 'functions'
 
+
+export LOBSTER_ROOT
+export LOBSTER_APP_ROOT
+export LOBSTER_PWD_ROOT

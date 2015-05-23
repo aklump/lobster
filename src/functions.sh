@@ -9,8 +9,8 @@
 # 
 # Given 1='lobster' the files will load in this order
 # 
-# 1. $lobster_root/.lobsterconfig
-# 2. $lobster_app_root/.lobsterconfig
+# 1. $LOBSTER_ROOT/.lobsterconfig
+# 2. $LOBSTER_APP_ROOT/.lobsterconfig
 # 3. ~/.lobsterconfig
 # 4. $pwd/.lobsterconfig
 # 5. The first file found in parent dirs, if found.
@@ -19,7 +19,7 @@
 #
 function lobster_load_config() {
   base=$1
-  declare -a cascade=("$lobster_root/$base" "$lobster_app_root/$base" "$HOME/$base" "$PWD/$base");
+  declare -a cascade=("$LOBSTER_ROOT/$base" "$LOBSTER_APP_ROOT/$base" "$HOME/$base" "$PWD/$base");
   for file in "${cascade[@]}"; do
     if [ -f "$file" ]; then
       lobster_core_verbose "Loading config file: $file"
@@ -218,8 +218,8 @@ function lobster_theme() {
   source=$1
   if [ ! -f "$source" ]; then
     for ext in "${lobster_tpl_extensions[@]}"; do
-      if [ -f "$lobster_app_root/themes/$lobster_theme/tpl/$1.$ext" ]; then
-        source="$lobster_app_root/themes/$lobster_theme/tpl/$1.$ext"
+      if [ -f "$LOBSTER_APP_ROOT/themes/$lobster_theme/tpl/$1.$ext" ]; then
+        source="$LOBSTER_APP_ROOT/themes/$lobster_theme/tpl/$1.$ext"
       fi
     done
   fi
@@ -273,7 +273,7 @@ function lobster_show_debug {
 # Includes a script cascade by basename
 # 
 # If the argument is not a path, it will be assumed to be located in
-# $lobster_app_root/includes.  Scripts may be of type .sh or .php. .sh scripts are executed
+# $LOBSTER_APP_ROOT/includes.  Scripts may be of type .sh or .php. .sh scripts are executed
 # before .php scripts if ever the basename is the same.
 #
 # @param string $script  Script name without extension or path without extension
@@ -282,7 +282,7 @@ function lobster_include() {
   local basename=$1
   local dirname=''
   if [ "$basename" == "${basename##*/}" ]; then
-    dir="$lobster_app_root/includes"
+    dir="$LOBSTER_APP_ROOT/includes"
   fi
 
   # Run a bootstrap a the project layer
@@ -375,7 +375,7 @@ function lobster_json() {
   # Begin child: lobster
   #
   json=$json{\"lobster\":{
-  json=$json\"root\"\:\"$lobster_root\",
+  json=$json\"root\"\:\"$LOBSTER_ROOT\",
   json=$json\"tmpdir\"\:\"$lobster_tmpdir\",
 
   json=$json\"default_route\"\:\"$lobster_default_route\",
@@ -407,7 +407,7 @@ function lobster_json() {
   json=$json\"app\":{
   json=$json\"name\"\:\"$lobster_app_name\",
   json=$json\"title\"\:\"$lobster_app_title\",
-  json=$json\"root\"\:\"$lobster_app_root\",
+  json=$json\"root\"\:\"$LOBSTER_APP_ROOT\",
   json=$json\"op\"\:\"$lobster_op\",
   json=$json\"route\"\:\"$lobster_route\",
   json=$json\"tpl\"\:\"$lobster_theme_source\",

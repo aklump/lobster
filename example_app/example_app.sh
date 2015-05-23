@@ -9,7 +9,7 @@ while [ -h "$self" ]; do
   self="$(readlink "$self")"
   [[ $self != /* ]] && self="$dir/$self"
 done
-lobster_app_root="$( cd -P "$( dirname "$self" )" && pwd )"
-source "$lobster_app_root/vendor/aklump/lobster/dist/bootstrap.sh"
+LOBSTER_APP_ROOT="$( cd -P "$( dirname "$self" )" && pwd )"
+source "$LOBSTER_APP_ROOT/vendor/aklump/lobster/dist/bootstrap.sh"
 lobster_theme 'header'
-source "$lobster_app_root/vendor/aklump/lobster/dist/router.sh"
+source "$LOBSTER_APP_ROOT/vendor/aklump/lobster/dist/router.sh"

@@ -20,7 +20,7 @@
 <p>To disable this feature you need to add the following line to your app controller file just before calling the bootstrap:</p>
 
 <pre><code>lobster_core_verbose=0
-source &quot;$lobster_app_root/vendor/aklump/lobster/dist/bootstrap.sh&quot;
+source &quot;$LOBSTER_APP_ROOT/vendor/aklump/lobster/dist/bootstrap.sh&quot;
 </code></pre>
 
 <p>Setting this variable in a config file is too late as the boostrapping process uses verbosity before loading all config files.</p>
