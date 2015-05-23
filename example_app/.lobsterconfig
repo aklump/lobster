@@ -9,6 +9,8 @@ lobster_app_name="example_app"
 # Human readable name of your app
 lobster_app_title="Lobster Example App"
 
+lobster_app_config=".example_appconfig"
+
 # Set this to 1 and calling lobster_show_debug() will return the contents
 # of the include/debug.  Set this to 0 and calling lobster_show_debug() will
 # not produce any output.
