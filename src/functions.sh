@@ -3,7 +3,6 @@
 # @file
 # Defines Lobster core functions.
 
-
 #
 # Load the configuration cascade by name
 # 
@@ -36,13 +35,13 @@ function lobster_load_config() {
 
 function lobster_verbose() {
   if lobster_has_flag "v"; then
-    lobster_color_echo "verbose" $1
+    lobster_color_echo "verbose" ${@}
   fi
 }
 
 function lobster_core_verbose() {
   if [ ! "$lobster_core_verbose" ] || [ $lobster_core_verbose -eq 1 ]; then 
-    lobster_verbose "$1"
+    lobster_verbose ${@}
   fi
 }
 
@@ -121,36 +120,38 @@ function lobster_notice() {
 function lobster_color() {
 
   # First allow the passing of a number
-  if [[ "$1" -ge 0 ]] && [[ "$1" -le 7 ]]; then
-    lobster_color_current=$1
-  fi
+  lobster_color_current=$1
+
 
   case $1 in
     
     # Color names
     'grey' )
-      lobster_color_current=0
+      lobster_color_current="$lobster_color_bright;30"
       ;;
     'red' )
-      lobster_color_current=1
+      lobster_color_current="$lobster_color_bright;31"
       ;;
     'green' )
-      lobster_color_current=2
+      lobster_color_current="$lobster_color_bright;32"
       ;;
     'yellow' )
-      lobster_color_current=3
+      lobster_color_current="$lobster_color_bright;33"
       ;;
     'blue' )
-      lobster_color_current=4
+      lobster_color_current="$lobster_color_bright;34"
       ;;                  
+    'magenta' )
+      lobster_color_current="$lobster_color_bright;35"
+      ;;
     'pink' )
-      lobster_color_current=5
+      lobster_color_current="$lobster_color_bright;35"
       ;;
     'cyan' )
-      lobster_color_current=6
+      lobster_color_current="$lobster_color_bright;36"
       ;;
     'white' )
-      lobster_color_current=7
+      lobster_color_current="$lobster_color_bright;37"
       ;;
 
     # Semantic
@@ -173,6 +174,10 @@ function lobster_color() {
     'confirm' )
       lobster_color $lobster_color_confirm
       ;;   
+
+    'verbose' )
+      lobster_color $lobster_color_verbose
+      ;;   
   esac
 }
 
@@ -180,20 +185,44 @@ function lobster_color() {
 # Prints one or more messages in the current color.
 #
 # @param string|array $arg
+# 
+# @todo Support for background colors.
 #
 function lobster_echo() {
   line="${@}"
   if [ -d "$lobster_logs" ]; then
-    echo $line >> "$lobster_logs/echo.txt"
+    echo -e $line >> "$lobster_logs/echo.txt"
   fi
 
   if [ "$lobster_debug" == "1" ] || ! lobster_has_param 'lobster-quiet'; then
-    if [ "$lobster_color_current" == "null" ]; then
-      echo "$line"
+    if [ "$lobster_color_current" == "null" ] || [ ! "$line" ] || [ ! "$lobster_escape_char" ]; then
+      echo -e "$line"
     else
-      echo "`tty -s && tput setaf $lobster_color_current`$line`tty -s && tput op`"
+      esc=$lobster_escape_char
+      fore=$lobster_color_current
+      echo -e "${esc}[${fore}m${line}${esc}[0m"
     fi
   fi
+}
+
+#
+#
+# Outputs the argument(s) in bold
+#
+function lobster_strong() {
+  esc=$lobster_escape_char
+  line=${@}
+  echo -e "$esc[1m$line$esc[0m"
+}
+
+#
+#
+# Outputs the argument(s) underlined
+#
+function lobster_underline() {
+  esc=$lobster_escape_char
+  line=${@}
+  echo -e "$esc[4m$line$esc[0m" 
 }
 
 #
@@ -205,8 +234,7 @@ function lobster_echo() {
 function lobster_color_echo() {
   local stash=$lobster_current_color
   lobster_color $1
-  lines=${@:2}
-  lobster_echo $lines
+  lobster_echo ${@:2}
   lobster_color $stash
 }
 
@@ -294,6 +322,86 @@ function lobster_include() {
   fi  
 }
 
+#
+# Checks for a value in a an array
+#
+# @param array  The first element will be shifted off and used as the needle
+# 
+# @code
+#   declare -a array=("e" "do" "re" "e")
+#   if lobster_in_array ${array[@]}; then
+#     echo "found"
+#   fi
+# @endcode
+# 
+# @code
+#   needle="do"
+#   haystack=("do" "re" "e")
+#   array=($needle "${haystack[@]}")
+#   if lobster_in_array ${array[@]}; then
+#     echo "found"
+#   fi
+# @endcode
+#
+function lobster_in_array() {
+  needle=$1
+  for var in "${@:2}"; do
+    if [[ "$var" =~ "$needle" ]]; then
+      return 0
+    fi
+  done
+  return 1  
+}
+
+#
+# Extracts all flags (values beginning with a single -) from an array
+# 
+# @param array
+# 
+# @code
+#   lobster_get_flags ${@}
+#   declare -a lobster_flags=("${lobster_get_flags_return[@]}")
+# @endcode
+#
+declare -a lobster_get_flags_return=();
+function lobster_get_flags() {
+  for arg in "$@"; do
+    if [[ "$arg" =~ ^-([a-z]+) ]]; then
+      for ((i=0; i < ${#BASH_REMATCH[1]}; i++)); do
+        lobster_get_flags_return=("${lobster_get_flags_return[@]}" "${BASH_REMATCH[1]:$i:1}")
+      done
+    fi
+  done
+}
+
+#
+# Extracts all flags (values beginning with a single -) from an array
+# 
+# @param array
+#
+declare -a lobster_get_params_return=();
+function lobster_get_params() {
+  for arg in "$@"; do
+    if [[ "$arg" =~ ^--(.*) ]]; then
+      lobster_get_params_return=("${lobster_get_params_return[@]}" "${BASH_REMATCH[1]}")
+    fi
+  done
+}
+
+#
+# Extracts all flags (values beginning with a single -) from an array
+# 
+# @param array
+#
+declare -a lobster_get_args_return=();
+function lobster_get_args() {
+  for arg in "$@"; do
+    if [[ ! "$arg" =~ ^-(.*) ]]; then
+      lobster_get_args_return=("${lobster_get_args_return[@]}" "$arg")
+    fi
+  done
+}
+
 ##
  # Test for a flag
  #
@@ -376,7 +484,7 @@ function lobster_json() {
   #
   json=$json{\"lobster\":{
   json=$json\"root\"\:\"$LOBSTER_ROOT\",
-  json=$json\"tmpdir\"\:\"$lobster_tmpdir\",
+  json=$json\"tmpdir\"\:\"$LOBSTER_TMPDIR\",
 
   json=$json\"default_route\"\:\"$lobster_default_route\",
   json=$json\"theme\"\:\"$lobster_theme\",

@@ -21,6 +21,8 @@ for (( i = ${#list[@]} - 1; i >= 0 ; i-- )); do
   lobster_suggestions=("${lobster_suggestions[@]}" ${list[$i]})
 done
 
+lobster_core_verbose "Possible routes: ${lobster_suggestions[@]}"
+
 # The default route.
 if [ ${#lobster_suggestions[@]} -lt 1 ]; then
   lobster_suggestions[0]=$lobster_default_route
