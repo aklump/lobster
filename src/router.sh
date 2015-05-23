@@ -4,9 +4,7 @@
 # Handles common routing based on the $op
 
 # Setup the filenames we'll search for
-
-base=''
-
+base=""
 declare -a list=();
 for item in "${lobster_args[@]}"; do
   if [ "$base" ]; then
@@ -15,7 +13,7 @@ for item in "${lobster_args[@]}"; do
     base=$item;
   fi
   list=("${list[@]}" "$base")
-done
+done  
 
 # Reverse the order for specific to general order.
 declare -a lobster_suggestions=();
@@ -32,47 +30,55 @@ fi
 lobster_route=''
 
 # From the routes folder
+declare -a dirs=("$lobster_app_root" "$lobster_root");
 for suggestion in "${lobster_suggestions[@]}"; do
   for ext in "${lobster_route_extensions[@]}"; do
     filename=$suggestion.$ext
-    if [ -f "$lobster_app_root/routes/$filename" ]; then
-      lobster_route="$lobster_app_root/routes/$filename"
 
-      # This will be consumable by php scripts, et al.
-      export LOBSTER_JSON=$(lobster_json)          
-      case $ext in
-        'sh' )
-          source "$lobster_route"
-          lobster_exit
-          ;;
+    for dir in "${dirs[@]}"; do
+      if [ -f "$dir/routes/$filename" ]; then
+        lobster_route="$dir/routes/$filename"
 
-        'php' )
-          $lobster_php "$lobster_route"
-          lobster_exit
-          ;;
-      esac
-    fi
+        # This will be consumable by php scripts, et al.
+        export LOBSTER_JSON=$(lobster_json)          
+        case $ext in
+          'sh' )
+            source "$lobster_route"
+            lobster_exit
+            ;;
+
+          'php' )
+            $lobster_php "$lobster_route"
+            lobster_exit
+            ;;
+        esac
+      fi
+      
+    done
   done
 
   # From the theme folder
   for ext in "${lobster_tpl_extensions[@]}"; do
     filename=$suggestion.$ext
-    if [ -f "$lobster_app_root/themes/$lobster_theme/tpl/$filename" ]; then
-      lobster_route="$lobster_app_root/themes/$lobster_theme/tpl/$filename"
 
-      # This will be consumable by php scripts, et al.
-      export LOBSTER_JSON=$(lobster_json)
-      output=$(lobster_theme $lobster_route)
+    for dir in "${dirs[@]}"; do
+      if [ -f "$dir/themes/$lobster_theme/tpl/$filename" ]; then
+        lobster_route="$dir/themes/$lobster_theme/tpl/$filename"
 
-      case $ext in
-        'twig' )
-          # @todo process the twig file
-          ;;
-      esac
+        # This will be consumable by php scripts, et al.
+        export LOBSTER_JSON=$(lobster_json)
+        output=$(lobster_theme $lobster_route)
 
-      echo "$output"
-      lobster_exit
-    fi
+        case $ext in
+          'twig' )
+            # @todo process the twig file
+            ;;
+        esac
+
+        echo "$output"
+        lobster_exit
+      fi
+    done
   done
 
 done

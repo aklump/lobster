@@ -23,6 +23,7 @@ lobster_color_current="null"
 # Default terminal color.
 lobster_color_default="null"
 
+lobster_color_confirm="pink"
 lobster_color_notice="grey"
 lobster_color_verbose="grey"
 lobster_color_success="green"

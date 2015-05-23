@@ -1,9 +1,10 @@
 # Routing
 
 ## Route files
-1. Place script files in `/routes`
+1. Place script files in `/routes` folder of your app.
 1. Configure the types and order of files via `$lobster_route_extensions`.
 1. If a route cannot be found, then a tpl will be sought.
+1. Core routes can be overridden, e.g. 'init'
 
 ## Theme tpls
 1. You may have more than one theme, but not more than one _active_ theme.
