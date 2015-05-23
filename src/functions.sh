@@ -170,6 +170,9 @@ function lobster_color() {
       lobster_color $lobster_color_success
       ;;            
 
+    'confirm' )
+      lobster_color $lobster_color_confirm
+      ;;   
   esac
 }
 
@@ -457,4 +460,23 @@ function lobster_json() {
 #
 function lobster_trim() {
   echo -e "${1}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
+}
+
+##
+ # Accept a y/n confirmation message or end
+ #
+ # @param string $1
+ #   A question to ask
+ # @param string $2
+ #   A flag, e.g. noend; which means a n will not exit
+ #
+ # @return bool
+ #   Sets the value of confirm_result
+ #
+function lobster_confirm() {
+  lobster_color_echo "confirm" "$1 (y/n)?"
+  read -n 1 response && echo
+  if [ "$response" != 'y' ]; then
+    return 1
+  fi
 }
