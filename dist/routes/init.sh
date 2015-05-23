@@ -9,10 +9,8 @@ if [ -f "$lobster_app_config" ]; then
   lobster_theme "failed"
 fi
 
-# Because we use ~/.*config it would be silly to warn them if they were finding
-# a conflict which is the home folder.
-if [ "$lobster_pwd_root" ] && [ "$lobster_pwd_root" != "$HOME" ]; then
-  lobster_warning "You are currently in a subdirectory of an initialized directory ($lobster_pwd_root)."
+if [ "$lobster_pwd_root" ]; then
+  lobster_warning "You are currently in a subdirectory of an initialized directory (root is $lobster_pwd_root)."
   if ! lobster_confirm "Are you sure?"; then
     lobster_theme "failed"
   fi
