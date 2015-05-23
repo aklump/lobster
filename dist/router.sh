@@ -30,7 +30,7 @@ fi
 lobster_route=''
 
 # From the routes folder
-declare -a dirs=("$lobster_app_root" "$lobster_root");
+declare -a dirs=("$LOBSTER_APP_ROOT" "$LOBSTER_ROOT");
 for suggestion in "${lobster_suggestions[@]}"; do
   for ext in "${lobster_route_extensions[@]}"; do
     filename=$suggestion.$ext

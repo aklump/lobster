@@ -11,6 +11,6 @@ By default the -v will also print Lobster core verbosity.
 To disable this feature you need to add the following line to your app controller file just before calling the bootstrap:
 
     lobster_core_verbose=0
-    source "$lobster_app_root/vendor/aklump/lobster/dist/bootstrap.sh"
+    source "$LOBSTER_APP_ROOT/vendor/aklump/lobster/dist/bootstrap.sh"
 
 Setting this variable in a config file is too late as the boostrapping process uses verbosity before loading all config files.
