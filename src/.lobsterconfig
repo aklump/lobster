@@ -9,6 +9,9 @@ lobster_app_name="lobster_app"
 # Human readable name of your app
 lobster_app_title="A Lobster App"
 
+# This is used for the app's config filename.
+lobster_app_config=".lobsterconfig"
+
 # Set this to 1 and calling lobster_show_debug() will return the contents
 # of the include/debug.  Set this to 0 and calling lobster_show_debug() will
 # not produce any output.
@@ -20,18 +23,11 @@ lobster_color_current="null"
 # Default terminal color.
 lobster_color_default="null"
 
-# Define the color used for lobster_notice().
 lobster_color_notice="grey"
-
-# Define the color used for lobster_notice().
+lobster_color_verbose="grey"
 lobster_color_success="green"
-
-# Define the color used for lobster_notice().
 lobster_color_warning="yellow"
-
-# Define the color used for lobster_notice().
 lobster_color_error="red"
-
 
 # The name of the default theme.
 lobster_theme="default"

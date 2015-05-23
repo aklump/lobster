@@ -14,18 +14,8 @@ lobster_tmpdir="$TMPDIR"
 lobster_php=$(which php)
 lobster_bash=$(which bash)
 
-source "$lobster_root/.lobsterconfig"
-if [ -f "$root/.lobsterconfig" ]; then
-  source "$root/.lobsterconfig"
-fi
-
 # Load all our functions.
 source "$lobster_root/functions.sh"
-
-# Set up the default text colors.
-lobster_color_current=''
-lobster_color $lobster_color_default
-lobster_op=$1
 
 # Sort out the args, flags and params.
 declare -a lobster_args=()
@@ -40,6 +30,19 @@ for arg in "$@"; do
     lobster_args=("${lobster_args[@]}" "$arg")
   fi
 done
+
+lobster_load_config ".lobsterconfig"
+lobster_load_config "$lobster_app_config"
+
+# This is the first parent directory containing the app's config file that is
+# above $PWD.
+lobster_pwd_root=$(lobster_upfind "$lobster_app_config" && echo $(dirname "$lobster_upfind_dir"))
+
+# Set up the default text colors.
+lobster_color_current=''
+lobster_color $lobster_color_default
+lobster_op=$1
+
 
 # By convention if you pass a second argument it will be taken as a
 # target directory and checked.  The directory test will be stored in the

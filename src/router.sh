@@ -35,8 +35,8 @@ lobster_route=''
 for suggestion in "${lobster_suggestions[@]}"; do
   for ext in "${lobster_route_extensions[@]}"; do
     filename=$suggestion.$ext
-    if [ -f "$root/routes/$filename" ]; then
-      lobster_route="$root/routes/$filename"
+    if [ -f "$lobster_app_root/routes/$filename" ]; then
+      lobster_route="$lobster_app_root/routes/$filename"
 
       # This will be consumable by php scripts, et al.
       export LOBSTER_JSON=$(lobster_json)          
@@ -57,8 +57,8 @@ for suggestion in "${lobster_suggestions[@]}"; do
   # From the theme folder
   for ext in "${lobster_tpl_extensions[@]}"; do
     filename=$suggestion.$ext
-    if [ -f "$root/themes/$lobster_theme/tpl/$filename" ]; then
-      lobster_route="$root/themes/$lobster_theme/tpl/$filename"
+    if [ -f "$lobster_app_root/themes/$lobster_theme/tpl/$filename" ]; then
+      lobster_route="$lobster_app_root/themes/$lobster_theme/tpl/$filename"
 
       # This will be consumable by php scripts, et al.
       export LOBSTER_JSON=$(lobster_json)

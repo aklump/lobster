@@ -3,6 +3,65 @@
 # @file
 # Defines Lobster core functions.
 
+
+#
+# Load the configuration cascade by name
+# 
+# Given 1='lobster' the files will load in this order
+# 
+# 1. $lobster_root/.lobsterconfig
+# 2. $lobster_app_root/.lobsterconfig
+# 3. ~/.lobsterconfig
+# 4. $pwd/.lobsterconfig
+# 5. The first file found in parent dirs, if found.
+# 
+# @param string app name, e.g. 'lobster'
+#
+function lobster_load_config() {
+  base=$1
+  declare -a cascade=("$lobster_root/$base" "$lobster_app_root/$base" "$HOME/$base" "$PWD/$base");
+  for file in "${cascade[@]}"; do
+    if [ -f "$file" ]; then
+      lobster_core_verbose "Loading config file: $file"
+      source "$file"
+    fi
+  done
+
+  path=$(lobster_upfind $base && echo "$lobster_upfind_dir")
+  if [ "$path" != "" ] && [ -f "$path" ]; then
+    source "$path"
+    lobster_core_verbose "Loading config file: $path"
+  fi
+}
+
+function lobster_verbose() {
+  if lobster_has_flag "v"; then
+    lobster_color_echo "verbose" $1
+  fi
+}
+
+function lobster_core_verbose() {
+  if [ ! "$lobster_core_verbose" ] || [ $lobster_core_verbose -eq 1 ]; then 
+    lobster_verbose "$1"
+  fi
+}
+
+##
+ # Recursive search for file in parent dirs
+ # 
+ # @param string This may only be  filename, not a dir/name
+ #  
+ # usage
+ #   path=$(lobster_upfind $base && echo "$lobster_upfind_dir")
+ #
+lobster_upfind_dir=''
+function lobster_upfind () {
+  lobster_upfind_dir=''
+  file=$(basename "$1")
+  test / == "$PWD" && return 1 || test -e "$file" && lobster_upfind_dir="${PWD}/$file" && return || cd .. && lobster_upfind "$file"
+}
+
+
 #
 # Produces an error output
 #
@@ -120,19 +179,18 @@ function lobster_color() {
 # @param string|array $arg
 #
 function lobster_echo() {
-  for line in "${@}"; do
-    if [ -d "$lobster_logs" ]; then
-      echo $line >> "$lobster_logs/echo.txt"
-    fi
+  line="${@}"
+  if [ -d "$lobster_logs" ]; then
+    echo $line >> "$lobster_logs/echo.txt"
+  fi
 
-    if [ $lobster_debug -eq 1 ] || ! lobster_has_param 'lobster-quiet'; then
-      if [ "$lobster_color_current" == "null" ]; then
-        echo "$line"
-      else
-        echo "`tty -s && tput setaf $lobster_color_current`$line`tty -s && tput op`"
-      fi
+  if [ "$lobster_debug" == "1" ] || ! lobster_has_param 'lobster-quiet'; then
+    if [ "$lobster_color_current" == "null" ]; then
+      echo "$line"
+    else
+      echo "`tty -s && tput setaf $lobster_color_current`$line`tty -s && tput op`"
     fi
-  done
+  fi
 }
 
 #
@@ -157,8 +215,8 @@ function lobster_theme() {
   source=$1
   if [ ! -f "$source" ]; then
     for ext in "${lobster_tpl_extensions[@]}"; do
-      if [ -f "$root/themes/$lobster_theme/tpl/$1.$ext" ]; then
-        source="$root/themes/$lobster_theme/tpl/$1.$ext"
+      if [ -f "$lobster_app_root/themes/$lobster_theme/tpl/$1.$ext" ]; then
+        source="$lobster_app_root/themes/$lobster_theme/tpl/$1.$ext"
       fi
     done
   fi
@@ -212,7 +270,7 @@ function lobster_show_debug {
 # Includes a script cascade by basename
 # 
 # If the argument is not a path, it will be assumed to be located in
-# $root/includes.  Scripts may be of type .sh or .php. .sh scripts are executed
+# $lobster_app_root/includes.  Scripts may be of type .sh or .php. .sh scripts are executed
 # before .php scripts if ever the basename is the same.
 #
 # @param string $script  Script name without extension or path without extension
@@ -221,7 +279,7 @@ function lobster_include() {
   local basename=$1
   local dirname=''
   if [ "$basename" == "${basename##*/}" ]; then
-    dir="$root/includes"
+    dir="$lobster_app_root/includes"
   fi
 
   # Run a bootstrap a the project layer
@@ -346,7 +404,7 @@ function lobster_json() {
   json=$json\"app\":{
   json=$json\"name\"\:\"$lobster_app_name\",
   json=$json\"title\"\:\"$lobster_app_title\",
-  json=$json\"root\"\:\"$root\",
+  json=$json\"root\"\:\"$lobster_app_root\",
   json=$json\"op\"\:\"$lobster_op\",
   json=$json\"route\"\:\"$lobster_route\",
   json=$json\"tpl\"\:\"$lobster_theme_source\",

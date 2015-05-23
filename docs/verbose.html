@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+<h1 id="verboseflag-v">Verbose flag &#8216;-v&#8217;</h1>
+
+<h2 id="lobster_verbose"><code>lobster_verbose()</code></h2>
+
+<p>Use this function to output messages only when the -v flag is used.</p>
+
+<pre><code>lobster_verbose &quot;This will only show to user if the `-v` flag is used.&quot;
+</code></pre>
+
+<h2 id="lobstercore">Lobster Core</h2>
+
+<p>By default the -v will also print Lobster core verbosity.</p>
+
+<p>To disable this feature you need to add the following line to your app controller file just before calling the bootstrap:</p>
+
+<pre><code>lobster_core_verbose=0
+source &quot;$lobster_app_root/vendor/aklump/lobster/dist/bootstrap.sh&quot;
+</code></pre>
+
+<p>Setting this variable in a config file is too late as the boostrapping process uses verbosity before loading all config files.</p>
+
+</body>
+</html>
