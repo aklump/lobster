@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+<h1 id="colors">Colors</h1>
+
+<p>The following may be passed to color functions as arguments</p>
+
+<h2 id="colornames">Color names</h2>
+
+<ul>
+<li>grey</li>
+<li>red</li>
+<li>green</li>
+<li>yellow</li>
+<li>blue</li>
+<li>magenta</li>
+<li>pink</li>
+<li>cyan</li>
+</ul>
+
+<h2 id="semantic">Semantic</h2>
+
+<ul>
+<li>notice</li>
+<li>warning</li>
+<li>error</li>
+<li>success</li>
+<li>confirm</li>
+<li>verbose</li>
+</ul>
+
+<h2 id="bash">BASH</h2>
+
+<p>You can also pass thes values directly
+<a href="http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html">http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html</a></p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">Color</th>
+	<th style="text-align:left;">Argument</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">Black</td>
+	<td style="text-align:left;">0;30</td>
+</tr>
+<tr>
+	<td style="text-align:left;">Blue</td>
+	<td style="text-align:left;">0;34</td>
+</tr>
+<tr>
+	<td style="text-align:left;">Green</td>
+	<td style="text-align:left;">0;32</td>
+</tr>
+<tr>
+	<td style="text-align:left;">Cyan</td>
+	<td style="text-align:left;">0;36</td>
+</tr>
+<tr>
+	<td style="text-align:left;">Red</td>
+	<td style="text-align:left;">0;31</td>
+</tr>
+<tr>
+	<td style="text-align:left;">Purple</td>
+	<td style="text-align:left;">0;35</td>
+</tr>
+<tr>
+	<td style="text-align:left;">Brown</td>
+	<td style="text-align:left;">0;33</td>
+</tr>
+<tr>
+	<td style="text-align:left;">Light Gray</td>
+	<td style="text-align:left;">0;37</td>
+</tr>
+<tr>
+	<td style="text-align:left;">Dark Gray</td>
+	<td style="text-align:left;">1;30</td>
+</tr>
+<tr>
+	<td style="text-align:left;">Light Blue</td>
+	<td style="text-align:left;">1;34</td>
+</tr>
+<tr>
+	<td style="text-align:left;">Light Green</td>
+	<td style="text-align:left;">1;32</td>
+</tr>
+<tr>
+	<td style="text-align:left;">Light Cyan</td>
+	<td style="text-align:left;">1;36</td>
+</tr>
+<tr>
+	<td style="text-align:left;">Light Red</td>
+	<td style="text-align:left;">1;31</td>
+</tr>
+<tr>
+	<td style="text-align:left;">Light Purple</td>
+	<td style="text-align:left;">1;35</td>
+</tr>
+<tr>
+	<td style="text-align:left;">Yellow</td>
+	<td style="text-align:left;">1;33</td>
+</tr>
+<tr>
+	<td style="text-align:left;">White</td>
+	<td style="text-align:left;">1;37</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="controllingthedarklightattributeofcolors">Controlling the dark/light attribute of colors</h2>
+
+<p>You may manipulate the variable <code>lobster_color_bright</code> where <code>1</code> is lighter and <code>0</code> is darker, e.g.,</p>
+
+<pre><code># Turn on lighter colors (if not enabled by default)
+lobster_color_bright=1
+
+# These next two lines will use lighter colors.
+lobster_color_echo red  &quot;This is in light red text&quot;
+lobster_color_echo red  &quot;This is in light red text&quot;
+
+# Disable lighter colors until otherwise directed
+lobster_color_bright=0
+lobster_color_echo red  &quot;This is in dark red text&quot;
+</code></pre>
+
+</body>
+</html>

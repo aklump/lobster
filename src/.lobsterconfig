@@ -17,18 +17,23 @@ lobster_app_config=".lobsterconfig"
 # not produce any output.
 lobster_debug=0
 
+lobster_escape_char="\033"
+
 # Current terminal color
 lobster_color_current="null"
 
 # Default terminal color.
 lobster_color_default="null"
 
-lobster_color_confirm="pink"
+# Set this to 1 and the colors will be brigher/lighter
+lobster_color_bright=0
+
+lobster_color_confirm="1;31"
 lobster_color_notice="grey"
 lobster_color_verbose="grey"
-lobster_color_success="green"
-lobster_color_warning="yellow"
-lobster_color_error="red"
+lobster_color_success="1;32"
+lobster_color_warning="1;33"
+lobster_color_error="1;31"
 
 # The name of the default theme.
 lobster_theme="default"

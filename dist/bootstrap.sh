@@ -10,7 +10,7 @@ while [ -h "$source" ]; do # resolve $source until the file is no longer a symli
 done
 LOBSTER_ROOT="$( cd -P "$( dirname "$source" )" && pwd )"
 
-lobster_tmpdir="$TMPDIR"
+LOBSTER_TMPDIR="$TMPDIR"
 lobster_php=$(which php)
 lobster_bash=$(which bash)
 
@@ -18,21 +18,19 @@ lobster_bash=$(which bash)
 source "$LOBSTER_ROOT/functions.sh"
 
 # Sort out the args, flags and params.
-declare -a lobster_args=()
-declare -a lobster_flags=()
-declare -a lobster_params=()
-for arg in "$@"; do
-  if [[ "$arg" =~ ^--(.*) ]]; then
-    lobster_params=("${lobster_params[@]}" "${BASH_REMATCH[1]}")
-  elif [[ "$arg" =~ ^-(.*) ]]; then
-    lobster_flags=("${lobster_flags[@]}" "${BASH_REMATCH[1]}")
-  else
-    lobster_args=("${lobster_args[@]}" "$arg")
-  fi
-done
+lobster_get_flags ${@}
+declare -a lobster_flags=("${lobster_get_flags_return[@]}")
+lobster_get_params ${@}
+declare -a lobster_params=("${lobster_get_params_return[@]}")
+lobster_get_args ${@}
+declare -a lobster_args=("${lobster_get_args_return[@]}")
 
 lobster_load_config ".lobsterconfig"
 lobster_load_config "$lobster_app_config"
+
+lobster_core_verbose "Flags: ${lobster_flags[@]}"
+lobster_core_verbose "Params: ${lobster_params[@]}"
+lobster_core_verbose "Args: ${lobster_args[@]}"
 
 # This is the first parent directory containing the app's config file that is
 # above $PWD.
@@ -41,7 +39,7 @@ LOBSTER_PWD_ROOT=$(lobster_upfind "$lobster_app_config" && echo $(dirname "$lobs
 # Set up the default text colors.
 lobster_color_current=''
 lobster_color $lobster_color_default
-lobster_op=$1
+lobster_op=${lobster_args[0]}
 
 
 # By convention if you pass a second argument it will be taken as a
@@ -89,8 +87,8 @@ if [ "$lobster_debug" -eq 1 ]; then
   lobster_notice "Lobster debug mode is enabled."
 fi
 
-if [ ! -d "$lobster_tmpdir" ] && [ ! mkdir "$lobster_tmpdir "]; then
-  lobster_warning "Cannot create tmpdir at $lobster_tmpdir"
+if [ ! -d "$LOBSTER_TMPDIR" ] && [ ! mkdir "$LOBSTER_TMPDIR "]; then
+  lobster_warning "Cannot create tmpdir at $LOBSTER_TMPDIR"
 fi
 
 # Bootstrap the project layer
@@ -101,3 +99,4 @@ lobster_include 'functions'
 export LOBSTER_ROOT
 export LOBSTER_APP_ROOT
 export LOBSTER_PWD_ROOT
+export LOBSTER_TMPDIR
