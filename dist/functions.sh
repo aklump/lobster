@@ -316,9 +316,6 @@ function lobster_include() {
   # Run a bootstrap a the project layer
   if [ -f "$dir/$basename.sh" ]; then
     source "$dir/$basename.sh"
-  fi
-  if [ -f "$dir/$basename.php" ]; then
-    $lobster_php "$dir/$basename.php"
   fi  
 }
 
