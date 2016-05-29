@@ -1,0 +1,75 @@
+{
+    "chapters": [
+        {
+            "id": "search",
+            "title": "Search",
+            "sort": 0
+        }
+    ],
+    "sections": [
+        {
+            "id": "readme",
+            "title": "README",
+            "file": "README.md",
+            "sort": 0
+        },
+        {
+            "id": "autoload",
+            "title": "Autoload",
+            "file": "autoload.md",
+            "sort": 1
+        },
+        {
+            "id": "colors",
+            "title": "Colors",
+            "file": "colors.md",
+            "sort": 2
+        },
+        {
+            "id": "options",
+            "title": "Options",
+            "file": "options.md",
+            "sort": 3
+        },
+        {
+            "id": "php",
+            "title": "Php",
+            "file": "php.md",
+            "sort": 4
+        },
+        {
+            "id": "routes",
+            "title": "Routes",
+            "file": "routes.md",
+            "sort": 5
+        },
+        {
+            "id": "results",
+            "title": "Results",
+            "file": "search--results.md",
+            "sort": 6,
+            "chapter": "search"
+        },
+        {
+            "id": "themes",
+            "title": "Themes",
+            "file": "themes.md",
+            "sort": 7
+        },
+        {
+            "id": "vars",
+            "title": "Vars",
+            "file": "vars.md",
+            "sort": 8
+        },
+        {
+            "id": "verbose",
+            "title": "Verbose",
+            "file": "verbose.md",
+            "sort": 9
+        }
+    ],
+    "settings": {
+        "search": "tipuesearch"
+    }
+}

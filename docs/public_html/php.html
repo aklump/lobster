@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Php</title>
+    <style type="text/css" media="all">
+      @import url("style.css");
+    </style>
+    <link href="search/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script src="search/tipuesearch_content.js"></script>
+    <link href="search/tipuesearch.css" rel="stylesheet">
+    <script src="search/tipuesearch_set.js"></script>
+    <script src="search/tipuesearch.min.js"></script>
+
+</head>
+
+<body class="page-php">
+<header>
+<div class="pager">
+  <a href="options.html" class="prev options" >&laquo;Options</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="routes.html" class="next routes">Routes&raquo;</a>
+</div>
+
+</header>
+
+<div class="search__wrapper">
+  <form action="search--results.html">
+    <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+  </form>
+</div>
+
+<h1>Php</h1>
+<div class="breadcrumb"><a href="index.html">Index</a></div>
+
+<section>
+
+
+<p>All PHP files need to include this line at the top:</p>
+
+<pre><code>&lt;?php
+require_once getenv('LOBSTER_ROOT') . '/bootstrap.php';
+</code></pre>
+
+<p>This line will cause the Lobster PHP functions to be loaded as well as these files in your app, if they exist.</p>
+
+<pre><code>includes/bootstrap.php
+includes/functions.php
+</code></pre>
+</section>
+
+<div class="search__results">
+  <div id="tipue_search_content"></div>  
+</div>
+
+<footer>
+<div class="pager">
+  <a href="options.html" class="prev options" >&laquo;Options</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="routes.html" class="next routes">Routes&raquo;</a>
+</div>
+
+
+  <div id="footer-legaleeze">
+    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Sun, 29 May 2016 12:00:36 -0700</p>
+  </div>
+</footer>
+
+<script>
+$(document).ready(function() {
+  $('#tipue_search_input').tipuesearch();
+});
+</script>
+
+</body>
+</html>
+

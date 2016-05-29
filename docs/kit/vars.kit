@@ -1,0 +1,93 @@
+
+<!--$prev_id = themes-->
+<!--$prev = themes.html-->
+<!--$prev_title = Themes-->
+<!--$id = vars-->
+<!--$title = Vars-->
+<!--$file = vars.html-->
+<!--$next_id = verbose-->
+<!--$next = verbose.html-->
+<!--$next_title = Verbose-->
+<!--$classes = page-vars-->
+<!--$date = Sun, 29 May 2016 12:00:38 -0700-->
+<!--$version = 1.0-->
+<!--$search = true-->
+<!--$search_results_page = false-->
+<!-- @include ../core/tpl/header.kit -->
+<h1>Lobster vars</h1>
+
+<h2>Lobster App</h2>
+
+<table>
+<thead>
+<tr>
+  <th>var</th>
+  <th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>$LOBSTER_APP_ROOT</code></td>
+  <td>Path to the Lobster app's root, same as $root</td>
+</tr>
+<tr>
+  <td><code>$LOBSTER_PWD_ROOT</code></td>
+  <td>Path to the parent above $PWD containing app config</td>
+</tr>
+<tr>
+  <td><code>$lobster_app_config</code></td>
+  <td>Filename for app config files, e.g. <code>.pspconfig</code>  This is used to locate <code>LOBSTER_PWD_ROOT</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2>Lobster</h2>
+
+<table>
+<thead>
+<tr>
+  <th>var</th>
+  <th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>$LOBSTER_ROOT</td>
+  <td>Path to the root of Lobster</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Command-related</h2>
+
+<table>
+<thead>
+<tr>
+  <th>var</th>
+  <th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>$lobster_args</td>
+  <td>An array of arguments called</td>
+</tr>
+<tr>
+  <td>$lobster_params</td>
+  <td>An array of x=y params called, e.g. --name=bob</td>
+</tr>
+<tr>
+  <td>$lobster_flags</td>
+  <td>An array of flags called e.g. -d</td>
+</tr>
+<tr>
+  <td>$lobster_target_dir</td>
+  <td>$2 will be expanded to an absolute dir or $PWD</td>
+</tr>
+<tr>
+  <td>$lobster_target_error</td>
+  <td>Set to 1 if lobster_target_dir is not a directory</td>
+</tr>
+</tbody>
+</table>
+<!-- @include ../core/tpl/footer.kit -->

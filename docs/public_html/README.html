@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>README</title>
+    <style type="text/css" media="all">
+      @import url("style.css");
+    </style>
+    <link href="search/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script src="search/tipuesearch_content.js"></script>
+    <link href="search/tipuesearch.css" rel="stylesheet">
+    <script src="search/tipuesearch_set.js"></script>
+    <script src="search/tipuesearch.min.js"></script>
+
+</head>
+
+<body class="page-readme">
+<header>
+<div class="pager">
+  <a href="index.html" class="prev index" >&laquo;Index</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="autoload.html" class="next autoload">Autoload&raquo;</a>
+</div>
+
+</header>
+
+<div class="search__wrapper">
+  <form action="search--results.html">
+    <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+  </form>
+</div>
+
+<h1>README</h1>
+<div class="breadcrumb"><a href="index.html">Index</a></div>
+
+<section>
+
+
+<p>A lightweight bash framework by In the Loft Studios.</p>
+
+<p>When building a <em>Lobster Shell</em> app the core folder <code>dist</code> must be located, relative to the app's root at:</p>
+
+<pre><code>/lib/lobster/dist
+</code></pre>
+
+<h2>Setup</h2>
+
+<p>If you are making an app called "Titanium"...</p>
+
+<ol>
+<li>In the root folder of your app, create a file called <code>titanium.sh</code>; this will be the controller for the app.</li>
+<li>In the root folder create the following folders: <code>includes, routes, templates</code>.</li>
+<li>copy the file <code>dist/.lobsterconfig</code> to your root folder and modify as needed.</li>
+<li>Refer to <code>__lobster_app_example</code> for how to build the app.</li>
+<li>Install lobster core at <code>lib/lobster</code>; you can rename <code>gitignore</code> as <code>.gitignore</code> for use in your app.</li>
+</ol>
+
+<h2>Documentation</h2>
+
+<ol>
+<li>HTML documentation is found at <code>/docs/public_html</code>.</li>
+</ol>
+</section>
+
+<div class="search__results">
+  <div id="tipue_search_content"></div>  
+</div>
+
+<footer>
+<div class="pager">
+  <a href="index.html" class="prev index" >&laquo;Index</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="autoload.html" class="next autoload">Autoload&raquo;</a>
+</div>
+
+
+  <div id="footer-legaleeze">
+    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Sun, 29 May 2016 12:00:33 -0700</p>
+  </div>
+</footer>
+
+<script>
+$(document).ready(function() {
+  $('#tipue_search_input').tipuesearch();
+});
+</script>
+
+</body>
+</html>
+

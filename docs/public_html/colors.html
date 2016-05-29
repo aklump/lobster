@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Colors</title>
+    <style type="text/css" media="all">
+      @import url("style.css");
+    </style>
+    <link href="search/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script src="search/tipuesearch_content.js"></script>
+    <link href="search/tipuesearch.css" rel="stylesheet">
+    <script src="search/tipuesearch_set.js"></script>
+    <script src="search/tipuesearch.min.js"></script>
+
+</head>
+
+<body class="page-colors">
+<header>
+<div class="pager">
+  <a href="autoload.html" class="prev autoload" >&laquo;Autoload</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="options.html" class="next options">Options&raquo;</a>
+</div>
+
+</header>
+
+<div class="search__wrapper">
+  <form action="search--results.html">
+    <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+  </form>
+</div>
+
+<h1>Colors</h1>
+<div class="breadcrumb"><a href="index.html">Index</a></div>
+
+<section>
+
+
+<p>The following may be passed to color functions as arguments</p>
+
+<h2>Color names</h2>
+
+<ul>
+<li>grey</li>
+<li>red</li>
+<li>green</li>
+<li>yellow</li>
+<li>blue</li>
+<li>magenta</li>
+<li>pink</li>
+<li>cyan</li>
+</ul>
+
+<h2>Semantic</h2>
+
+<ul>
+<li>notice</li>
+<li>warning</li>
+<li>error</li>
+<li>success</li>
+<li>confirm</li>
+<li>verbose</li>
+</ul>
+
+<h2>BASH</h2>
+
+<p>You can also pass thes values directly
+<a href="http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html">http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html</a></p>
+
+<table>
+<thead>
+<tr>
+  <th>Color</th>
+  <th>Argument</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Black</td>
+  <td>0;30</td>
+</tr>
+<tr>
+  <td>Blue</td>
+  <td>0;34</td>
+</tr>
+<tr>
+  <td>Green</td>
+  <td>0;32</td>
+</tr>
+<tr>
+  <td>Cyan</td>
+  <td>0;36</td>
+</tr>
+<tr>
+  <td>Red</td>
+  <td>0;31</td>
+</tr>
+<tr>
+  <td>Purple</td>
+  <td>0;35</td>
+</tr>
+<tr>
+  <td>Brown</td>
+  <td>0;33</td>
+</tr>
+<tr>
+  <td>Light Gray</td>
+  <td>0;37</td>
+</tr>
+<tr>
+  <td>Dark Gray</td>
+  <td>1;30</td>
+</tr>
+<tr>
+  <td>Light Blue</td>
+  <td>1;34</td>
+</tr>
+<tr>
+  <td>Light Green</td>
+  <td>1;32</td>
+</tr>
+<tr>
+  <td>Light Cyan</td>
+  <td>1;36</td>
+</tr>
+<tr>
+  <td>Light Red</td>
+  <td>1;31</td>
+</tr>
+<tr>
+  <td>Light Purple</td>
+  <td>1;35</td>
+</tr>
+<tr>
+  <td>Yellow</td>
+  <td>1;33</td>
+</tr>
+<tr>
+  <td>White</td>
+  <td>1;37</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Controlling the dark/light attribute of colors</h2>
+
+<p>You may manipulate the variable <code>lobster_color_bright</code> where <code>1</code> is lighter and <code>0</code> is darker, e.g.,</p>
+
+<pre><code># Turn on lighter colors (if not enabled by default)
+lobster_color_bright=1
+
+# These next two lines will use lighter colors.
+lobster_color_echo red  "This is in light red text"
+lobster_color_echo red  "This is in light red text"
+
+# Disable lighter colors until otherwise directed
+lobster_color_bright=0
+lobster_color_echo red  "This is in dark red text"
+</code></pre>
+</section>
+
+<div class="search__results">
+  <div id="tipue_search_content"></div>  
+</div>
+
+<footer>
+<div class="pager">
+  <a href="autoload.html" class="prev autoload" >&laquo;Autoload</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="options.html" class="next options">Options&raquo;</a>
+</div>
+
+
+  <div id="footer-legaleeze">
+    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Sun, 29 May 2016 12:00:34 -0700</p>
+  </div>
+</footer>
+
+<script>
+$(document).ready(function() {
+  $('#tipue_search_input').tipuesearch();
+});
+</script>
+
+</body>
+</html>
+

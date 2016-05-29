@@ -10,6 +10,6 @@ while [ -h "$self" ]; do
   [[ $self != /* ]] && self="$dir/$self"
 done
 LOBSTER_APP_ROOT="$( cd -P "$( dirname "$self" )" && pwd )"
-source "$LOBSTER_APP_ROOT/vendor/aklump/lobster/dist/bootstrap.sh"
+source "$LOBSTER_APP_ROOT/lib/lobster/dist/bootstrap.sh"
 lobster_theme 'header'
-source "$LOBSTER_APP_ROOT/vendor/aklump/lobster/dist/router.sh"
+source "$LOBSTER_APP_ROOT/lib/lobster/dist/router.sh"
