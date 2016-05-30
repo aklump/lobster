@@ -40,7 +40,7 @@
 <section>
 
 
-<h2>Lobster App</h2>
+<h2>Your app</h2>
 
 <table>
 <thead>
@@ -51,12 +51,20 @@
 </thead>
 <tbody>
 <tr>
-  <td><code>$LOBSTER_APP_ROOT</code></td>
-  <td>Path to the Lobster app's root, same as $root</td>
+  <td><code>$LOBSTER_APP</code></td>
+  <td>The path to the app controller script; use this to call self from within another route.</td>
+</tr>
+<tr>
+  <td><code>$LOBSTER_PWD</code></td>
+  <td>The path from which the script was originally called.</td>
 </tr>
 <tr>
   <td><code>$LOBSTER_PWD_ROOT</code></td>
-  <td>Path to the parent above $PWD containing app config</td>
+  <td>Path to the dir $LOBSTER_PWD containing app config</td>
+</tr>
+<tr>
+  <td><code>$LOBSTER_APP_ROOT</code></td>
+  <td>Path to the Lobster app's root, same as $root</td>
 </tr>
 <tr>
   <td><code>$lobster_app_config</code></td>
@@ -129,7 +137,7 @@
 
 
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Sun, 29 May 2016 12:00:38 -0700</p>
+    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Mon, 30 May 2016 16:22:36 -0700</p>
   </div>
 </footer>
 

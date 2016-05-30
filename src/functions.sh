@@ -206,6 +206,22 @@ function lobster_echo() {
 }
 
 #
+# Writes a message to a log file.
+#
+# @param string|array $arg
+function lobster_log() {
+  if [ "$lobster_logs" ]; then
+    type=$1
+    message=$2
+    severity=$3
+    line="\"$(lobster_datetime)\",\"$(whoami)\",\"$message\",\"$severity\""
+    echo -e $line >> "$lobster_logs/$type.csv"
+  else
+    lobster_error "Please enable $lobster_logs"
+  fi
+}
+
+#
 #
 # Outputs the argument(s) in bold
 #
@@ -242,8 +258,13 @@ lobster_theme_source=''
 function lobster_theme() {
   if [ $lobster_debug -eq 0 ] && lobster_has_param 'lobster-quiet'; then
     return
-  fi  
+  fi
+
   source=$1
+  if lobster_has_param "lobster-nowrap" && ( [ "$source" == 'header' ] || [ "$source" == 'footer' ] ); then
+    return
+  fi
+
   if [ ! -f "$source" ]; then
     for ext in "${lobster_tpl_extensions[@]}"; do
       if [ -f "$LOBSTER_APP_ROOT/themes/$lobster_theme/tpl/$1.$ext" ]; then
@@ -283,6 +304,11 @@ function lobster_theme() {
   fi
 }
 
+function lobster_failed() {
+  lobster_error "$1"
+  lobster_include "failed"
+}
+
 #
 # Prints the footer and exits the script
 function lobster_exit() {
@@ -313,7 +339,7 @@ function lobster_include() {
     dir="$LOBSTER_APP_ROOT/includes"
   fi
 
-  # Run a bootstrap a the project layer
+  # Run the include at the project layer
   if [ -f "$dir/$basename.sh" ]; then
     source "$dir/$basename.sh"
   fi  
@@ -563,7 +589,7 @@ function lobster_json() {
 # 
 # result=$(lobster_trim arg)
 #
-function lobster_trim() {
+function  lobster_trim() {
   echo -e "${1}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'
 }
 
@@ -584,4 +610,25 @@ function lobster_confirm() {
   if [ "$response" != 'y' ]; then
     return 1
   fi
+}
+
+##
+ # Echos the current date and time
+ #
+function lobster_date() {
+  echo $(date +"%B %_d, %Y")
+}
+
+##
+ # Echos the current date and time
+ #
+function lobster_datetime() {
+  echo $(date +"%Y-%m-%dT%H:%M:%S%z")
+}
+
+##
+ # Echos the current unix timestamp
+ #
+function lobster_time() {
+  echo $(date +"%s")
 }

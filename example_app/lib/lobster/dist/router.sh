@@ -42,7 +42,8 @@ for suggestion in "${lobster_suggestions[@]}"; do
         lobster_route="$dir/routes/$filename"
 
         # This will be consumable by php scripts, et al.
-        export LOBSTER_JSON=$(lobster_json)          
+        export LOBSTER_JSON=$(lobster_json)
+        lobster_include "preroute"
         case $ext in
           'sh' )
             source "$lobster_route"
@@ -69,6 +70,7 @@ for suggestion in "${lobster_suggestions[@]}"; do
 
         # This will be consumable by php scripts, et al.
         export LOBSTER_JSON=$(lobster_json)
+        lobster_include "preroute"
         output=$(lobster_theme $lobster_route)
 
         case $ext in

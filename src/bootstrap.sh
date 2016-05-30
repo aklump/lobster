@@ -34,6 +34,7 @@ lobster_core_verbose "Args: ${lobster_args[@]}"
 
 # This is the first parent directory containing the app's config file that is
 # above $PWD.
+LOBSTER_PWD=$PWD
 LOBSTER_PWD_ROOT=$(lobster_upfind "$lobster_app_config" && echo $(dirname "$lobster_upfind_dir"))
 
 # Set up the default text colors.
@@ -66,6 +67,12 @@ fi
 
 # File logging.
 if [ "$lobster_logs" ]; then
+
+  # If this is relative make it relative to $LOBSTER_PWD_ROOT
+  if [ ${lobster_logs:0:1} != "/" ]; then
+    lobster_logs="$LOBSTER_PWD_ROOT/$lobster_logs"
+  fi
+
   if [ ! -d "$lobster_logs" ]; then
     mkdir -p "$lobster_logs"
   fi
@@ -93,6 +100,7 @@ fi
 
 export LOBSTER_ROOT
 export LOBSTER_APP_ROOT
+export LOBSTER_PWD
 export LOBSTER_PWD_ROOT
 export LOBSTER_TMPDIR
 

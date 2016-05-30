@@ -65,3 +65,8 @@ Lobster doesn't care the order of the args, flag or params.  All of the followin
     app -abcd --param=value arg1 arg2 arg3
     app --param=value arg1 -abcd  arg2 arg3
     ...
+    
+## Internal Routes
+Sometimes you may want to call a route within a route; you will use --lobster-quiet to suppress theme output.  Do something like this:
+
+    $LOBSTER_APP {route} -f --lobster-nowrap

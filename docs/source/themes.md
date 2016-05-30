@@ -1,5 +1,8 @@
 # Themes
 
+The header and footer will not be output when `--lobster-nowrap` is present.
+All output is suppressed when `--lobster-quite` is present.
+
 ## File structure
 Given the following file structure:
 
