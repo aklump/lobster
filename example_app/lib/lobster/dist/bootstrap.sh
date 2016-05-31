@@ -42,7 +42,6 @@ lobster_color_current=''
 lobster_color $lobster_color_default
 lobster_op=${lobster_args[0]}
 
-
 # By convention if you pass a second argument it will be taken as a
 # target directory and checked.  The directory test will be stored in the
 # variable lobster_target_error
@@ -70,16 +69,20 @@ if [ "$lobster_logs" ]; then
 
   # If this is relative make it relative to $LOBSTER_PWD_ROOT
   if [ ${lobster_logs:0:1} != "/" ]; then
-    lobster_logs="$LOBSTER_PWD_ROOT/$lobster_logs"
+    if [ "$LOBSTER_PWD_ROOT" ]; then
+      lobster_logs="$LOBSTER_PWD_ROOT/$lobster_logs"
+    else
+      lobster_logs=''
+    fi
   fi
 
-  if [ ! -d "$lobster_logs" ]; then
-    mkdir -p "$lobster_logs"
-  fi
+  if [ "$lobster_logs" ]; then
+    test -e "$lobster_logs" || mkdir -p "$lobster_logs"
 
-  # Create a timestamp in the log to help make it readable.
-  echo "" >> "$lobster_logs/echo.txt"
-  echo ">>>>> $(date) -- Lobster thread started" >> "$lobster_logs/echo.txt"
+#  # Create a timestamp in the log to help make it readable.
+#  echo "" >> "$lobster_logs/echo.txt"
+#  echo ">>>>> $(date) -- Lobster thread started" >> "$lobster_logs/echo.txt"
+  fi
 fi
 
 # Turns on debug based on the option, not the config file
