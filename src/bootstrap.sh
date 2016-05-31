@@ -97,7 +97,7 @@ if [ "$lobster_debug" -eq 1 ]; then
   lobster_notice "Lobster debug mode is enabled."
 fi
 
-if [ ! -d "$LOBSTER_TMPDIR" ] && [ ! mkdir "$LOBSTER_TMPDIR "]; then
+if [ ! -d "$LOBSTER_TMPDIR" ] && [ ! mkdir "$LOBSTER_TMPDIR " ]; then
   lobster_warning "Cannot create tmpdir at $LOBSTER_TMPDIR"
 fi
 
