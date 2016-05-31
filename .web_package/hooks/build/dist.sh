@@ -8,7 +8,8 @@ if [ ! -d dist ]; then
 fi
 
 rsync -a --delete src/ dist/
-cp lobster.info dist/lobster.info
+cp lobster.info dist/
+cp LICENSE.txt dist/
 
 # Copy dist onto the example app
 -d $7/example_app/lib/lobster/dist || mkdir -p $7/example_app/lib/lobster/dist
