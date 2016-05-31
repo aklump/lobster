@@ -76,12 +76,12 @@ if [ "$lobster_logs" ]; then
     fi
   fi
 
-  if [ "$lobster_logs" ]; then
-    test -e "$lobster_logs" || mkdir -p "$lobster_logs"
+  if [ "$lobster_logs" ] && ! test -e "$lobster_logs"; then
+    mkdir -p "$lobster_logs"
 
-#  # Create a timestamp in the log to help make it readable.
-#  echo "" >> "$lobster_logs/echo.txt"
-#  echo ">>>>> $(date) -- Lobster thread started" >> "$lobster_logs/echo.txt"
+    # Create a timestamp in the log to help make it readable.
+    echo "" >> "$lobster_logs/echo.txt"
+    echo ">>>>> $(date) -- Lobster thread started" >> "$lobster_logs/echo.txt"
   fi
 fi
 
