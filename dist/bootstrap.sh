@@ -24,13 +24,11 @@ lobster_get_params ${@}
 declare -a lobster_params=("${lobster_get_params_return[@]}")
 lobster_get_args ${@}
 declare -a lobster_args=("${lobster_get_args_return[@]}")
-
-lobster_load_config ".lobsterconfig"
-lobster_load_config "$lobster_app_config"
-
 lobster_core_verbose "Flags: ${lobster_flags[@]}"
 lobster_core_verbose "Params: ${lobster_params[@]}"
 lobster_core_verbose "Args: ${lobster_args[@]}"
+
+lobster_load_config ".lobsterconfig"
 
 # This is the first parent directory containing the app's config file that is
 # above $PWD.
@@ -107,6 +105,8 @@ export LOBSTER_PWD
 export LOBSTER_PWD_ROOT
 export LOBSTER_TMPDIR
 
+# Pull in the app's config at the last minute
+lobster_load_config "$lobster_app_config"
 
 # Bootstrap the project layer
 lobster_include 'bootstrap'
