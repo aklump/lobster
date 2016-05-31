@@ -1,4 +1,4 @@
 #!/bin/bash
 #
 # @file
-# Configuration specific to your app.
+# Default configuration file specific to your app; copied during the core init route.

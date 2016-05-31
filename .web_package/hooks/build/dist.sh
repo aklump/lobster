@@ -16,5 +16,5 @@ cp LICENSE.txt dist/
 rsync -a --delete $7/dist/ $7/example_app/lib/lobster/dist/
 
 # Copy config files to the example app
-cp $7/dist/example_app/.config $7/example_app/.example_appconfig
+cp $7/example_app/install/.config $7/example_app/.example_appconfig
 cp $7/dist/.lobsterconfig $7/example_app/
