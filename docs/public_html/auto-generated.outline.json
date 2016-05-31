@@ -51,22 +51,28 @@
             "chapter": "search"
         },
         {
+            "id": "structure",
+            "title": "Structure",
+            "file": "structure.md",
+            "sort": 7
+        },
+        {
             "id": "themes",
             "title": "Themes",
             "file": "themes.md",
-            "sort": 7
+            "sort": 8
         },
         {
             "id": "vars",
             "title": "Vars",
             "file": "vars.md",
-            "sort": 8
+            "sort": 9
         },
         {
             "id": "verbose",
             "title": "Verbose",
             "file": "verbose.md",
-            "sort": 9
+            "sort": 10
         }
     ],
     "settings": {
