@@ -10,7 +10,6 @@ while [ -h "$source" ]; do # resolve $source until the file is no longer a symli
 done
 LOBSTER_ROOT="$( cd -P "$( dirname "$source" )" && pwd )"
 
-LOBSTER_TMPDIR="$TMPDIR"
 lobster_php=$(which php)
 lobster_bash=$(which bash)
 
@@ -25,12 +24,11 @@ declare -a lobster_params=("${lobster_get_params_return[@]}")
 lobster_get_args ${@}
 declare -a lobster_args=("${lobster_get_args_return[@]}")
 
-lobster_load_config ".lobsterconfig"
-lobster_load_config "$lobster_app_config"
-
 lobster_core_verbose "Flags: ${lobster_flags[@]}"
 lobster_core_verbose "Params: ${lobster_params[@]}"
 lobster_core_verbose "Args: ${lobster_args[@]}"
+
+lobster_load_config ".lobsterconfig"
 
 # This is the first parent directory containing the app's config file that is
 # above $PWD.
@@ -97,8 +95,16 @@ if [ "$lobster_debug" -eq 1 ]; then
   lobster_notice "Lobster debug mode is enabled."
 fi
 
-if [ ! -d "$LOBSTER_TMPDIR" ] && ! mkdir "$LOBSTER_TMPDIR"; then
-  lobster_warning "Cannot create tmpdir at $LOBSTER_TMPDIR"
+# Establish a temporary directory
+if [ "$TMPDIR" ] && test -e "$TMPDIR"; then
+  LOBSTER_TMPDIR="$TMPDIR"
+elif test -e "/tmp"; then
+  LOBSTER_TMPDIR="/tmp"
+else
+  LOBSTER_TMPDIR="$LOBSTER_APP_ROOT/tmp"
+fi
+if ! test -e "$LOBSTER_TMPDIR" && ! mkdir "$LOBSTER_TMPDIR"; then
+  lobster_failed "Unable to establish a temporary directory."
 fi
 
 export LOBSTER_ROOT
@@ -107,6 +113,8 @@ export LOBSTER_PWD
 export LOBSTER_PWD_ROOT
 export LOBSTER_TMPDIR
 
+# Run the app's config at the last moment to maximum variable access.
+lobster_load_config "$lobster_app_config"
 
 # Bootstrap the project layer
 lobster_include 'bootstrap'
