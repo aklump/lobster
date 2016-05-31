@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Vars</title>
+    <style type="text/css" media="all">
+      @import url("style.css");
+    </style>
+    <link href="search/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script src="search/tipuesearch_content.js"></script>
+    <link href="search/tipuesearch.css" rel="stylesheet">
+    <script src="search/tipuesearch_set.js"></script>
+    <script src="search/tipuesearch.min.js"></script>
+
+</head>
+
+<body class="page-vars">
+<header>
+<div class="pager">
+  <a href="themes.html" class="prev themes" >&laquo;Themes</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="verbose.html" class="next verbose">Verbose&raquo;</a>
+</div>
+
+</header>
+
+<div class="search__wrapper">
+  <form action="search--results.html">
+    <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+  </form>
+</div>
+
+<h1>Vars</h1>
+<div class="breadcrumb"><a href="index.html">Index</a></div>
+
+<section>
+
+
+<h2>Your app</h2>
+
+<table>
+<thead>
+<tr>
+  <th>var</th>
+  <th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>$LOBSTER_APP</code></td>
+  <td>The path to the app controller script; use this to call self from within another route.</td>
+</tr>
+<tr>
+  <td><code>$LOBSTER_PWD</code></td>
+  <td>The path from which the script was originally called.</td>
+</tr>
+<tr>
+  <td><code>$LOBSTER_PWD_ROOT</code></td>
+  <td>Path to the dir $LOBSTER_PWD containing app config</td>
+</tr>
+<tr>
+  <td><code>$LOBSTER_APP_ROOT</code></td>
+  <td>Path to the Lobster app's root, same as $root</td>
+</tr>
+<tr>
+  <td><code>$lobster_app_config</code></td>
+  <td>Filename for app config files, e.g. <code>.pspconfig</code>  This is used to locate <code>LOBSTER_PWD_ROOT</code></td>
+</tr>
+</tbody>
+</table>
+
+<h2>Lobster</h2>
+
+<table>
+<thead>
+<tr>
+  <th>var</th>
+  <th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>$LOBSTER_ROOT</td>
+  <td>Path to the root of Lobster</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Command-related</h2>
+
+<table>
+<thead>
+<tr>
+  <th>var</th>
+  <th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>$lobster_args</td>
+  <td>An array of arguments called</td>
+</tr>
+<tr>
+  <td>$lobster_params</td>
+  <td>An array of x=y params called, e.g. --name=bob</td>
+</tr>
+<tr>
+  <td>$lobster_flags</td>
+  <td>An array of flags called e.g. -d</td>
+</tr>
+<tr>
+  <td>$lobster_target_dir</td>
+  <td>$2 will be expanded to an absolute dir or $PWD</td>
+</tr>
+<tr>
+  <td>$lobster_target_error</td>
+  <td>Set to 1 if lobster_target_dir is not a directory</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<div class="search__results">
+  <div id="tipue_search_content"></div>  
+</div>
+
+<footer>
+<div class="pager">
+  <a href="themes.html" class="prev themes" >&laquo;Themes</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="verbose.html" class="next verbose">Verbose&raquo;</a>
+</div>
+
+
+  <div id="footer-legaleeze">
+    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Tue, 31 May 2016 08:28:40 -0700</p>
+  </div>
+</footer>
+
+<script>
+$(document).ready(function() {
+  $('#tipue_search_input').tipuesearch();
+});
+</script>
+
+</body>
+</html>
+

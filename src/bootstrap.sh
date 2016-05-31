@@ -34,13 +34,13 @@ lobster_core_verbose "Args: ${lobster_args[@]}"
 
 # This is the first parent directory containing the app's config file that is
 # above $PWD.
+LOBSTER_PWD=$PWD
 LOBSTER_PWD_ROOT=$(lobster_upfind "$lobster_app_config" && echo $(dirname "$lobster_upfind_dir"))
 
 # Set up the default text colors.
 lobster_color_current=''
 lobster_color $lobster_color_default
 lobster_op=${lobster_args[0]}
-
 
 # By convention if you pass a second argument it will be taken as a
 # target directory and checked.  The directory test will be stored in the
@@ -66,13 +66,23 @@ fi
 
 # File logging.
 if [ "$lobster_logs" ]; then
-  if [ ! -d "$lobster_logs" ]; then
-    mkdir -p "$lobster_logs"
+
+  # If this is relative make it relative to $LOBSTER_PWD_ROOT
+  if [ ${lobster_logs:0:1} != "/" ]; then
+    if [ "$LOBSTER_PWD_ROOT" ]; then
+      lobster_logs="$LOBSTER_PWD_ROOT/$lobster_logs"
+    else
+      lobster_logs=''
+    fi
   fi
 
-  # Create a timestamp in the log to help make it readable.
-  echo "" >> "$lobster_logs/echo.txt"
-  echo ">>>>> $(date) -- Lobster thread started" >> "$lobster_logs/echo.txt"
+  if [ "$lobster_logs" ] && ! test -e "$lobster_logs"; then
+    mkdir -p "$lobster_logs"
+
+    # Create a timestamp in the log to help make it readable.
+    echo "" >> "$lobster_logs/echo.txt"
+    echo ">>>>> $(date) -- Lobster thread started" >> "$lobster_logs/echo.txt"
+  fi
 fi
 
 # Turns on debug based on the option, not the config file
@@ -93,6 +103,7 @@ fi
 
 export LOBSTER_ROOT
 export LOBSTER_APP_ROOT
+export LOBSTER_PWD
 export LOBSTER_PWD_ROOT
 export LOBSTER_TMPDIR
 

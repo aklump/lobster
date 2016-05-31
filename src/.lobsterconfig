@@ -4,18 +4,21 @@
 # App configuration file for Lobster Shell
 
 # The machine name of your app, lowercase + underscore only.
-lobster_app_name="lobster_app"
+lobster_app_name="example_app"
 
 # Human readable name of your app
-lobster_app_title="A Lobster App"
+lobster_app_title="A Lobster App Example"
 
 # This is used for the app's config filename.
-lobster_app_config=".lobsterconfig"
+lobster_app_config=".example_appconfig"
+
+# It can also specific a file within a folder relative to the working directory. But the upfind function does not yet work on this.
+#lobster_app_config=".example_app/config"
 
 # Set this to 1 and calling lobster_show_debug() will return the contents
 # of the include/debug.  Set this to 0 and calling lobster_show_debug() will
 # not produce any output.
-lobster_debug=0
+lobster_debug=1
 
 lobster_escape_char="\033"
 
@@ -41,7 +44,7 @@ lobster_theme="default"
 # These define the extensions and the order of include for route files.
 lobster_route_extensions=("sh" "php")
 
-# These define the extensions and the order of include for route files.
+# These define the extensions and the order of include for template files.
 lobster_tpl_extensions=("twig" "txt")
 
 # The default route when no arguments present
@@ -54,5 +57,5 @@ lobster_default_route="help"
 #lobster_bash='/bin/bash'
 
 # Path to folder where lobster may write it's logs.  If this is blank then
-# logs will not be written.
+# logs will not be written.  If this is not an absolute path it will be in relation to the $LOBSTER_PWD_ROOT.
 lobster_logs=""

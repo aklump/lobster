@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>README</title>
+    <style type="text/css" media="all">
+      @import url("style.css");
+    </style>
+    <link href="search/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script src="search/tipuesearch_content.js"></script>
+    <link href="search/tipuesearch.css" rel="stylesheet">
+    <script src="search/tipuesearch_set.js"></script>
+    <script src="search/tipuesearch.min.js"></script>
+
+</head>
+
+<body class="page-readme">
+<header>
+<div class="pager">
+  <a href="index.html" class="prev index" >&laquo;Index</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="autoload.html" class="next autoload">Autoload&raquo;</a>
+</div>
+
+</header>
+
+<div class="search__wrapper">
+  <form action="search--results.html">
+    <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+  </form>
+</div>
+
+<h1>README</h1>
+<div class="breadcrumb"><a href="index.html">Index</a></div>
+
+<section>
+
+
+<p>A BASH framework by In the Loft Studios.</p>
+
+<h2>Getting started</h2>
+
+<p>If you are making an app called "Titanium"...</p>
+
+<ol>
+<li>Copy the folder called <code>example_app</code> as <code>titanium</code> somewhere on your computer and start building your app.  That is the only folder you need from this repository to bundle with your app.</li>
+<li>Rename <code>titanium/gitignore</code> to <code>titanium/.gitignore</code>.</li>
+<li>Rename <code>example_app.sh</code> as  <code>titanium.sh</code>; this will be the controller for the app.</li>
+<li>Copy <code>dist/.lobsterconfig</code> to <code>titanium/.lobsterconfig</code> and modify the necessary items.</li>
+<li>Copy <code>dist/.example_appconfig</code> to <code>titanium/.titaniumconfig</code> and use this file for any configuration used by your app.</li>
+<li>Sample routes have been provided in <code>example_app/routes</code>.</li>
+</ol>
+
+<h2>Documentation</h2>
+
+<ol>
+<li>HTML documentation for Lobster is found at <code>/docs/public_html</code>.</li>
+</ol>
+</section>
+
+<div class="search__results">
+  <div id="tipue_search_content"></div>  
+</div>
+
+<footer>
+<div class="pager">
+  <a href="index.html" class="prev index" >&laquo;Index</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="autoload.html" class="next autoload">Autoload&raquo;</a>
+</div>
+
+
+  <div id="footer-legaleeze">
+    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Tue, 31 May 2016 08:28:36 -0700</p>
+  </div>
+</footer>
+
+<script>
+$(document).ready(function() {
+  $('#tipue_search_input').tipuesearch();
+});
+</script>
+
+</body>
+</html>
+
