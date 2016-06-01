@@ -20,8 +20,9 @@ function is_drupal_root () {
 #
 function is_drupal_online() {
   status=$(cd $rb_drupal_root && $rb_drush vget site_offline --exact)
-  if [ "$status" == "maintenance_mode: '0'" ]; then
-    return 0;
+  regex="true|1"
+  if [[ "$status" =~ $regex ]]; then
+    return 1;
   fi
-  return 1;
+  return 0;
 }
