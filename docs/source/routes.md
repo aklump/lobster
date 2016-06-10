@@ -6,6 +6,14 @@
 1. If a route cannot be found, then a tpl will be sought.
 1. Core routes can be overridden, e.g. 'init'
 
+## Route access control
+1. To control access to a route you will use `lobster_access`.
+1. When the callbacks fail you may alter the 'Access Denied message' by using the var `lobster_access_denied` in the .lobsterconfig.
+1. Php callbacks wishing to block access should return FALSE.
+1. Shell function callbacks wishing to block access should return non zero.
+1. It's recommended to place callbacks in either `functions.sh` or `functions.php`
+1. Refer to `example_approutes/access.php` and `example_approutes/access.sh` for example code.
+
 ## Theme tpls
 1. You may have more than one theme, but not more than one _active_ theme.
 1. Configure the types and order of files via `$lobster_tpl_extensions`.

@@ -118,10 +118,8 @@ function lobster_notice() {
 # commands.
 #
 function lobster_color() {
-
   # First allow the passing of a number
   lobster_color_current=$1
-
 
   case $1 in
     
@@ -631,4 +629,27 @@ function lobster_datetime() {
  #
 function lobster_time() {
   echo $(date +"%s")
+}
+
+##
+ # Determine if a shell function exists
+ #
+function lobster_function_exists() {
+  declare -f -F $1 > /dev/null
+  return $?
+}
+
+##
+ # Access check for routing.
+ #
+function lobster_access() {
+  if ! lobster_function_exists $1; then
+    lobster_failed "The required access callback '$1' does not exist."
+  fi
+  if ! eval ${1}; then
+    if [ "$lobster_access_denied" ]; then
+      lobster_error "$lobster_access_denied"
+    fi
+    lobster_include "failed"
+  fi
 }

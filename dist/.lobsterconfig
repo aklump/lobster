@@ -59,3 +59,6 @@ lobster_default_route="help"
 # Path to folder where lobster may write it's logs.  If this is blank then
 # logs will not be written.  If this is not an absolute path it will be in relation to the $LOBSTER_PWD_ROOT.
 lobster_logs=""
+
+# The message to output when lobster_access fails.
+lobster_access_denied="Access Denied"
