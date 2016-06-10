@@ -12,7 +12,10 @@
 1. Php callbacks wishing to block access should return FALSE.
 1. Shell function callbacks wishing to block access should return non zero.
 1. It's recommended to place callbacks in either `functions.sh` or `functions.php`
-1. Refer to `example_approutes/access.php` and `example_approutes/access.sh` for example code.
+1. Refer to `example_app/routes/access.php` and `example_app/routes/access.sh` for example code.
+
+## Redirecting routes
+1. This should be done in the app's bootstrap file; take a look at `example_app/includes/bootstrap.php` for an example.
 
 ## Theme tpls
 1. You may have more than one theme, but not more than one _active_ theme.

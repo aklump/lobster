@@ -38,7 +38,6 @@ LOBSTER_PWD_ROOT=$(lobster_upfind "$lobster_app_config" && echo $(dirname "$lobs
 # Set up the default text colors.
 lobster_color_current=''
 lobster_color $lobster_color_default
-lobster_op=${lobster_args[0]}
 
 # By convention if you pass a second argument it will be taken as a
 # target directory and checked.  The directory test will be stored in the
@@ -118,4 +117,7 @@ lobster_load_config "$lobster_app_config"
 
 # Bootstrap the project layer
 lobster_include 'bootstrap'
+
+# Keep this here to allow app bootstrap to modify the arguments before we assign the op.
+lobster_op=${lobster_args[0]}
 lobster_include 'functions'
