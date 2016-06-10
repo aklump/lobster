@@ -305,14 +305,19 @@ function lobster_theme() {
 function lobster_failed() {
   lobster_error "$1"
   lobster_include "failed"
+  lobster_exit 1
 }
 
 #
 # Prints the footer and exits the script
 function lobster_exit() {
+  local status=0
+  if [ "$1" ]; then
+    status=$1
+  fi
   lobster_theme 'footer'
-  lobster_include 'shutdown'  
-  exit;
+  lobster_include 'shutdown'
+  exit $status
 }
 
 function lobster_show_debug {
