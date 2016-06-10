@@ -655,6 +655,6 @@ function lobster_access() {
     if [ "$lobster_access_denied" ]; then
       lobster_error "$lobster_access_denied"
     fi
-    lobster_include "failed"
+    lobster_failed
   fi
 }
