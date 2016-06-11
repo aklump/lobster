@@ -32,7 +32,7 @@ lobster_color_default="null"
 lobster_color_bright=0
 
 lobster_color_confirm="1;31"
-lobster_color_notice="grey"
+lobster_color_notice="0;34"
 lobster_color_verbose="grey"
 lobster_color_success="1;32"
 lobster_color_warning="1;33"
