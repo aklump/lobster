@@ -3,13 +3,15 @@
 # @file
 # Handles build processes
 
-if [ ! -d dist ]; then
-  mkdir dist
+test -s $7/dist && rm $7/dist
+
+if [ ! -d $7/dist ]; then
+  mkdir $7/dist
 fi
 
-rsync -a --delete src/ dist/
-cp lobster.info dist/
-cp LICENSE.txt dist/
+rsync -a --delete $7/src/ $7/dist/
+cp lobster.info $7/dist/
+cp LICENSE.txt $7/dist/
 
 # Copy dist onto the example app
 -d $7/example_app/lib/lobster/dist || mkdir -p $7/example_app/lib/lobster/dist
