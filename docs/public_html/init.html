@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>Index</title>
+    <title>Init</title>
     <style type="text/css" media="all">
       @import url("style.css");
     </style>
@@ -18,12 +18,12 @@
 
 </head>
 
-<body class="page-index">
+<body class="page-init">
 <header>
 <div class="pager">
-  <a href="verbose.html" class="prev verbose" >&laquo;Verbose</a>
+  <a href="configuration.html" class="prev configuration" >&laquo;Configuration</a>
   <a href="index.html" class="index">Index</a>
-  <a href="README.html" class="next README">README&raquo;</a>
+  <a href="options.html" class="next options">Options&raquo;</a>
 </div>
 
 </header>
@@ -34,23 +34,19 @@
   </form>
 </div>
 
-<h1>Index</h1>
+<h1>Init</h1>
 <div class="breadcrumb"><a href="index.html">Index</a></div>
 
 <section>
 
-<ul class="index"><li><a href="README.html">README</a></li>
-<li><a href="autoload.html">Autoload</a></li>
-<li><a href="colors.html">Colors</a></li>
-<li><a href="configuration.html">Configuration</a></li>
-<li><a href="init.html">Init</a></li>
-<li><a href="options.html">Options</a></li>
-<li><a href="php.html">Php</a></li>
-<li><a href="routes.html">Routes</a></li>
-<li><a href="structure.html">Structure</a></li>
-<li><a href="themes.html">Themes</a></li>
-<li><a href="vars.html">Vars</a></li>
-<li><a href="verbose.html">Verbose</a></li></ul>
+
+<p>You are encouraged to leverage the init command provided by core, which is meant to bring continuinty to Lobster apps and achieves the following:</p>
+
+<ul>
+<li>calls a pre_init include file if you wish to do something before initialization.</li>
+<li>copies your app's configuration from /install/.appconfig to the directory being initialized</li>
+<li>calls a post_init include file if you wish to do something after initialization.</li>
+</ul>
 </section>
 
 <div class="search__results">
@@ -59,14 +55,14 @@
 
 <footer>
 <div class="pager">
-  <a href="verbose.html" class="prev verbose" >&laquo;Verbose</a>
+  <a href="configuration.html" class="prev configuration" >&laquo;Configuration</a>
   <a href="index.html" class="index">Index</a>
-  <a href="README.html" class="next README">README&raquo;</a>
+  <a href="options.html" class="next options">Options&raquo;</a>
 </div>
 
 
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Thu, 16 Jun 2016 18:24:04 -0700</p>
+    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Thu, 16 Jun 2016 18:24:06 -0700</p>
   </div>
 </footer>
 
@@ -78,3 +74,4 @@ $(document).ready(function() {
 
 </body>
 </html>
+

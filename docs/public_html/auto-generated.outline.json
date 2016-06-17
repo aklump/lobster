@@ -26,46 +26,52 @@
             "sort": 3
         },
         {
+            "id": "init",
+            "title": "Init",
+            "file": "init.md",
+            "sort": 4
+        },
+        {
             "id": "options",
             "title": "Options",
             "file": "options.md",
-            "sort": 4
+            "sort": 5
         },
         {
             "id": "php",
             "title": "Php",
             "file": "php.md",
-            "sort": 5
+            "sort": 6
         },
         {
             "id": "routes",
             "title": "Routes",
             "file": "routes.md",
-            "sort": 6
+            "sort": 7
         },
         {
             "id": "structure",
             "title": "Structure",
             "file": "structure.md",
-            "sort": 7
+            "sort": 8
         },
         {
             "id": "themes",
             "title": "Themes",
             "file": "themes.md",
-            "sort": 8
+            "sort": 9
         },
         {
             "id": "vars",
             "title": "Vars",
             "file": "vars.md",
-            "sort": 9
+            "sort": 10
         },
         {
             "id": "verbose",
             "title": "Verbose",
             "file": "verbose.md",
-            "sort": 10
+            "sort": 11
         }
     ],
     "settings": {
