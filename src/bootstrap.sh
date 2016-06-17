@@ -31,7 +31,7 @@ lobster_core_verbose "Args: ${lobster_args[@]}"
 # Load the configuration for lobster and the app's overrides for lobster
 source "$LOBSTER_ROOT/.lobsterconfig"
 if ! test -e "$LOBSTER_APP_ROOT/.lobsterconfig"; then
-  lobster_failed "Can't boostrap, missing .lobsterconfig in the app root"
+  lobster_failed "Can't bootstrap, missing .lobsterconfig in the app root"
 fi
 source "$LOBSTER_APP_ROOT/.lobsterconfig"
 if [ ! "$lobster_app_config" ]; then
