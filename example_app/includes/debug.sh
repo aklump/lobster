@@ -12,7 +12,7 @@ lobster_color 'green'
 lobster_echo "\$lobster_app_title:" "$lobster_app_title" " "
 lobster_echo "\$lobster_app_name:" "$lobster_app_name" " "
 lobster_echo "\$LOBSTER_PWD:" "$LOBSTER_PWD" " "
-lobster_echo "\$LOBSTER_PWD_ROOT:" "$LOBSTER_PWD_ROOT" " "
+lobster_echo "\$LOBSTER_INSTANCE_ROOT:" "$LOBSTER_INSTANCE_ROOT" " "
 lobster_echo "\$LOBSTER_APP:" "$LOBSTER_APP" " "
 lobster_echo "\$LOBSTER_APP_ROOT:" "$LOBSTER_APP_ROOT" " "
 lobster_echo "\$LOBSTER_ROOT:" "$LOBSTER_ROOT" " "

@@ -4,7 +4,7 @@
 # Handles build processes
 
 # Make sure dist is not a symlink and exists as a folder
-! test -d $7/dist && rm $7/dist
+test -L $7/dist && rm $7/dist
 if [ ! -d $7/dist ]; then
   mkdir $7/dist
 fi
