@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Configuration</title>
+    <style type="text/css" media="all">
+      @import url("style.css");
+    </style>
+    <link href="search/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script src="search/tipuesearch_content.js"></script>
+    <link href="search/tipuesearch.css" rel="stylesheet">
+    <script src="search/tipuesearch_set.js"></script>
+    <script src="search/tipuesearch.min.js"></script>
+
+</head>
+
+<body class="page-configuration">
+<header>
+<div class="pager">
+  <a href="colors.html" class="prev colors" >&laquo;Colors</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="options.html" class="next options">Options&raquo;</a>
+</div>
+
+</header>
+
+<div class="search__wrapper">
+  <form action="search--results.html">
+    <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+  </form>
+</div>
+
+<h1>Configuration</h1>
+<div class="breadcrumb"><a href="index.html">Index</a></div>
+
+<section>
+
+
+<p>There are three layers of configuration that you should consider:</p>
+
+<ol>
+<li>Lobster core.</li>
+<li>Your app's lobster overrides and non-user configuration.</li>
+<li>User configurable settings user defaults.</li>
+<li>User configurable settings instance values.</li>
+</ol>
+
+<p>Lobster core provides default values for a number of variables; this is layer one.</p>
+
+<p>Layer two is a file in the root of your app called <code>.lobsterconfig</code> where you may override Lobster core and add any settings that you do not wish to be visible to users.  Refer to <code>.lobsterconfig</code> in the core for variables you may override.  This file is a required file.</p>
+
+<p>Layer three is the user configuration and should be defined in <code>install/.{app_name}config</code>.  This file is used as a template for the core <code>init</code> path and is also loaded during bootstrap to obtain defaults before reading instance overrides.  The core <code>init</code> command will copy <code>install/.{app_name}config</code> to <code>.{app_name}config</code> in the directory where <code>init</code> was executed.</p>
+
+<p>Also note the the configuration will automatically look for the file <code>~/.{app_name}config</code> (user's home directory) and load it before the instance config file.  This allows users of your app the ability to set their own defaults that preexist an instance defaults.  This is like the <code>.gitconfig</code> file.</p>
+
+<p>In summary configuration automatically loads as follows:</p>
+
+<pre><code>{app root}/lib/lobster/dist/.lobsterconfig
+{app root}/.lobsterconfig
+{app root}/install/.{app_name}config
+~/.{app_name}config
+{instance root}/.{app_name}config
+</code></pre>
+</section>
+
+<div class="search__results">
+  <div id="tipue_search_content"></div>  
+</div>
+
+<footer>
+<div class="pager">
+  <a href="colors.html" class="prev colors" >&laquo;Colors</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="options.html" class="next options">Options&raquo;</a>
+</div>
+
+
+  <div id="footer-legaleeze">
+    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Thu, 16 Jun 2016 17:39:47 -0700</p>
+  </div>
+</footer>
+
+<script>
+$(document).ready(function() {
+  $('#tipue_search_input').tipuesearch();
+});
+</script>
+
+</body>
+</html>
+

@@ -1,5 +1,5 @@
 # Autoload
-The following files are automatically loaded:
+The following files if they exist are automatically loaded:
 
     includes/bootstrap.sh
     includes/bootstrap.php

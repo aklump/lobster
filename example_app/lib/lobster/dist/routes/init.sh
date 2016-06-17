@@ -16,6 +16,6 @@ fi
 
 # Make sure the config directory, if specified exists.
 [ -d $(dirname "$lobster_app_config") ] || mkdir -p $(dirname "$lobster_app_config")
-test -e "$LOBSTER_APP_ROOT/install/.config" && cp "$LOBSTER_APP_ROOT/install/.config" "$lobster_app_config" && lobster_success "Your app has been initialized."
+test -e "$LOBSTER_APP_ROOT/install/.${lobster_app_name}config" && cp "$LOBSTER_APP_ROOT/install/.${lobster_app_name}config" "$lobster_app_config" && lobster_success "Your app has been initialized."
 
 lobster_include "post_init"
