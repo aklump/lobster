@@ -122,6 +122,7 @@ if ! test -e "$LOBSTER_TMPDIR" && ! mkdir "$LOBSTER_TMPDIR"; then
 fi
 
 export LOBSTER_ROOT
+export LOBSTER_APP
 export LOBSTER_APP_ROOT
 export LOBSTER_PWD
 export LOBSTER_PWD_ROOT
