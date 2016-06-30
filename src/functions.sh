@@ -317,18 +317,18 @@ function lobster_exit() {
   # @todo Can't find a way to typecast so arg is a numeric argument.
   case "$1" in
   1)
-    return 1 ;;
+    exit 1 ;;
   2)
-    return 2 ;;
+    exit 2 ;;
   3)
-    return 3 ;;
+    exit 3 ;;
   4)
-    return 4 ;;
+    exit 4 ;;
   5)
-    return 5 ;;
+    exit 5 ;;
   esac
 
-  return 0
+  exit 0
 }
 
 function lobster_show_debug {
