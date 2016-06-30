@@ -310,15 +310,25 @@ function lobster_failed() {
 }
 
 #
-# Prints the footer and exits the script
+# Prints the footer and exits the script with optional exit status 0-5
 function lobster_exit() {
-  local status=0
-  if [ "$1" ]; then
-    status=$((10#$1))
-  fi
   lobster_theme 'footer'
   lobster_include 'shutdown'
-  exit $status
+  # @todo Can't find a way to typecast so arg is a numeric argument.
+  case "$1" in
+  1)
+    return 1 ;;
+  2)
+    return 2 ;;
+  3)
+    return 3 ;;
+  4)
+    return 4 ;;
+  5)
+    return 5 ;;
+  esac
+
+  return 0
 }
 
 function lobster_show_debug {
