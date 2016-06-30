@@ -314,7 +314,7 @@ function lobster_failed() {
 function lobster_exit() {
   local status=0
   if [ "$1" ]; then
-    status=$1
+    status=$((10#$1))
   fi
   lobster_theme 'footer'
   lobster_include 'shutdown'
