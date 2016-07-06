@@ -356,7 +356,9 @@ function lobster_include() {
   # Run the include at the project layer
   if [ -f "$dir/$basename.sh" ]; then
     source "$dir/$basename.sh"
-  fi  
+  elif [ -f "$dir/$basename.php" ]; then
+    $lobster_php "$dir/$basename.php"
+  fi
 }
 
 #
