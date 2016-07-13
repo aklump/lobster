@@ -68,10 +68,7 @@ function lobster_upfind () {
 # @param string $arg
 #
 function lobster_error() {
-  local stash=$lobster_color_current
-  lobster_color 'error'
-  lobster_echo "$1"
-  lobster_color "$stash"
+  lobster_color_echo error "$1"
 }
 
 #
@@ -80,10 +77,7 @@ function lobster_error() {
 # @param string $arg
 #
 function lobster_warning() {
-  local stash=$lobster_color_current
-  lobster_color 'warning'
-  lobster_echo "$1"
-  lobster_color "$stash"
+  lobster_color_echo warning "$1"
 }
 
 #
@@ -92,10 +86,7 @@ function lobster_warning() {
 # @param string $arg
 #
 function lobster_success() {
-  local stash=$lobster_color_current
-  lobster_color 'success'
-  lobster_echo "$1"
-  lobster_color "$stash"
+  lobster_color_echo success "$1"
 }
 
 #
@@ -104,10 +95,7 @@ function lobster_success() {
 # @param string $arg
 #
 function lobster_notice() {
-  local stash=$lobster_color_current
-  lobster_color 'notice'
-  lobster_echo "$1"
-  lobster_color "$stash"
+  lobster_color_echo notice "$1"
 }
 
 #
@@ -176,7 +164,11 @@ function lobster_color() {
 
     'verbose' )
       lobster_color $lobster_color_verbose
-      ;;   
+      ;;
+
+    'info' )
+      lobster_color $lobster_color_info
+      ;;
   esac
 }
 
@@ -249,7 +241,7 @@ function lobster_underline() {
 function lobster_color_echo() {
   local stash=$lobster_current_color
   lobster_color $1
-  lobster_echo ${@:2}
+  lobster_echo "${@:2}"
   lobster_color $stash
 }
 
@@ -773,7 +765,7 @@ function lobster_process_twig() {
   if ! test -e $file; then
     lobster_error "Cannot process non-existent twig file: $file"
   fi
-  source=$(cat $file)
+  source="$(cat $file)"
   while IFS='' read -r line || [[ -n "$line" ]]; do
     data=(${line//,/ })
     find="{{ ${data[0]} }}"
@@ -781,5 +773,5 @@ function lobster_process_twig() {
     source="${source/$find/$replace}"
   done < "$LOBSTER_TMPDIR/twig_vars.csv"
 
-  echo $source
+  echo "$source"
 }
