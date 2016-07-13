@@ -78,6 +78,6 @@ Lobster doesn't care the order of the args, flag or params.  All of the followin
     ...
     
 ## Internal Routes
-Sometimes you may want to call a route within a route; you will use --lobster-quiet to suppress theme output.  Do something like this:
+Sometimes you may want to call a route within a route; you will use --lobster-quiet to suppress theme output.  Do something like this, making sure your cd to the intial directory as needed and shown in the example.  This insures that the environment is the same:
 
-    $LOBSTER_APP {route} -f --lobster-nowrap
+    (cd $LOBSTER_PWD && $LOBSTER_APP {route} -f --lobster-nowrap)

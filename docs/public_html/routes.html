@@ -145,9 +145,9 @@ app --param=value arg1 -abcd  arg2 arg3
 
 <h2>Internal Routes</h2>
 
-<p>Sometimes you may want to call a route within a route; you will use --lobster-quiet to suppress theme output.  Do something like this:</p>
+<p>Sometimes you may want to call a route within a route; you will use --lobster-quiet to suppress theme output.  Do something like this, making sure your cd to the intial directory as needed and shown in the example.  This insures that the environment is the same:</p>
 
-<pre><code>$LOBSTER_APP {route} -f --lobster-nowrap
+<pre><code>(cd $LOBSTER_PWD &amp;&amp; $LOBSTER_APP {route} -f --lobster-nowrap)
 </code></pre>
 </section>
 
@@ -164,7 +164,7 @@ app --param=value arg1 -abcd  arg2 arg3
 
 
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Tue, 05 Jul 2016 17:34:10 -0700</p>
+    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Tue, 12 Jul 2016 17:28:11 -0700</p>
   </div>
 </footer>
 
