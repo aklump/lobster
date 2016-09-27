@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>Init</title>
+    <title>CHANGELOG</title>
     <style type="text/css" media="all">
       @import url("style.css");
     </style>
@@ -18,12 +18,12 @@
 
 </head>
 
-<body class="page-init">
+<body class="page-changelog">
 <header>
 <div class="pager">
-  <a href="hooks_includes.html" class="prev hooks_includes" >&laquo;Hooks Includes</a>
+  <a href="index.html" class="prev index" >&laquo;Index</a>
   <a href="index.html" class="index">Index</a>
-  <a href="options.html" class="next options">Options&raquo;</a>
+  <a href="README.html" class="next README">README&raquo;</a>
 </div>
 
 </header>
@@ -34,19 +34,26 @@
   </form>
 </div>
 
-<h1>Init</h1>
+<h1>CHANGELOG</h1>
 <div class="breadcrumb"><a href="index.html">Index</a></div>
 
 <section>
 
 
-<p>You are encouraged to leverage the init command provided by core, which is meant to bring continuinty to Lobster apps and achieves the following:</p>
+<h2>0.7</h2>
 
 <ul>
-<li>calls a pre_init include file if you wish to do something before initialization.</li>
-<li>copies your app's configuration from /install/.appconfig to the directory being initialized</li>
-<li>calls a post_init include file if you wish to do something after initialization.</li>
+<li><p><strong>Breaking change</strong>, your app controller file must remove these lines:</p>
+
+<p>source "$LOBSTER_APP_ROOT/lib/lobster/dist/bootstrap.sh"
+  lobster_theme 'header'
+  source "$LOBSTER_APP_ROOT/lib/lobster/dist/router.sh"</p></li>
 </ul>
+
+<p>And replace with this line:</p>
+
+<pre><code>source "$LOBSTER_APP_ROOT/lib/lobster/dist/lobster.sh"
+</code></pre>
 </section>
 
 <div class="search__results">
@@ -55,14 +62,14 @@
 
 <footer>
 <div class="pager">
-  <a href="hooks_includes.html" class="prev hooks_includes" >&laquo;Hooks Includes</a>
+  <a href="index.html" class="prev index" >&laquo;Index</a>
   <a href="index.html" class="index">Index</a>
-  <a href="options.html" class="next options">Options&raquo;</a>
+  <a href="README.html" class="next README">README&raquo;</a>
 </div>
 
 
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Tue, 27 Sep 2016 16:02:38 -0700</p>
+    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Tue, 27 Sep 2016 16:02:36 -0700</p>
   </div>
 </footer>
 

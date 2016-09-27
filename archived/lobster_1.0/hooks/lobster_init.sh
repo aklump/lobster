@@ -1,7 +1,7 @@
 source $LOBSTER/core.sh
 
 framework="$LOBSTER/framework"
-location="$LOBSTER_PWD"
+location="$LOBSTER_CWD"
 config_dir="$location/.lobster"
 
 if ! lobster_confirm "Install Lobster Shell in $location"; then

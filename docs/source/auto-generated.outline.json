@@ -2,76 +2,94 @@
     "chapters": [],
     "sections": [
         {
+            "id": "changelog",
+            "title": "CHANGELOG",
+            "file": "CHANGELOG.md",
+            "sort": 0
+        },
+        {
             "id": "readme",
             "title": "README",
             "file": "README.md",
-            "sort": 0
+            "sort": 1
         },
         {
             "id": "autoload",
             "title": "Autoload",
             "file": "autoload.md",
-            "sort": 1
+            "sort": 2
         },
         {
             "id": "colors",
             "title": "Colors",
             "file": "colors.md",
-            "sort": 2
+            "sort": 3
         },
         {
             "id": "configuration",
             "title": "Configuration",
             "file": "configuration.md",
-            "sort": 3
+            "sort": 4
+        },
+        {
+            "id": "hooks_includes",
+            "title": "Hooks Includes",
+            "file": "hooks_includes.md",
+            "sort": 5
         },
         {
             "id": "init",
             "title": "Init",
             "file": "init.md",
-            "sort": 4
+            "sort": 6
         },
         {
             "id": "options",
             "title": "Options",
             "file": "options.md",
-            "sort": 5
+            "sort": 7
         },
         {
             "id": "php",
             "title": "Php",
             "file": "php.md",
-            "sort": 6
+            "sort": 8
         },
         {
             "id": "routes",
             "title": "Routes",
             "file": "routes.md",
-            "sort": 7
+            "sort": 9
+        },
+        {
+            "id": "shell-vs-subshell",
+            "title": "Shell Vs Subshell",
+            "file": "shell-vs-subshell.md",
+            "sort": 10
         },
         {
             "id": "structure",
             "title": "Structure",
             "file": "structure.md",
-            "sort": 8
+            "sort": 11
         },
         {
             "id": "themes",
             "title": "Themes",
             "file": "themes.md",
-            "sort": 9
+            "sort": 12
         },
         {
             "id": "vars",
             "title": "Vars",
             "file": "vars.md",
-            "sort": 10
+            "sort": 13
         },
         {
             "id": "verbose",
             "title": "Verbose",
             "file": "verbose.md",
-            "sort": 11
+            "sort": 14
         }
     ],
     "settings": {

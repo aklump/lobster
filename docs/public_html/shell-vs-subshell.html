@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Shell Vs Subshell</title>
+    <style type="text/css" media="all">
+      @import url("style.css");
+    </style>
+    <link href="search/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script src="search/tipuesearch_content.js"></script>
+    <link href="search/tipuesearch.css" rel="stylesheet">
+    <script src="search/tipuesearch_set.js"></script>
+    <script src="search/tipuesearch.min.js"></script>
+
+</head>
+
+<body class="page-shell-vs-subshell">
+<header>
+<div class="pager">
+  <a href="routes.html" class="prev routes" >&laquo;Routes</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="structure.html" class="next structure">Structure&raquo;</a>
+</div>
+
+</header>
+
+<div class="search__wrapper">
+  <form action="search--results.html">
+    <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+  </form>
+</div>
+
+<h1>Shell Vs Subshell</h1>
+<div class="breadcrumb"><a href="index.html">Index</a></div>
+
+<section>
+
+
+<p>In some cases you will want to run your app in the same shell, rather than a subshell.  Here's what you can do.</p>
+
+<ol>
+<li><p>Create an alias in <code>.bash_profile</code> to your controller file like this:</p>
+
+<pre><code>alias nav=". /path/to/project_nav.sh"
+</code></pre></li>
+<li><p>Add the following function override to your app's <code>functions.sh</code>:</p>
+
+<pre><code>function lobster_route_end() {
+  return 0
+}
+</code></pre></li>
+</ol>
+
+<p>Specifially the project_nav app needs to move a user around in by issuing a <code>cd</code> command.  This is not possible if launched as a subshell. More info:</p>
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/874452/change-current-directory-from-a-script">http://stackoverflow.com/questions/874452/change-current-directory-from-a-script</a></li>
+<li><a href="http://stackoverflow.com/questions/255414/why-doesnt-cd-work-in-a-bash-shell-script">http://stackoverflow.com/questions/255414/why-doesnt-cd-work-in-a-bash-shell-script</a></li>
+</ul>
+</section>
+
+<div class="search__results">
+  <div id="tipue_search_content"></div>  
+</div>
+
+<footer>
+<div class="pager">
+  <a href="routes.html" class="prev routes" >&laquo;Routes</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="structure.html" class="next structure">Structure&raquo;</a>
+</div>
+
+
+  <div id="footer-legaleeze">
+    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Tue, 27 Sep 2016 16:02:39 -0700</p>
+  </div>
+</footer>
+
+<script>
+$(document).ready(function() {
+  $('#tipue_search_input').tipuesearch();
+});
+</script>
+
+</body>
+</html>
+

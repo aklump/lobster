@@ -887,7 +887,7 @@ export LOBSTER="$( cd -P "$( dirname "$source" )" && pwd )"
 ##
  # This is the current working directory from the calling script
  #
-export LOBSTER_PWD=$PWD
+export LOBSTER_CWD=$PWD
 
 ##
  # @var lobster_project

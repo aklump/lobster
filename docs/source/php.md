@@ -1,5 +1,7 @@
 # PHP
-All PHP files need to include this line at the top:
+
+
+For access to functions and the php Lobster framework, all PHP files need to include this line at the top:
 
     <?php
     require_once getenv('LOBSTER_ROOT') . '/bootstrap.php';

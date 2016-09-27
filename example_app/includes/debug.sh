@@ -11,7 +11,7 @@ lobster_echo "DEBUG INFO" "This will only be called if you set lobster_debug=1 i
 lobster_color 'green'
 lobster_echo "\$lobster_app_title:" "$lobster_app_title" " "
 lobster_echo "\$lobster_app_name:" "$lobster_app_name" " "
-lobster_echo "\$LOBSTER_PWD:" "$LOBSTER_PWD" " "
+lobster_echo "\$LOBSTER_CWD:" "$LOBSTER_CWD" " "
 lobster_echo "\$LOBSTER_INSTANCE_ROOT:" "$LOBSTER_INSTANCE_ROOT" " "
 lobster_echo "\$LOBSTER_APP:" "$LOBSTER_APP" " "
 lobster_echo "\$LOBSTER_APP_ROOT:" "$LOBSTER_APP_ROOT" " "

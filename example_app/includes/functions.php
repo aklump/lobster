@@ -6,8 +6,7 @@
  * @return bool
  */
 function never_allow() {
-  @
-    // TODO This has not been finished in lobster
+  // TODO This has not been finished in lobster
     
   # Static failure messages can be set using lobster_access_denied in .lobsterconfig
 

@@ -4,8 +4,8 @@
 | var | description |
 |----------|----------|
 | `$LOBSTER_APP` | The path to the app controller script; use this to call self from within another route. |
-| `$LOBSTER_PWD` | The path from which the script was originally called. |
-| `$LOBSTER_INSTANCE_ROOT` | Path to the root dir above $LOBSTER_PWD with a $lobster_app_config file |
+| `$LOBSTER_CWD` | The path from which the script was originally called. |
+| `$LOBSTER_INSTANCE_ROOT` | Path to the root dir above $LOBSTER_CWD with a $lobster_app_config file |
 | `$LOBSTER_APP_ROOT` | Path to the Lobster app's root, same as $root |
 | `$lobster_app_config` | Filename for app config files, e.g. `.pspconfig`  This is used to locate `LOBSTER_INSTANCE_ROOT` |
 

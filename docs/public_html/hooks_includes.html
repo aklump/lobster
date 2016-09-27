@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>Themes</title>
+    <title>Hooks Includes</title>
     <style type="text/css" media="all">
       @import url("style.css");
     </style>
@@ -18,12 +18,12 @@
 
 </head>
 
-<body class="page-themes">
+<body class="page-hooks_includes">
 <header>
 <div class="pager">
-  <a href="structure.html" class="prev structure" >&laquo;Structure</a>
+  <a href="configuration.html" class="prev configuration" >&laquo;Configuration</a>
   <a href="index.html" class="index">Index</a>
-  <a href="vars.html" class="next vars">Vars&raquo;</a>
+  <a href="init.html" class="next init">Init&raquo;</a>
 </div>
 
 </header>
@@ -34,43 +34,45 @@
   </form>
 </div>
 
-<h1>Themes</h1>
+<h1>Hooks Includes</h1>
 <div class="breadcrumb"><a href="index.html">Index</a></div>
 
 <section>
 
 
-<p>The header and footer will not be output when <code>--lobster-nowrap</code> is present.
-All output is suppressed when <code>--lobster-quite</code> is present.</p>
+<p>A single route will try to call execute the following files, if they exist, in this order.</p>
 
-<h2>File structure</h2>
+<p><code>/includes/</code>
+1. bootstrap.sh
+1. bootstrap.php
+1. functions.sh
+1. functions.php</p>
 
-<p>Given the following file structure:</p>
+<p><em>Now all functions are available, but the route is not yet known. Arguments may be altered, which then alter the route.</em></p>
 
-<pre><code>/default
-  /post
-    header.sh
-  /pre
-    header.sh
-  /tpl
-    header.twig
-</code></pre>
+<ol>
+<li>init.sh</li>
+<li>init.php</li>
+</ol>
 
-<p>And a line in the script reads:</p>
+<p><em>At this point, the route is known.</em></p>
 
-<pre><code>theme "header"
-</code></pre>
+<ol>
+<li>preroute.sh</li>
+<li>preroute.php</li>
+<li>preroute.{route_id}.sh</li>
+<li>preroute.{route_id}.php</li>
+</ol>
 
-<p>Then the following files are called in this order:</p>
+<p><em>Output starts, header is rendered.</em></p>
 
-<pre><code>/default/pre/header.sh
-/default/tpl/header.twig
-/default/post/header.sh
-</code></pre>
+<p><code>/routes/</code>
+1. {route}.sh
+1. {route}.php</p>
 
-<h2>File types</h2>
-
-<p>Only <code>.sh</code> files are supported for pre/post scripts.</p>
+<p><code>/includes/</code>
+1. shutdown.sh
+1. shutdown.php</p>
 </section>
 
 <div class="search__results">
@@ -79,14 +81,14 @@ All output is suppressed when <code>--lobster-quite</code> is present.</p>
 
 <footer>
 <div class="pager">
-  <a href="structure.html" class="prev structure" >&laquo;Structure</a>
+  <a href="configuration.html" class="prev configuration" >&laquo;Configuration</a>
   <a href="index.html" class="index">Index</a>
-  <a href="vars.html" class="next vars">Vars&raquo;</a>
+  <a href="init.html" class="next init">Init&raquo;</a>
 </div>
 
 
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Tue, 27 Sep 2016 16:02:40 -0700</p>
+    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Tue, 27 Sep 2016 16:02:37 -0700</p>
   </div>
 </footer>
 
