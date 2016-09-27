@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.7
+## 2.2
 * **Breaking change**, your app controller file must remove these lines:
 
       source "$LOBSTER_APP_ROOT/lib/lobster/dist/bootstrap.sh"
