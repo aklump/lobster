@@ -40,19 +40,32 @@
 <section>
 
 
-<h2>0.7</h2>
+<h2>2.2</h2>
 
-<ul>
-<li><p><strong>Breaking change</strong>, your app controller file must remove these lines:</p>
+<h3>In the controller file</h3>
 
-<p>source "$LOBSTER_APP_ROOT/lib/lobster/dist/bootstrap.sh"
+<p><strong>Breaking change</strong>, your app controller file must remove these lines:</p>
+
+<pre><code>  source "$LOBSTER_APP_ROOT/lib/lobster/dist/bootstrap.sh"
   lobster_theme 'header'
-  source "$LOBSTER_APP_ROOT/lib/lobster/dist/router.sh"</p></li>
-</ul>
+  source "$LOBSTER_APP_ROOT/lib/lobster/dist/router.sh"
+</code></pre>
 
 <p>And replace with this line:</p>
 
 <pre><code>source "$LOBSTER_APP_ROOT/lib/lobster/dist/lobster.sh"
+</code></pre>
+
+<h3>In php files</h3>
+
+<p><strong>Breaking change</strong>, any php files that previously did this:</p>
+
+<pre><code>require_once getenv('LOBSTER_ROOT') . '/bootstrap.php';
+</code></pre>
+
+<p>No must do this:</p>
+
+<pre><code>require_once getenv('LOBSTER_ROOT') . '/lobster.php';
 </code></pre>
 </section>
 
@@ -69,7 +82,7 @@
 
 
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Tue, 27 Sep 2016 16:02:36 -0700</p>
+    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Tue, 11 Oct 2016 08:26:27 -0700</p>
   </div>
 </footer>
 
