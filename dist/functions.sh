@@ -326,9 +326,10 @@ function lobster_exit() {
 #
 # This function is called at the end of the route.
 #
-# It may need to be chaned to 'return' for some apps.  See docs for more info
+# It may need to be changed to 'return' for some apps.  See docs for more info
 #
 function lobster_route_end() {
+  lobster_set_route_status 0
   lobster_theme 'footer'
   lobster_include 'shutdown'
   exit 0
@@ -358,8 +359,10 @@ function lobster_include() {
 
   # Run the include at the project layer
   if [ -f "$dir/$basename.sh" ]; then
+    lobster_core_verbose "include file: $dir/$basename.sh"
     source "$dir/$basename.sh"
   elif [ -f "$dir/$basename.php" ]; then
+    lobster_core_verbose "include file: $dir/$basename.php"
     $lobster_php "$dir/$basename.php"
   fi
 }
@@ -562,6 +565,28 @@ function lobster_json() {
   json=$json\"debug\"\:$lobster_debug,
   json=$json\"bash\"\:\"$lobster_bash\",
   json=$json\"php\"\:\"$lobster_php\",
+
+  # Pass the colors
+  json=$json\"color_settings\"\:\{
+  snippet=''
+  snippet=$snippet\"escape\":\"\\$lobster_escape_char\",
+  snippet=$snippet\"bright\":\"$lobster_color_bright\",
+  snippet=$snippet\"current\":\"$lobster_color_current\",
+  json=$json${snippet%,}\},
+
+  json=$json\"colors\"\:\{
+  snippet=''
+  snippet=$snippet\"default\":\"$lobster_color_default\",
+  snippet=$snippet\"confirm\":\"$lobster_color_confirm\",
+  snippet=$snippet\"input\":\"$lobster_color_input\",
+  snippet=$snippet\"input_suggestion\":\"$lobster_color_input_suggestion\",
+  snippet=$snippet\"verbose\":\"$lobster_color_verbose\",
+  snippet=$snippet\"info\":\"$lobster_color_info\",
+  snippet=$snippet\"notice\":\"$lobster_color_notice\",
+  snippet=$snippet\"warning\":\"$lobster_color_warning\",
+  snippet=$snippet\"error\":\"$lobster_color_error\",
+  snippet=$snippet\"success\":\"$lobster_color_success\",
+  json=$json${snippet%,}\},
 
   json=$json\"route_extensions\"\:\[
   snippet=''
@@ -824,7 +849,7 @@ function lobster_array_get_shortest_value() {
 #
 # Shift the first element from an array
 #
-# @param string The name of an array; omit the $, your passing a string of the array name, not the array reference!
+# @param string The name of an array; omit the dollar sign, your passing a string of the array name, not the array reference!
 #
 # @code
 #   declare -a my_array=( do re mi )
@@ -834,4 +859,25 @@ function lobster_array_get_shortest_value() {
 function lobster_array_shift() {
   local arrayname=${1:?Array name required}
   eval "$arrayname=( \"\${$arrayname[@]:1}\" )"
+}
+
+#
+# Sets the route status
+#
+# @param int $1 Any non zero value means the route failed.
+#
+function lobster_set_route_status() {
+    echo $1 > "$LOBSTER_TMPDIR/route_status"
+}
+
+#
+#
+# @code
+#   if [ $(lobster_get_route_status) -eq 0 ]; then...
+# @endcode
+#
+function lobster_get_route_status() {
+   status=$(cat "$LOBSTER_TMPDIR/route_status")
+
+   return $status
 }

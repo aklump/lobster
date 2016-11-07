@@ -10,6 +10,10 @@ require_once getenv('LOBSTER_ROOT') . '/functions.php';
 
 global $lobster_conf;
 $lobster_conf = json_decode(getenv('LOBSTER_JSON'));
+
+// TODO This should not be hardcoded, but how to pass in json?
+$lobster_conf->lobster->color_settings->escape = "\033";
+
 $lobster_op = $lobster_conf->app->args[0];
 
 // Now process the app-level includes
