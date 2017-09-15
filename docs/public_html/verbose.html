@@ -1,44 +1,31 @@
-
 <!DOCTYPE html>
 
 <html>
 <head>
-    <title>Verbose</title>
-    <style type="text/css" media="all">
-      @import url("style.css");
-    </style>
-    <link href="search/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
-    <script src="search/tipuesearch_content.js"></script>
-    <link href="search/tipuesearch.css" rel="stylesheet">
-    <script src="search/tipuesearch_set.js"></script>
-    <script src="search/tipuesearch.min.js"></script>
-
+  <title>Verbose flag &#039;-v&#039;</title>
+  <link href="search/tipuesearch.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
 </head>
 
-<body class="page-verbose">
+<body class="page--verbose">
 <header>
-<div class="pager">
-  <a href="vars.html" class="prev vars" >&laquo;Vars</a>
+  <div class="pager">
+  <a href="vars.html" class="prev vars">&laquo;Lobster vars</a>
   <a href="index.html" class="index">Index</a>
-  <a href="index.html" class="next index">Index&raquo;</a>
+  <a href="_tasklist.html" class="next _tasklist"> Tasklist&raquo;</a>
 </div>
-
 </header>
 
-<div class="search__wrapper">
+  <div class="search__wrapper">
   <form action="search--results.html">
-    <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+    <input type="text" class="search-input" name="q" id="tipue_search_input" autocomplete="off" required>
   </form>
 </div>
 
-<h1>Verbose</h1>
-<div class="breadcrumb"><a href="index.html">Index</a></div>
+  <h1>Verbose flag &#039;-v&#039;</h1>
+  <div class="breadcrumb"><a href="index.html">Index</a></div>
 
 <section>
-
 
 <h2><code>lobster_verbose()</code></h2>
 
@@ -61,28 +48,31 @@ source "$LOBSTER_APP_ROOT/lib/lobster/dist/bootstrap.sh"
 </section>
 
 <div class="search__results">
-  <div id="tipue_search_content"></div>  
+  <div id="tipue_search_content"></div>
 </div>
 
 <footer>
-<div class="pager">
-  <a href="vars.html" class="prev vars" >&laquo;Vars</a>
+  <div class="pager">
+  <a href="vars.html" class="prev vars">&laquo;Lobster vars</a>
   <a href="index.html" class="index">Index</a>
-  <a href="index.html" class="next index">Index&raquo;</a>
+  <a href="_tasklist.html" class="next _tasklist"> Tasklist&raquo;</a>
 </div>
-
-
+  
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Mon, 07 Nov 2016 13:30:01 -0800</p>
+    <p class="legaleeze center">Version: 2.2.2 &bull; Last Updated: Thu, 14 Sep 2017 18:24:59 -0700</p>
   </div>
 </footer>
 
-<script>
-$(document).ready(function() {
-  $('#tipue_search_input').tipuesearch();
-});
-</script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="search/tipuesearch_content.js"></script>
+  <script src="search/tipuesearch_set.js"></script>
+  <script src="search/tipuesearch.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#tipue_search_input').tipuesearch();
+    });
+  </script>
+<script src="js/core.js"></script>
 </body>
 </html>
 

@@ -1,0 +1,104 @@
+{
+    "chapters": [],
+    "sections": [
+        {
+            "id": "changelog",
+            "title": "Changelog",
+            "file": "CHANGELOG.md",
+            "sort": 0
+        },
+        {
+            "id": "readme",
+            "title": "Lobster Shell",
+            "file": "README.md",
+            "sort": 1
+        },
+        {
+            "id": "autoload",
+            "title": "Autoload",
+            "file": "autoload.md",
+            "sort": 2
+        },
+        {
+            "id": "colors",
+            "title": "Colors",
+            "file": "colors.md",
+            "sort": 3
+        },
+        {
+            "id": "configuration",
+            "title": "Configuration",
+            "file": "configuration.md",
+            "sort": 4
+        },
+        {
+            "id": "hooks_includes",
+            "title": "Hooks (or includes)",
+            "file": "hooks_includes.md",
+            "sort": 5
+        },
+        {
+            "id": "init",
+            "title": "Core's `init` command",
+            "file": "init.md",
+            "sort": 6
+        },
+        {
+            "id": "options",
+            "title": "Options",
+            "file": "options.md",
+            "sort": 7
+        },
+        {
+            "id": "php",
+            "title": "PHP",
+            "file": "php.md",
+            "sort": 8
+        },
+        {
+            "id": "routes",
+            "title": "Routing",
+            "file": "routes.md",
+            "sort": 9
+        },
+        {
+            "id": "shell-vs-subshell",
+            "title": "Running your app in the same shell",
+            "file": "shell-vs-subshell.md",
+            "sort": 10
+        },
+        {
+            "id": "structure",
+            "title": "Your app's structure",
+            "file": "structure.md",
+            "sort": 11
+        },
+        {
+            "id": "themes",
+            "title": "Themes",
+            "file": "themes.md",
+            "sort": 12
+        },
+        {
+            "id": "vars",
+            "title": "Lobster vars",
+            "file": "vars.md",
+            "sort": 13
+        },
+        {
+            "id": "verbose",
+            "title": "Verbose flag '-v'",
+            "file": "verbose.md",
+            "sort": 14
+        },
+        {
+            "id": "_tasklist",
+            "title": " Tasklist",
+            "file": "_tasklist.md",
+            "sort": 15
+        }
+    ],
+    "settings": {
+        "search": "tipuesearch"
+    }
+}

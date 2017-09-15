@@ -1,45 +1,31 @@
-
 <!DOCTYPE html>
 
 <html>
 <head>
-    <title>Options</title>
-    <style type="text/css" media="all">
-      @import url("style.css");
-    </style>
-    <link href="search/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
-    <script src="search/tipuesearch_content.js"></script>
-    <link href="search/tipuesearch.css" rel="stylesheet">
-    <script src="search/tipuesearch_set.js"></script>
-    <script src="search/tipuesearch.min.js"></script>
-
+  <title>Options</title>
+  <link href="search/tipuesearch.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
 </head>
 
-<body class="page-options">
+<body class="page--options">
 <header>
-<div class="pager">
-  <a href="init.html" class="prev init" >&laquo;Init</a>
+  <div class="pager">
+  <a href="init.html" class="prev init">&laquo;Core&#039;s `init` command</a>
   <a href="index.html" class="index">Index</a>
-  <a href="php.html" class="next php">Php&raquo;</a>
+  <a href="php.html" class="next php">PHP&raquo;</a>
 </div>
-
 </header>
 
-<div class="search__wrapper">
+  <div class="search__wrapper">
   <form action="search--results.html">
-    <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+    <input type="text" class="search-input" name="q" id="tipue_search_input" autocomplete="off" required>
   </form>
 </div>
 
-<h1>Options</h1>
-<div class="breadcrumb"><a href="index.html">Index</a></div>
+  <h1>Options</h1>
+  <div class="breadcrumb"><a href="index.html">Index</a></div>
 
-<section>
-
-<p>These are lobster options that can be passed to all lobster apps.</p>
+<section><p>These are lobster options that can be passed to all lobster apps.</p>
 
 <table>
 <thead>
@@ -66,28 +52,31 @@
 </section>
 
 <div class="search__results">
-  <div id="tipue_search_content"></div>  
+  <div id="tipue_search_content"></div>
 </div>
 
 <footer>
-<div class="pager">
-  <a href="init.html" class="prev init" >&laquo;Init</a>
+  <div class="pager">
+  <a href="init.html" class="prev init">&laquo;Core&#039;s `init` command</a>
   <a href="index.html" class="index">Index</a>
-  <a href="php.html" class="next php">Php&raquo;</a>
+  <a href="php.html" class="next php">PHP&raquo;</a>
 </div>
-
-
+  
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Mon, 07 Nov 2016 13:29:59 -0800</p>
+    <p class="legaleeze center">Version: 2.2.2 &bull; Last Updated: Thu, 14 Sep 2017 18:24:58 -0700</p>
   </div>
 </footer>
 
-<script>
-$(document).ready(function() {
-  $('#tipue_search_input').tipuesearch();
-});
-</script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="search/tipuesearch_content.js"></script>
+  <script src="search/tipuesearch_set.js"></script>
+  <script src="search/tipuesearch.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#tipue_search_input').tipuesearch();
+    });
+  </script>
+<script src="js/core.js"></script>
 </body>
 </html>
 

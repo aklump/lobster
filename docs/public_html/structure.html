@@ -1,44 +1,31 @@
-
 <!DOCTYPE html>
 
 <html>
 <head>
-    <title>Structure</title>
-    <style type="text/css" media="all">
-      @import url("style.css");
-    </style>
-    <link href="search/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
-    <script src="search/tipuesearch_content.js"></script>
-    <link href="search/tipuesearch.css" rel="stylesheet">
-    <script src="search/tipuesearch_set.js"></script>
-    <script src="search/tipuesearch.min.js"></script>
-
+  <title>Your app&#039;s structure</title>
+  <link href="search/tipuesearch.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
 </head>
 
-<body class="page-structure">
+<body class="page--structure">
 <header>
-<div class="pager">
-  <a href="shell-vs-subshell.html" class="prev shell-vs-subshell" >&laquo;Shell Vs Subshell</a>
+  <div class="pager">
+  <a href="shell-vs-subshell.html" class="prev shell-vs-subshell">&laquo;Running your app in the same shell</a>
   <a href="index.html" class="index">Index</a>
   <a href="themes.html" class="next themes">Themes&raquo;</a>
 </div>
-
 </header>
 
-<div class="search__wrapper">
+  <div class="search__wrapper">
   <form action="search--results.html">
-    <input type="text" name="q" id="tipue_search_input" autocomplete="off" required>
+    <input type="text" class="search-input" name="q" id="tipue_search_input" autocomplete="off" required>
   </form>
 </div>
 
-<h1>Structure</h1>
-<div class="breadcrumb"><a href="index.html">Index</a></div>
+  <h1>Your app&#039;s structure</h1>
+  <div class="breadcrumb"><a href="index.html">Index</a></div>
 
 <section>
-
 
 <pre><code>/
 /includes Files used with `lobster_include`
@@ -52,28 +39,31 @@
 </section>
 
 <div class="search__results">
-  <div id="tipue_search_content"></div>  
+  <div id="tipue_search_content"></div>
 </div>
 
 <footer>
-<div class="pager">
-  <a href="shell-vs-subshell.html" class="prev shell-vs-subshell" >&laquo;Shell Vs Subshell</a>
+  <div class="pager">
+  <a href="shell-vs-subshell.html" class="prev shell-vs-subshell">&laquo;Running your app in the same shell</a>
   <a href="index.html" class="index">Index</a>
   <a href="themes.html" class="next themes">Themes&raquo;</a>
 </div>
-
-
+  
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Mon, 07 Nov 2016 13:30:00 -0800</p>
+    <p class="legaleeze center">Version: 2.2.2 &bull; Last Updated: Thu, 14 Sep 2017 18:24:59 -0700</p>
   </div>
 </footer>
 
-<script>
-$(document).ready(function() {
-  $('#tipue_search_input').tipuesearch();
-});
-</script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="search/tipuesearch_content.js"></script>
+  <script src="search/tipuesearch_set.js"></script>
+  <script src="search/tipuesearch.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#tipue_search_input').tipuesearch();
+    });
+  </script>
+<script src="js/core.js"></script>
 </body>
 </html>
 
