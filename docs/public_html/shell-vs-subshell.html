@@ -27,12 +27,14 @@
 
 <section>
 
+<p>Be aware that doing this will suppress some php error messages.</p>
+
 <p>In some cases you will want to run your app in the same shell, rather than a subshell.  Here's what you can do.</p>
 
 <ol>
 <li><p>Create an alias in <code>.bash_profile</code> to your controller file like this:</p>
 
-<pre><code>alias nav="/bin/bash /path/to/project_nav.sh"
+<pre><code>alias nav=". /path/to/project_nav.sh"
 </code></pre></li>
 <li><p>Add the following function override to your app's <code>functions.sh</code>:</p>
 
@@ -62,7 +64,7 @@
 </div>
   
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Thu, 14 Sep 2017 18:27:38 -0700</p>
+    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Thu, 14 Sep 2017 18:36:35 -0700</p>
   </div>
 </footer>
 
