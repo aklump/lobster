@@ -6,4 +6,5 @@ lobster_op=${lobster_args[0]}
 
 lobster_include 'functions'
 lobster_include 'init'
+
 source "$LOBSTER_APP_ROOT/lib/lobster/dist/router.sh"

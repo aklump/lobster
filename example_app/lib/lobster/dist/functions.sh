@@ -660,8 +660,10 @@ function lobster_json() {
   # Begin child: instance
   #
   json=$json\"instance\":{
-  json=$json\"root\"\:\"$LOBSTER_INSTANCE_ROOT\",
-  json=$json\"config\"\:\"$LOBSTER_INSTANCE_ROOT/$lobster_app_config\"
+  if [[ "$LOBSTER_INSTANCE_ROOT" ]]; then
+    json=$json\"root\"\:\"$LOBSTER_INSTANCE_ROOT\",
+    json=$json\"config\"\:\"$LOBSTER_INSTANCE_ROOT/$lobster_app_config\"
+  fi
   json=$json\},
   #
   #

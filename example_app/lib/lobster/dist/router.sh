@@ -41,23 +41,31 @@ for lobster_route_id in "${lobster_suggestions[@]}"; do
     for ext in "${lobster_route_extensions[@]}"; do
       filename=$lobster_route_id.$ext
       if [ -f "$dir/routes/$filename" ]; then
-        lobster_route="$dir/routes/$filename"
+        path_to_route="$dir/routes/$filename"
 
         # This will be consumable by php scripts, et al.
         export LOBSTER_JSON=$(lobster_json)
+
+        if [ "$lobster_logs" ]; then
+         echo $LOBSTER_JSON > "$lobster_logs/runtime.json"
+        fi
+
+
         lobster_include "preroute"
         lobster_include "preroute.$lobster_route_id"
         case $ext in
           'sh' )
             lobster_theme "header"
-            source "$lobster_route"
+            lobster_core_verbose "Loading bash file: $path_to_route"
+            source "$path_to_route"
             lobster_route_end
             return;
             ;;
 
           'php' )
             lobster_theme "header"
-            $lobster_php "$lobster_route"
+            lobster_core_verbose "Loading php file: $path_to_route"
+            $lobster_php "$path_to_route"
             lobster_route_end
             ;;
         esac
