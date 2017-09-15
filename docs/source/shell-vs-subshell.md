@@ -1,10 +1,12 @@
 # Running your app in the same shell
 
+Be aware that doing this will suppress some php error messages.
+
 In some cases you will want to run your app in the same shell, rather than a subshell.  Here's what you can do.
 
 1. Create an alias in `.bash_profile` to your controller file like this:
 
-        alias nav="/bin/bash /path/to/project_nav.sh"
+        alias nav=". /path/to/project_nav.sh"
     
 1. Add the following function override to your app's `functions.sh`: 
 
