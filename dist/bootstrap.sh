@@ -53,8 +53,6 @@ if [ "$lobster_app_config_dir" ]; then
 fi
 # @todo move this to a refreshable function.
 LOBSTER_INSTANCE_ROOT=$(lobster_upfind "$path_to_app_config" && echo $(dirname "$lobster_upfind_dir"))
-lobster_error $path_to_app_config
-lobster_error $lobster_app_config
 
 # Home cannot be used as an instance as it may be the global config
 if [ "$LOBSTER_INSTANCE_ROOT" == "$HOME" ]; then
