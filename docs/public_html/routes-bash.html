@@ -2,17 +2,17 @@
 
 <html>
 <head>
-  <title>Hooks (or includes)</title>
+  <title>BASH Routes</title>
   <link href="search/tipuesearch.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
 </head>
 
-<body class="page--hooks_includes">
+<body class="page--routes-bash">
 <header>
   <div class="pager">
-  <a href="configuration.html" class="prev configuration">&laquo;Configuration</a>
+  <a href="options.html" class="prev options">&laquo;Options</a>
   <a href="index.html" class="index">Index</a>
-  <a href="init.html" class="next init">Core&#039;s `init` command&raquo;</a>
+  <a href="routes-php.html" class="next routes-php">PHP Routes&raquo;</a>
 </div>
 </header>
 
@@ -22,44 +22,42 @@
   </form>
 </div>
 
-  <h1>Hooks (or includes)</h1>
+  <h1>BASH Routes</h1>
   <div class="breadcrumb"><a href="index.html">Index</a></div>
 
 <section>
 
-<p>A single route will try to call execute the following files, if they exist, in this order.</p>
+<p><em>*.sh</em> files placed in the <em>/routes</em> folder constitute BASH routes.  These are shell scripts that are called when a user of your app calls a route by the basename of the shell script.  For example:</p>
 
-<p><code>/includes/</code>
-1. bootstrap.sh
-1. bootstrap.php
-1. functions.sh
-1. functions.php</p>
+<pre><code>$ ./example_app.sh bash do re mi -a --speed=10
+</code></pre>
 
-<p><em>Now all functions are available, but the route is not yet known. Arguments may be altered, which then alter the route.</em></p>
+<p>The shell script <em>routes/bash.sh</em> will be called.</p>
 
-<ol>
-<li>init.sh</li>
-<li>init.php</li>
-</ol>
+<p>Refer to <em>example_app/routes/bash.sh</em> to learn more.</p>
 
-<p><em>At this point, the route is known.</em></p>
+<h2>Bootstrapped Files</h2>
+
+<p>The following files (if they exist) are automatically bootstrapped for each bash route file:</p>
 
 <ol>
-<li>preroute.sh</li>
-<li>preroute.php</li>
-<li>preroute.{route_id}.sh</li>
-<li>preroute.{route_id}.php</li>
+<li><em>lib/lobster/dist/functions.sh</em></li>
+<li><em>includes/bootstrap.sh</em></li>
+<li><em>includes/functions.sh</em></li>
 </ol>
 
-<p><em>Output starts, header is rendered.</em></p>
+<h2>Variables</h2>
 
-<p><code>/routes/</code>
-1. {route}.sh
-1. {route}.php</p>
+<p>To see the variables available to your scripts call:</p>
 
-<p><code>/includes/</code>
-1. shutdown.sh
-1. shutdown.php</p>
+<pre><code>$ ./example_app.sh show vars
+</code></pre>
+
+<p>This is a core route and works in any app.</p>
+
+<h2>Handling Errors</h2>
+
+<p>TBD</p>
 </section>
 
 <div class="search__results">
@@ -68,9 +66,9 @@
 
 <footer>
   <div class="pager">
-  <a href="configuration.html" class="prev configuration">&laquo;Configuration</a>
+  <a href="options.html" class="prev options">&laquo;Options</a>
   <a href="index.html" class="index">Index</a>
-  <a href="init.html" class="next init">Core&#039;s `init` command&raquo;</a>
+  <a href="routes-php.html" class="next routes-php">PHP Routes&raquo;</a>
 </div>
   
   <div id="footer-legaleeze">

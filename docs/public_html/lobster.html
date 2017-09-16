@@ -2,17 +2,17 @@
 
 <html>
 <head>
-  <title>PHP</title>
+  <title>API Functions</title>
   <link href="search/tipuesearch.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
 </head>
 
-<body class="page--php">
+<body class="page--lobster">
 <header>
   <div class="pager">
-  <a href="options.html" class="prev options">&laquo;Options</a>
+  <a href="init.html" class="prev init">&laquo;Core&#039;s `init` command</a>
   <a href="index.html" class="index">Index</a>
-  <a href="routes.html" class="next routes">Routing&raquo;</a>
+  <a href="options.html" class="next options">Options&raquo;</a>
 </div>
 </header>
 
@@ -22,22 +22,12 @@
   </form>
 </div>
 
-  <h1>PHP</h1>
+  <h1>API Functions</h1>
   <div class="breadcrumb"><a href="index.html">Index</a></div>
 
 <section>
 
-<p>For access to functions and the php Lobster framework, all PHP files need to include this line at the top:</p>
-
-<pre><code>&lt;?php
-require_once getenv('LOBSTER_ROOT') . '/bootstrap.php';
-</code></pre>
-
-<p>This line will cause the Lobster PHP functions to be loaded as well as these files in your app, if they exist.</p>
-
-<pre><code>includes/bootstrap.php
-includes/functions.php
-</code></pre>
+<p>The functions that lobster provides are organized by intention in the folder <em>dist/api/</em>.  Any functions therein may be used in your applications.</p>
 </section>
 
 <div class="search__results">
@@ -46,13 +36,13 @@ includes/functions.php
 
 <footer>
   <div class="pager">
-  <a href="options.html" class="prev options">&laquo;Options</a>
+  <a href="init.html" class="prev init">&laquo;Core&#039;s `init` command</a>
   <a href="index.html" class="index">Index</a>
-  <a href="routes.html" class="next routes">Routing&raquo;</a>
+  <a href="options.html" class="next options">Options&raquo;</a>
 </div>
   
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 1.0 &bull; Last Updated: Thu, 14 Sep 2017 18:36:35 -0700</p>
+    <p class="legaleeze center">Version: 3.0 &bull; Last Updated: Sat, 16 Sep 2017 13:34:18 -0700</p>
   </div>
 </footer>
 
