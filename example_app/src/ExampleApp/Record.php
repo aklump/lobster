@@ -1,5 +1,7 @@
 <?php
 
+namespace ExampleApp;
+
 class Record {
 
     public function getId()

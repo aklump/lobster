@@ -1,0 +1,12 @@
+{
+    "name": "aklump/lobster",
+    "require": {
+        "twig/twig": "^2.4"
+    },
+    "authors": [
+        {
+            "name": "Aaron Klump",
+            "email": "sourcecode@intheloftstudios.com"
+        }
+    ]
+}

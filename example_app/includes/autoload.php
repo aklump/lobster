@@ -2,7 +2,7 @@
 /**
  * @file Autoloading for all routes
  */
-require __DIR__ . '/../vendor/autoload.php';
+require $LOBSTER_APP_ROOT . '/vendor/autoload.php';
 
 //
 //

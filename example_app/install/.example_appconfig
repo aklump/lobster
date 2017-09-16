@@ -1,0 +1,4 @@
+#!/bin/bash
+#
+# @file
+# Your app's default configuration file; this is installed in an app instance during during init (if using core's init route).
