@@ -15,16 +15,16 @@ lobster_app_name="example_app"
 lobster_app_title="A Lobster App Example"
 
 # This is used for the app's config filename.
-lobster_app_config=".{$lobster_app_name}config"
+lobster_app_config=".$lobster_app_nameconfig"
 
 lobster_app_config_dir=""
 
 # If you wish to use a directory for init and config, enter it's name here, otherwise the configuration will be a single file.
-#lobster_app_config_dir=".{$lobster_app_name}"
+#lobster_app_config_dir=".$lobster_app_name"
 
 # @todo Make this work
 # It can also specific a file within a folder relative to the working directory. But the upfind function does not yet work on this.
-#lobster_app_config=".{$lobster_app_name}/config"
+#lobster_app_config=".$lobster_app_name/config"
 
 # The default route when no arguments present
 lobster_default_route="help"
@@ -48,7 +48,7 @@ lobster_color_bright=0
 lobster_color_confirm="1;31"
 lobster_color_input="0;34"
 lobster_color_input_suggestion="0;33"
-lobster_color_verbose="grey"
+lobster_color_verbose="0;30"
 lobster_color_info="0;37"
 lobster_color_notice="0;34"
 lobster_color_warning="1;33"
@@ -76,3 +76,12 @@ lobster_logs=""
 
 # The message to output when lobster_access fails.
 lobster_access_denied="Access Denied"
+
+# Format used by date() to represent the date.
+lobster_format_date="%B %_d, %Y"
+
+# Format used by date() to represent the datetime.
+lobster_format_datetime="%Y-%m-%dT%H:%M:%S%z"
+
+# Format used by date() to represent the time.
+lobster_format_time="%s"

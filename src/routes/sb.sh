@@ -1,14 +1,6 @@
-# declare -a array=("e" "do" "re" "e")
-# if lobster_in_array ${array[@]}; then
-#   echo "found"
-# fi
-
-# needle="do"
-# haystack=("do" "re" "e")
-# array=($needle "${haystack[@]}")
-# if lobster_in_array ${array[@]}; then
-#   echo "found"
-# fi
+#!/usr/bin/env bash
+#
+# Examples of all output functions
 
 lobster_theme "hr"
 echo do re mi fa

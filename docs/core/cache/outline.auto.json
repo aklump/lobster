@@ -14,33 +14,33 @@
             "sort": 1
         },
         {
-            "id": "autoload",
-            "title": "Autoload",
-            "file": "autoload.md",
-            "sort": 2
-        },
-        {
             "id": "colors",
             "title": "Colors",
             "file": "colors.md",
-            "sort": 3
+            "sort": 2
         },
         {
             "id": "configuration",
             "title": "Configuration",
             "file": "configuration.md",
-            "sort": 4
+            "sort": 3
         },
         {
             "id": "hooks_includes",
             "title": "Hooks (or includes)",
             "file": "hooks_includes.md",
-            "sort": 5
+            "sort": 4
         },
         {
             "id": "init",
             "title": "Core's `init` command",
             "file": "init.md",
+            "sort": 5
+        },
+        {
+            "id": "lobster",
+            "title": "API Functions",
+            "file": "lobster.md",
             "sort": 6
         },
         {
@@ -50,27 +50,27 @@
             "sort": 7
         },
         {
-            "id": "php",
-            "title": "PHP",
-            "file": "php.md",
+            "id": "routes-bash",
+            "title": "BASH Routes",
+            "file": "routes-bash.md",
             "sort": 8
+        },
+        {
+            "id": "routes-php",
+            "title": "PHP Routes",
+            "file": "routes-php.md",
+            "sort": 9
         },
         {
             "id": "routes",
             "title": "Routing",
             "file": "routes.md",
-            "sort": 9
+            "sort": 10
         },
         {
             "id": "shell-vs-subshell",
             "title": "Running your app in the same shell",
             "file": "shell-vs-subshell.md",
-            "sort": 10
-        },
-        {
-            "id": "structure",
-            "title": "Your app's structure",
-            "file": "structure.md",
             "sort": 11
         },
         {

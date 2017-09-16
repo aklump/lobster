@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>PHP Routes</title>
+  <link href="search/tipuesearch.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body class="page--routes-php">
+<header>
+  <div class="pager">
+  <a href="routes-bash.html" class="prev routes-bash">&laquo;BASH Routes</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="routes.html" class="next routes">Routing&raquo;</a>
+</div>
+</header>
+
+  <div class="search__wrapper">
+  <form action="search--results.html">
+    <input type="text" class="search-input" name="q" id="tipue_search_input" autocomplete="off" required>
+  </form>
+</div>
+
+  <h1>PHP Routes</h1>
+  <div class="breadcrumb"><a href="index.html">Index</a></div>
+
+<section>
+
+<p><em>*.php</em> files placed in the <em>/routes</em> folder constitute PHP routes.  These are php scripts that are called when a user of your app calls a route by the basename of the php script.  For example:</p>
+
+<pre><code>$ ./example_app.php php do re mi -a --speed=10
+</code></pre>
+
+<p>The shell script <em>routes/php.php</em> will be called.</p>
+
+<p>Refer to <em>example_app/routes/php.php</em> to learn more.</p>
+
+<h2>Autoload</h2>
+
+<p>Create a file <em>includes/autoload.php</em> for autoload functions.  This example assumes the use of composer.</p>
+
+<pre><code>&lt;?php
+// file: includes/autoload.php
+require __DIR__ . '/../vendor/autoload.php';
+</code></pre>
+
+<h2>Using Composer</h2>
+
+<p>The Example App uses composer for dependencies; refer to it on how to set up your project with Composer.</p>
+
+<h2>App Functions</h2>
+
+<p>To define php functions used by your app create the file <em>includes/functions.php</em>.  In it place all function definitions.</p>
+
+<h2>Variables</h2>
+
+<p>To see the variables available to your scripts call:</p>
+
+<pre><code>$ ./example_app.php show phpvars
+</code></pre>
+
+<p>This is a core route and works in any app.</p>
+
+<h2>Output</h2>
+
+<p>Use <code>lobster_echo()</code> to write output.</p>
+
+<h2>Error Handling</h2>
+
+<ul>
+<li>PHP Route files should throw exceptions on error; do not catch them.  Lobster will catch the errors and write them to a file called <code>exceptions.txt</code> when file logging is enabled. And to the screen when <code>--lobster-debug</code> is enabled.</li>
+<li>To enable file logging edit <em>.lobsterconfig</em>.</li>
+<li><p>Except for route files, you must boostrap lobster with the following at the top of php files.</p>
+
+<pre><code>&lt;?php
+require_once getenv('LOBSTER_ROOT') . '/bootstrap.php';
+</code></pre></li>
+</ul>
+
+<p>This line will cause the Lobster PHP functions to be loaded as well as these files in your app, if they exist.</p>
+
+<pre><code>includes/bootstrap.php
+includes/functions.php
+</code></pre>
+</section>
+
+<div class="search__results">
+  <div id="tipue_search_content"></div>
+</div>
+
+<footer>
+  <div class="pager">
+  <a href="routes-bash.html" class="prev routes-bash">&laquo;BASH Routes</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="routes.html" class="next routes">Routing&raquo;</a>
+</div>
+  
+  <div id="footer-legaleeze">
+    <p class="legaleeze center">Version: 3.0 &bull; Last Updated: Sat, 16 Sep 2017 13:44:35 -0700</p>
+  </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="search/tipuesearch_content.js"></script>
+  <script src="search/tipuesearch_set.js"></script>
+  <script src="search/tipuesearch.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#tipue_search_input').tipuesearch();
+    });
+  </script>
+<script src="js/core.js"></script>
+</body>
+</html>
+

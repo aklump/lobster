@@ -3,34 +3,48 @@
  * @file
  * An example of a route using a php handler
  */
-require_once getenv('LOBSTER_ROOT') . '/lobster.php';
 
-try {
-    if ($error) {
-        throw new \Exception('An error occurred.');
-    }
+lobster_color('white');
+lobster_echo('Here is a contextual info from your command line:');
+lobster_echo();
 
-    // ... provide the route service, throw an exception if it fails ...
-    array_shift($argv);
-    $op = array_shift($argv);
-    if (($json = getenv('LOBSTER_JSON'))) {
-        $json = json_decode($json);
-    }
+lobster_color_echo('cyan', "The operation is $lobster_op.");
 
-    $output = array();
-    $output[] = "This is a PHP handler";
-    $output[] = "The operation is " . $json->app->op;
-    $output[] = "You called with arguments: " . implode(', ', $json->app->args);
-    $output[] = '';
-    $output[] = "PHP scripts have access to a JSON string with lots of data in it, a global BASH";
-    $output[] = "variable, \$LOBSTER_JSON, which decodes like this:";
-    $output[] = '';
-    $output[] = print_r($json, TRUE);
-    $output[] = '';
+lobster_color('pink');
+lobster_echo("You called with arguments: " . implode(', ', $lobster_args));
 
-    lobster_success(implode(PHP_EOL, $output));
-
-} catch (\Exception $exception) {
-    lobster_error($exception->getMessage());
-    lobster_exit();
+// This is how we tell if a flag was used.
+if (lobster_has_flag('o')) {
+    lobster_echo("You called this with the 'o' flag.");
 }
+else {
+    lobster_color('yellow');
+    lobster_echo("Try including the flag '-o' next time you call this.");
+}
+
+// This is how we check the value of a param
+if (lobster_has_param('size')) {
+    $size = lobster_get_param('size');
+    lobster_echo("You have specified a parameter 'size' of '$size'.");
+}
+else {
+    lobster_color_echo('yellow', "Try including the parameter '--size=large' next time.");
+}
+
+lobster_echo();
+
+// An example of using the default value for a parameter
+$color = lobster_get_param('color', 'white');
+if ($color) {
+    lobster_color($color);
+}
+if (!lobster_has_param('color')) {
+    lobster_color_echo('yellow', 'Try passing --color=red');
+    lobster_echo();
+}
+
+lobster_echo("Here is some nifty info:");
+lobster_echo("  * Today is: " . lobster_date());
+lobster_echo("  * Current timestamp: " . lobster_time());
+lobster_echo("  * Current datetime is: " . lobster_datetime());
+lobster_echo();

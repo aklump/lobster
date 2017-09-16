@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>BASH Routes</title>
+  <link href="search/tipuesearch.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body class="page--routes-bash">
+<header>
+  <div class="pager">
+  <a href="options.html" class="prev options">&laquo;Options</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="routes-php.html" class="next routes-php">PHP Routes&raquo;</a>
+</div>
+</header>
+
+  <div class="search__wrapper">
+  <form action="search--results.html">
+    <input type="text" class="search-input" name="q" id="tipue_search_input" autocomplete="off" required>
+  </form>
+</div>
+
+  <h1>BASH Routes</h1>
+  <div class="breadcrumb"><a href="index.html">Index</a></div>
+
+<section>
+
+<p><em>*.sh</em> files placed in the <em>/routes</em> folder constitute BASH routes.  These are shell scripts that are called when a user of your app calls a route by the basename of the shell script.  For example:</p>
+
+<pre><code>$ ./example_app.sh bash do re mi -a --speed=10
+</code></pre>
+
+<p>The shell script <em>routes/bash.sh</em> will be called.</p>
+
+<p>Refer to <em>example_app/routes/bash.sh</em> to learn more.</p>
+
+<h2>Bootstrapped Files</h2>
+
+<p>The following files (if they exist) are automatically bootstrapped for each bash route file:</p>
+
+<ol>
+<li><em>lib/lobster/dist/functions.sh</em></li>
+<li><em>includes/bootstrap.sh</em></li>
+<li><em>includes/functions.sh</em></li>
+</ol>
+
+<h2>Variables</h2>
+
+<p>To see the variables available to your scripts call:</p>
+
+<pre><code>$ ./example_app.sh show vars
+</code></pre>
+
+<p>This is a core route and works in any app.</p>
+
+<h2>Handling Errors</h2>
+
+<p>TBD</p>
+</section>
+
+<div class="search__results">
+  <div id="tipue_search_content"></div>
+</div>
+
+<footer>
+  <div class="pager">
+  <a href="options.html" class="prev options">&laquo;Options</a>
+  <a href="index.html" class="index">Index</a>
+  <a href="routes-php.html" class="next routes-php">PHP Routes&raquo;</a>
+</div>
+  
+  <div id="footer-legaleeze">
+    <p class="legaleeze center">Version: 3.0 &bull; Last Updated: Sat, 16 Sep 2017 13:44:35 -0700</p>
+  </div>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="search/tipuesearch_content.js"></script>
+  <script src="search/tipuesearch_set.js"></script>
+  <script src="search/tipuesearch.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#tipue_search_input').tipuesearch();
+    });
+  </script>
+<script src="js/core.js"></script>
+</body>
+</html>
+

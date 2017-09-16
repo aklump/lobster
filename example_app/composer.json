@@ -1,0 +1,12 @@
+{
+    "name": "aklump/lobster",
+    "description": "An example app created with Lobster.",
+    "type": "project",
+    "license": "BSD",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}

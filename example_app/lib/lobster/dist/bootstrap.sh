@@ -13,20 +13,22 @@ LOBSTER_ROOT="$( cd -P "$( dirname "$source" )" && pwd )"
 lobster_php=$(which php)
 lobster_bash=$(which bash)
 
-# Load all our functions.
+# Load all our functions files.
+source "$LOBSTER_ROOT/api/arrays.sh"
+source "$LOBSTER_ROOT/api/control.sh"
+source "$LOBSTER_ROOT/api/input.sh"
+source "$LOBSTER_ROOT/api/output.sh"
+source "$LOBSTER_ROOT/api/strings.sh"
+source "$LOBSTER_ROOT/api/utilities.sh"
 source "$LOBSTER_ROOT/functions.sh"
 
 # Sort out the args, flags and params.
-lobster_get_flags "${@}"
-declare -a lobster_flags=("${lobster_get_flags_return[@]}")
-lobster_get_params "${@}"
-declare -a lobster_params=("${lobster_get_params_return[@]}")
-lobster_get_args "${@}"
-declare -a lobster_args=("${lobster_get_args_return[@]}")
-
-lobster_core_verbose "Flags: ${lobster_flags[@]}"
-lobster_core_verbose "Params: ${lobster_params[@]}"
-lobster_core_verbose "Args: ${lobster_args[@]}"
+_lobster_get_flags "${@}"
+declare -a lobster_flags=("${_lobster_get_flags_return[@]}")
+_lobster_get_params "${@}"
+declare -a lobster_params=("${_lobster_get_params_return[@]}")
+_lobster_get_args "${@}"
+declare -a lobster_args=("${_lobster_get_args_return[@]}")
 
 # Load the configuration for lobster and the app's overrides for lobster
 source "$LOBSTER_ROOT/.lobsterconfig"
@@ -142,20 +144,23 @@ LOBSTER_CWD_ROOT="$LOBSTER_INSTANCE_ROOT"
 LOBSTER_PWD="$LOBSTER_CWD"
 LOBSTER_PWD_ROOT="$LOBSTER_CWD_ROOT"
 
+# We export these variables specifically for the PHP side of things.
+declare -xr LOBSTER_ROOT=$LOBSTER_ROOT
+
 # These are active
-export LOBSTER_USER
-export LOBSTER_ROOT
-export LOBSTER_APP
-export LOBSTER_APP_ROOT
-export LOBSTER_CWD
-export LOBSTER_INSTANCE_ROOT
-export LOBSTER_TMPDIR
-export LOBSTER_APP_TMPDIR
+#export LOBSTER_USER
+
+#export LOBSTER_APP
+#export LOBSTER_APP_ROOT
+#export LOBSTER_CWD
+#export LOBSTER_INSTANCE_ROOT
+#export LOBSTER_TMPDIR
+#export LOBSTER_APP_TMPDIR
 
 # Legacy vars, will deprecate
-export LOBSTER_PWD
-export LOBSTER_PWD_ROOT
-export LOBSTER_CWD_ROOT
+#export LOBSTER_PWD
+#export LOBSTER_PWD_ROOT
+#export LOBSTER_CWD_ROOT
 
 # Run the app's config at the last moment to maximum variable access.
 
@@ -163,4 +168,24 @@ lobster_load_config "$path_to_app_config"
 
 # Bootstrap the project layer
 lobster_op=${lobster_args[0]}
+lobster_args=("${lobster_args[@]:1}")
+
+#
+#
+# Add in some additional variables
+#
+lobster_core_verbose_prefix="L: "
+lobster_t_include_found=""
+lobster_t_include_missing="(MISSING) "
+
+#
+#
+# Begin possible core verbose output
+#
+lobster_core_verbose "<meta>"
+lobster_core_verbose "FLAGS: ${lobster_flags[@]}"
+lobster_core_verbose "PARAMS: ${lobster_params[@]}"
+lobster_core_verbose "ARGS: ${lobster_args[@]}"
+lobster_core_verbose "</meta>"
+
 lobster_include 'bootstrap'

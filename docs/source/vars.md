@@ -1,5 +1,7 @@
 # Lobster vars
 
+To see a full list of bash variables hit the following route: `show vars` in any lobster app.
+
 ## Your app
 | var | description |
 |----------|----------|
