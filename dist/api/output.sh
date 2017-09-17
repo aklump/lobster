@@ -252,12 +252,28 @@ function lobster_theme() {
 
   # Load the file content.
   if [ -f "$source" ]; then
+
+    # Capture to our lobster var
+    lobster_theme_source="$source"
+
+    # Make a verbose note about including this file
     include=$(lobster_app_relative_path $source)
     local stash=$lobster_color_current
     lobster_core_verbose "$lobster_t_include_found$include"
     lobster_color_current=$stash
-    lobster_theme_source="$source"
-    output=$(cat "$source")
+
+    case $ext in
+    twig)
+        path=$(lobster_app_relative_path $lobster_theme_source)
+        output=$($lobster_php "$LOBSTER_ROOT/twig_runner.php" "$lobster_theme_source")
+        ;;
+    txt)
+        output=$(cat "$lobster_theme_source")
+        ;;
+    esac
+
+
+
     if [ "$output" ]; then
       lobster_echo "$output"
     fi

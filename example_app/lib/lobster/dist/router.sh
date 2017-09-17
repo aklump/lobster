@@ -101,15 +101,10 @@ for lobster_route_id in "${lobster_suggestions[@]}"; do
         fi
         lobster_include "preroute"
         lobster_include "preroute.$lobster_route_id"
-        output="$(lobster_theme $lobster_route)"
 
-        case $ext in
-          'twig' )
-            # @todo process the twig file
-            ;;
-        esac
+        # Make the output
         lobster_theme 'header'
-        echo "$output"
+        lobster_theme "$lobster_route"
         lobster_route_end
       fi
     done

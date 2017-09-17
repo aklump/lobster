@@ -3,3 +3,4 @@ docs/kit
 /dist/vendor
 /new/lib/lobster/dist/vendor
 /example_app/lib/lobster/dist/vendor/
+/example_app/vendor

@@ -295,3 +295,29 @@ function _lobster_echo_array($vars)
 {
     lobster_echo(print_r($vars));
 }
+
+/**
+ * Cache a value for later retrieval.
+ *
+ * This is how you can pass values from one PHP process to another, say from a
+ * template to a route file.
+ *
+ * @param      $cache_id
+ * @param null $value
+ *
+ * @return mixed|null
+ */
+function lobster_cache($cache_id, $value = null)
+{
+    global $LOBSTER_APP_TMPDIR;
+    if (func_num_args() === 1) {
+        $value = file_get_contents($LOBSTER_APP_TMPDIR . "/$cache_id.json");
+
+        return $value ? unserialize($value) : null;
+    }
+    else {
+        $value = serialize($value);
+        file_put_contents($LOBSTER_APP_TMPDIR . "/$cache_id.json", $value);
+    }
+}
+
