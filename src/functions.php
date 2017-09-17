@@ -267,7 +267,7 @@ function lobster_echo_core_variables()
 {
     $vars = lobster_get_core_variables();
     unset($vars['lobster_conf']);
-    _lobster_echo_array($vars);
+    lobster_echo_array($vars);
 }
 
 function lobster_get_app_variables()
@@ -287,13 +287,13 @@ function lobster_echo_app_variables()
 {
     $vars = lobster_get_app_variables();
     unset($vars['lobster_conf']);
-    _lobster_echo_array($vars);
+    lobster_echo_array($vars);
 
 }
 
-function _lobster_echo_array($vars)
+function lobster_echo_array($vars)
 {
-    lobster_echo(print_r($vars));
+    lobster_echo(print_r($vars, true));
 }
 
 /**

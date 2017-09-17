@@ -19,6 +19,8 @@ $lobster['lobster_escape_char'] = stripcslashes($lobster['lobster_escape_char'])
 $lobster['lobster_route_extensions'] = explode(' ', $lobster['lobster_route_extensions']);
 $lobster['lobster_args'] = explode(' ', $lobster['lobster_args']);
 $lobster['lobster_flags'] = explode(' ', $lobster['lobster_flags']);
+$lobster['lobster_app_routes'] = explode(' ', $lobster['lobster_app_routes']);
+$lobster['lobster_core_routes'] = explode(' ', $lobster['lobster_core_routes']);
 
 if ($lobster['lobster_params']) {
     $temp = explode(' ', $lobster['lobster_params']);

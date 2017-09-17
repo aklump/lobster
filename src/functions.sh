@@ -165,6 +165,7 @@ function lobster_env() {
     printf '"lobster_app_config":"%s",' $lobster_app_config
     printf '"lobster_app_config_dir":"%s",' $lobster_app_config_dir
     printf '"lobster_app_name":"%s",' $lobster_app_name
+    printf '"lobster_app_routes":"%s",' "$(lobster_app_routes)"
     printf '"lobster_app_title":"%s",' $lobster_app_title
     printf '"lobster_args":"%s",' "${lobster_args[*]}"
     printf '"lobster_bash":"%s",' $lobster_bash
@@ -180,6 +181,7 @@ function lobster_env() {
     printf '"lobster_color_success":"%s",' $lobster_color_success
     printf '"lobster_color_verbose":"%s",' $lobster_color_verbose
     printf '"lobster_color_warning":"%s",' $lobster_color_warning
+    printf '"lobster_core_routes":"%s",' "$(lobster_core_routes)"
     printf '"lobster_core_verbose_prefix":"%s",' "$lobster_core_verbose_prefix"
     printf '"lobster_debug":"%s",' $lobster_debug
     printf '"lobster_default_route":"%s",' $lobster_default_route
@@ -221,4 +223,30 @@ function lobster_env() {
 function lobster_function_exists() {
   declare -f -F $1 > /dev/null
   return $?
+}
+
+function lobster_app_routes() {
+    declare -a local routes=();
+
+    arr=($LOBSTER_APP_ROOT/routes/*)
+    for ((i=0; i<${#arr[@]}; i++)); do
+        #do something to each element of array
+        s="${arr[$i]}"
+        s=${s##*/}
+        routes=("${routes[@]}" "${s%.*}")
+    done
+
+    echo "${routes[@]}"
+}
+
+function lobster_core_routes() {
+    declare -a local routes=();
+    arr=($LOBSTER_ROOT/routes/*)
+    for ((i=0; i<${#arr[@]}; i++)); do
+        s="${arr[$i]}"
+        s=${s##*/}
+        routes=("${routes[@]}" "${s%.*}")
+    done
+
+    echo "${routes[@]}"
 }
