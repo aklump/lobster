@@ -3,44 +3,44 @@
     "sections": [
         {
             "id": "changelog",
-            "title": "CHANGELOG",
+            "title": "Changelog",
             "file": "CHANGELOG.md",
             "sort": 0
         },
         {
             "id": "readme",
-            "title": "README",
+            "title": "Lobster Shell",
             "file": "README.md",
             "sort": 1
-        },
-        {
-            "id": "autoload",
-            "title": "Autoload",
-            "file": "autoload.md",
-            "sort": 2
         },
         {
             "id": "colors",
             "title": "Colors",
             "file": "colors.md",
-            "sort": 3
+            "sort": 2
         },
         {
             "id": "configuration",
             "title": "Configuration",
             "file": "configuration.md",
-            "sort": 4
+            "sort": 3
         },
         {
             "id": "hooks_includes",
-            "title": "Hooks Includes",
+            "title": "Hooks (or includes)",
             "file": "hooks_includes.md",
-            "sort": 5
+            "sort": 4
         },
         {
             "id": "init",
-            "title": "Init",
+            "title": "Core's `init` command",
             "file": "init.md",
+            "sort": 5
+        },
+        {
+            "id": "lobster",
+            "title": "API Functions",
+            "file": "lobster.md",
             "sort": 6
         },
         {
@@ -50,27 +50,27 @@
             "sort": 7
         },
         {
-            "id": "php",
-            "title": "Php",
-            "file": "php.md",
+            "id": "routes-bash",
+            "title": "BASH Routes",
+            "file": "routes-bash.md",
             "sort": 8
         },
         {
-            "id": "routes",
-            "title": "Routes",
-            "file": "routes.md",
+            "id": "routes-php",
+            "title": "PHP Routes",
+            "file": "routes-php.md",
             "sort": 9
         },
         {
-            "id": "shell-vs-subshell",
-            "title": "Shell Vs Subshell",
-            "file": "shell-vs-subshell.md",
+            "id": "routes",
+            "title": "Routing",
+            "file": "routes.md",
             "sort": 10
         },
         {
-            "id": "structure",
-            "title": "Structure",
-            "file": "structure.md",
+            "id": "shell-vs-subshell",
+            "title": "Running your app in the same shell",
+            "file": "shell-vs-subshell.md",
             "sort": 11
         },
         {
@@ -80,16 +80,28 @@
             "sort": 12
         },
         {
-            "id": "vars",
-            "title": "Vars",
-            "file": "vars.md",
+            "id": "troubleshooting",
+            "title": "Troubleshooting",
+            "file": "troubleshooting.md",
             "sort": 13
         },
         {
-            "id": "verbose",
-            "title": "Verbose",
-            "file": "verbose.md",
+            "id": "vars",
+            "title": "Lobster vars",
+            "file": "vars.md",
             "sort": 14
+        },
+        {
+            "id": "verbose",
+            "title": "Verbose flag '-v'",
+            "file": "verbose.md",
+            "sort": 15
+        },
+        {
+            "id": "_tasklist",
+            "title": " Tasklist",
+            "file": "_tasklist.md",
+            "sort": 16
         }
     ],
     "settings": {

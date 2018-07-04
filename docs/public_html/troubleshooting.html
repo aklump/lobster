@@ -2,17 +2,17 @@
 
 <html>
 <head>
-  <title>Verbose flag &#039;-v&#039;</title>
+  <title>Troubleshooting</title>
   <link href="search/tipuesearch.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
 </head>
 
-<body class="page--verbose">
+<body class="page--troubleshooting">
 <header>
   <div class="pager">
-  <a href="vars.html" class="prev vars">&laquo;Lobster vars</a>
+  <a href="themes.html" class="prev themes">&laquo;Themes</a>
   <a href="index.html" class="index">Index</a>
-  <a href="_tasklist.html" class="next _tasklist"> Tasklist&raquo;</a>
+  <a href="vars.html" class="next vars">Lobster vars&raquo;</a>
 </div>
 </header>
 
@@ -22,29 +22,17 @@
   </form>
 </div>
 
-  <h1>Verbose flag &#039;-v&#039;</h1>
+  <h1>Troubleshooting</h1>
   <div class="breadcrumb"><a href="index.html">Index</a></div>
 
 <section>
 
-<h2><code>lobster_verbose()</code></h2>
+<h2><code>Could not open input file:...</code></h2>
 
-<p>Use this function to output messages only when the -v flag is used.</p>
+<p>This happens when the output of <code>which php</code> does not return the path to the PHP file.  The fix is to set the path to php in <em>.lobsterconfig</em> like so:</p>
 
-<pre><code>lobster_verbose "This will only show to user if the `-v` flag is used."
+<pre><code>lobster_php='/Applications/MAMP/bin/php/php7.1.12/bin/php'
 </code></pre>
-
-<h2>Lobster Core</h2>
-
-<p>By default the -v will also print Lobster core verbosity.</p>
-
-<p>To disable this feature you need to add the following line to your app controller file just before calling the bootstrap:</p>
-
-<pre><code>lobster_core_verbose=0
-source "$LOBSTER_APP_ROOT/lib/lobster/dist/bootstrap.sh"
-</code></pre>
-
-<p>Setting this variable in a config file is too late as the boostrapping process uses verbosity before loading all config files.</p>
 </section>
 
 <div class="search__results">
@@ -53,13 +41,13 @@ source "$LOBSTER_APP_ROOT/lib/lobster/dist/bootstrap.sh"
 
 <footer>
   <div class="pager">
-  <a href="vars.html" class="prev vars">&laquo;Lobster vars</a>
+  <a href="themes.html" class="prev themes">&laquo;Themes</a>
   <a href="index.html" class="index">Index</a>
-  <a href="_tasklist.html" class="next _tasklist"> Tasklist&raquo;</a>
+  <a href="vars.html" class="next vars">Lobster vars&raquo;</a>
 </div>
   
   <div id="footer-legaleeze">
-    <p class="legaleeze center">Version: 3.0 &bull; Last Updated: Tue, 03 Jul 2018 20:27:50 -0700</p>
+    <p class="legaleeze center">Version: 3.0 &bull; Last Updated: Tue, 03 Jul 2018 20:27:49 -0700</p>
   </div>
 </footer>
 
