@@ -1,3 +1,5 @@
+{% extends "route" %}
+{% block content %}
 usage: {{ lobster_app_name }} <route> [<args>, <flags>, <params>]
 
 {{ lobster_color_echo('notice', 'Routes') }}
@@ -7,3 +9,4 @@ usage: {{ lobster_app_name }} <route> [<args>, <flags>, <params>]
 
 Calling `{{ lobster_app_name }}` without a command is equivalent to `example_app {{ lobster_default_route }}`.
 This can be configured using the variable $lobster_default_route.
+{% endblock %}

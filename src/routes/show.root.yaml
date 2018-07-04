@@ -1,0 +1,21 @@
+description: The show route displays various items
+args:
+  - name: phpvars
+    description: Show a listing of all PHP vars available to PHP routes.
+  - name: root
+    description: Show the root path of the lobster instance.
+  - name: vars
+    description: Show a listing of all BASH vars available to BASH routes.
+  - name: routes
+    description: Show a list of all available routes.
+flags:
+  - name: a
+    description: a ipsum
+  - name: b
+    description: b ipsum
+params:
+  - name: do
+  - description: do ipsum
+  - options:
+    - name: re
+      description: re ipsum

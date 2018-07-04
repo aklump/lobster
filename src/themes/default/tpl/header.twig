@@ -1,0 +1,4 @@
+{% set header %}
+|  {{ lobster_app_title }}: {{ lobster_route_id|replace({'.':' '})|title }}  |
+{{ hr }}{% endset %}
+{{ lobster_color_echo('notice', header) }}

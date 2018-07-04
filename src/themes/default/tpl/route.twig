@@ -1,0 +1,5 @@
+{% include 'header.twig' %}
+{% block content %}
+{{ content|default('What your route file echos, goes here')|raw }}
+{% endblock %}
+{% include 'footer.twig' %}

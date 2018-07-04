@@ -26,3 +26,7 @@ Then the following files are called in this order:
     
 ## File types
 Only `.sh` files are supported for pre/post scripts.
+
+## Twig
+
+To see the variables available for twig templates use the `show phpvars`.
